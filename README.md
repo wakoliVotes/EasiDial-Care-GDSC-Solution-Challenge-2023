@@ -1,1 +1,1 @@
-# GoogleSolutionChallengeApp
+# Google Solution Challenge Mobile App
