@@ -27,6 +27,7 @@ fun HomeDashboard() {
             )
         }
     ) {
+        padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()

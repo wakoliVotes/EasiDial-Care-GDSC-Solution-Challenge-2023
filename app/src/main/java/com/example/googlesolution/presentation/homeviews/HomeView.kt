@@ -30,6 +30,7 @@ fun HomeView() {
             )
         }
     ) {
+        padding ->
         val hospitals = remember {
             listOf(
                 Hospital(
