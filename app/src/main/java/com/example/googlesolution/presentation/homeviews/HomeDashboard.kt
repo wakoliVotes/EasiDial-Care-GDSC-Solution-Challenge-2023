@@ -38,7 +38,7 @@ fun HomeDashboard() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(8.dp)
         ) {
             Text(
                 text = "Emergency Hospitals",
@@ -75,10 +75,9 @@ fun HomeDashboard() {
 fun HospitalListItem(hospitalName: String) {
     Card(
         modifier = Modifier
-            .padding(start = 10.dp, end = 10.dp, bottom = 8.dp)
+            .padding(start = 5.dp, end = 5.dp, bottom = 8.dp)
             .fillMaxWidth()
-            .clip(MaterialTheme.shapes.medium)
-        ,
+            .clip(MaterialTheme.shapes.medium),
         elevation = 4.dp
     ) {
         Row(
@@ -92,14 +91,14 @@ fun HospitalListItem(hospitalName: String) {
                 painter = painterResource(id = R.drawable.hospital),
                 contentDescription = "Hospital",
                 modifier = Modifier
-                    .height(120.dp)
+                    .height(100.dp)
                     .clip(MaterialTheme.shapes.medium)
-                    .weight(2f),
+                    .weight(1.5f),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(10.dp))
             Column (
-                modifier = Modifier.weight(3f),
+                modifier = Modifier.weight(4f),
                     ) {
                 Text(
                     text = hospitalName,
@@ -114,6 +113,11 @@ fun HospitalListItem(hospitalName: String) {
                 )
                 Text(
                     text = "Phone Number",
+                    style = MaterialTheme.typography.caption,
+                    modifier = Modifier.padding(bottom = 2.dp)
+                )
+                Text(
+                    text = "Ambulance: YES/NO",
                     style = MaterialTheme.typography.caption,
                     modifier = Modifier.padding(bottom = 2.dp)
                 )
