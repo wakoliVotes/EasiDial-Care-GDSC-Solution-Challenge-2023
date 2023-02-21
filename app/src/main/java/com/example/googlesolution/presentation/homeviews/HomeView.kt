@@ -106,7 +106,9 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
             modifier = Modifier.clickable { isExpanded = !isExpanded }
         ) {
             Row(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.hospital),
@@ -119,10 +121,11 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
                         .fillMaxWidth()
                 ) {
                 Text(
-                    text = hospital.name,
+                    text = "Hospital 1",
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(.6f),
+                    color = Color.Blue
                 )
                 Icon(
                     imageVector = if (isExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,

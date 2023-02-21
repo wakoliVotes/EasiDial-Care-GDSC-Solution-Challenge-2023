@@ -3,8 +3,9 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password">Forgot password? Reset</string>
     <string name="not_signed_up_yet">Not Signed Up Yet?</string>
+    <string name="have_account">Have Account?</string>
     <string name="sign_in">Sign In</string>
     <string name="confirm_password">Confirm Password</string>
 </resources>
