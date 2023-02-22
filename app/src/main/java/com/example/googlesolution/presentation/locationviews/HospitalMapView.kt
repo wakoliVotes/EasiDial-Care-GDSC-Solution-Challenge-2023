@@ -70,14 +70,3 @@ fun HospitalsMapView() {
 fun PreviewHospitalsMapView() {
     HospitalsMapView()
 }
-
-/*
-In this function, we first create a MapView and set its location to Kenya using the moveCamera method of the GoogleMap object obtained from the getMapAsync callback. We then add markers for each hospital around Nairobi using the addMarker method of the GoogleMap object, with the hospital name as the marker title and its location as the marker position.
-Finally, we zoom in on the closest hospital to Nairobi using the minByOrNull method to find the hospital with the smallest distance to Nairobi, and then setting the zoom level and location of the map using the moveCamera method of the GoogleMap object. The AndroidView composable is used to display the MapView in our Compose UI.
- */
-
-
-
-
-
-
