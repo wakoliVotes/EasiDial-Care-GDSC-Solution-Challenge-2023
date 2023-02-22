@@ -26,13 +26,6 @@ import com.example.googlesolution.ui.theme.WaterMilder
 
 fun HomeDashboard() {
     Scaffold(
-        /*
-        topBar = {
-            TopAppBar(
-                title = { Text("Hospitals") }
-            )
-        }
-         */
     ) {
         padding ->
         Column(
@@ -40,8 +33,20 @@ fun HomeDashboard() {
                 .fillMaxSize()
                 .padding(8.dp)
         ) {
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
             Text(
-                text = "Emergency Hospitals",
+                text = "Top Hospitals",
+                style = MaterialTheme.typography.h5,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            LazyRow {
+                items(5) { index ->
+                    TopHospitalListItem(ambulanceName = "St. Johns", ambulanceNumber = "071212345${index + 1}")
+                }
+            }
+            Text(
+                text = "Hospitals",
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -57,14 +62,38 @@ fun HomeDashboard() {
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))
             Text(
-                text = "Private Ambulance Contacts",
+                text = "Top Hospitals",
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             LazyRow {
                 items(5) { index ->
-                    AmbulanceListItem( ambulanceName = "St. Johns", ambulanceNumber = "071212345${index + 1}")
+                    TopHospitalListItem(ambulanceName = "St. Johns", ambulanceNumber = "071212345${index + 1}")
+                }
+            }
+            // Add 2 buttons to move to Home and to MapView
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .fillMaxWidth(0.4f)
+                        .height(50.dp)
+                ) {
+                    Text(text = "Map View")
+                }
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .fillMaxWidth(0.4f)
+                        .height(50.dp)
+                ) {
+                    Text(text = "Ambulances")
                 }
             }
         }
@@ -124,7 +153,8 @@ fun HospitalListItem(hospitalName: String) {
             }
             IconButton(
                 onClick = { /* TODO */ },
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
                     .weight(1f)
             ) {
                 Icon(
@@ -138,7 +168,7 @@ fun HospitalListItem(hospitalName: String) {
 }
 
 @Composable
-fun AmbulanceListItem(
+fun TopHospitalListItem(
     ambulanceName: String,
     ambulanceNumber: String
 ) {
@@ -153,9 +183,9 @@ fun AmbulanceListItem(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ambulance),
+                painter = painterResource(id = R.drawable.hosp0),
                 contentDescription = "Ambulance",
-                modifier = Modifier.height(100.dp),
+                modifier = Modifier.height(80.dp),
                 contentScale = ContentScale.FillWidth
             )
             Text(
@@ -163,11 +193,31 @@ fun AmbulanceListItem(
                 style = MaterialTheme.typography.subtitle2,
                 fontWeight = FontWeight.Bold,
             )
-            Text(
-                text = ambulanceNumber,
-                style = MaterialTheme.typography.caption,
-                fontWeight = FontWeight.SemiBold,
-            )
+            Row(
+                modifier = Modifier.padding(bottom = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = ambulanceNumber,
+                    style = MaterialTheme.typography.caption,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                // Add an Icon button to call the ambulance
+                IconButton(
+                    onClick = { /* TODO */ },
+                    modifier = Modifier
+                        .padding(bottom = 4.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Call",
+                        tint = Color.Blue
+                    )
+                }
+
+            }
+
         }
     }
 }

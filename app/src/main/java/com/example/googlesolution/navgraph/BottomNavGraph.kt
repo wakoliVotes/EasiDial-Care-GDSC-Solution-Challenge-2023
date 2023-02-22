@@ -18,8 +18,8 @@ fun BottomNavGraph(
         composable(route = BottomBarScreen.Settings.route){
             SettingsView()
         }
-        composable(route = BottomBarScreen.Explore.route){
-//            ExploreView()
+        composable(route = BottomBarScreen.About.route){
+//            About()
             HomeDashboard()
         }
 
