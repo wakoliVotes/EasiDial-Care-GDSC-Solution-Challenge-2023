@@ -1,5 +1,6 @@
 package com.example.googlesolution.presentation.bottomviews
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.googlesolution.ui.theme.WaterAccent
 
 
 @Composable
@@ -40,91 +42,77 @@ fun AboutUsView() {
                 .padding(16.dp)
                 .alpha(0.8f)
         )
-        Box(
+
+        Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(150.dp)
+                .padding(8.dp)
+                .height(120.dp)
         ) {
-            Card(
-                shape = RoundedCornerShape(4.dp),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-            ) {
-                Column() {
-                    Text(
-                        text = "Our Mission",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                    Text(
-                        text = "To improve access to critical healthcare services for everyone, regardless of their location or economic status.",
-                        fontSize = 14.sp,
-                        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                    )
-                }
+            Column() {
+                Text(
+                    text = "Our Mission",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+                Text(
+                    text = "To improve access to critical healthcare services for everyone, regardless of their location or economic status.",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                )
+            }
+
+        }
+        Card(
+            shape = RoundedCornerShape(4.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .height(120.dp)
+        ) {
+            Column() {
+                Text(
+                    text = "Our Team",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+                Text(
+                    text = "We are a team of passionate individuals who are committed to making healthcare accessible to everyone.",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                )
 
             }
         }
-        Box(
+        Card(
+            shape = RoundedCornerShape(4.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(150.dp)
+                .padding(8.dp)
+                .height(120.dp)
         ) {
-            Card(
-                shape = RoundedCornerShape(4.dp),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-            ) {
-                Column() {
-                    Text(
-                        text = "Our Team",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                    Text(
-                        text = "We are a team of passionate individuals who are committed to making healthcare accessible to everyone.",
-                        fontSize = 14.sp,
-                        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                    )
-
-                }
-            }
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(150.dp)
-        ) {
-            Card(
-                shape = RoundedCornerShape(4.dp),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-            ) {
-                Column() {
-                    Text(
-                        text = "Our Vision",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                    Text(
-                        text = "A world where every person has access to the healthcare services they need, when and where they need them.",
-                        fontSize = 14.sp,
-                        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                    )
-                }
+            Column() {
+                Text(
+                    text = "Our Vision",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+                Text(
+                    text = "A world where every person has access to the healthcare services they need, when and where they need them.",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                )
             }
         }
         Spacer(modifier = Modifier.height(20.dp))
         Card(
             shape = RoundedCornerShape(4.dp),
-            modifier = Modifier.fillMaxWidth(),
-            elevation = 8.dp
+            modifier = Modifier
+                .fillMaxWidth(),
+            elevation = 6.dp
         ) {
             Row(
                 modifier = Modifier
@@ -133,24 +121,43 @@ fun AboutUsView() {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 MilestoneBox(
-                    milestoneName = "Years in Operation",
-                    milestoneNumber = "10",
+                    milestoneName = "Years Project Started",
+                    milestoneNumber = "2023",
                     modifier = Modifier.weight(1f)
+                )
+                Box(
+                    modifier = Modifier
+                        .background(WaterAccent, RoundedCornerShape(4.dp))
+                        .height(60.dp)
+                        .width(1.dp)
                 )
                 MilestoneBox(
                     milestoneName = "Listed Hospitals",
-                    milestoneNumber = "50",
+                    milestoneNumber = "100+",
                     modifier = Modifier.weight(1f)
+                )
+                Box(
+                    modifier = Modifier
+                        .background(WaterAccent, RoundedCornerShape(4.dp))
+                        .height(60.dp)
+                        .width(1.dp)
                 )
                 MilestoneBox(
                     milestoneName = "Listed Ambulances",
-                    milestoneNumber = "100",
+                    milestoneNumber = "20+",
                     modifier = Modifier.weight(1f)
+                )
+                Box(
+                    modifier = Modifier
+                        .background(WaterAccent, RoundedCornerShape(4.dp))
+                        .height(60.dp)
+                        .width(1.dp)
                 )
                 MilestoneBox(
                     milestoneName = "Counties Covered",
                     milestoneNumber = "47",
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
                 )
             }
         }
@@ -167,14 +174,13 @@ fun AboutUsView() {
                 shape = RoundedCornerShape(4.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
             ) {
-                Row (
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Text(
                         text = "Ambulances",
                         color = Color.White,
-                        fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(horizontal = 2.dp)
                     )
@@ -197,14 +203,13 @@ fun AboutUsView() {
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
             ) {
                 // add arrow icon to the right of the text
-                Row (
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Text(
                         text = "Hospitals",
                         color = Color.White,
-                        fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(horizontal = 2.dp)
                     )
@@ -220,7 +225,7 @@ fun AboutUsView() {
             }
         }
         // Bottom navigation bar with icons for home, about us, settings and profile
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(80.dp))
         BottomNavigation(
             backgroundColor = Color.White,
             modifier = Modifier
@@ -294,16 +299,18 @@ fun AboutUsView() {
         }
     }
 }
+
+
 // card for the milestones
 @Composable
 fun MilestoneBox(
     milestoneName: String,
     milestoneNumber: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             text = milestoneNumber,

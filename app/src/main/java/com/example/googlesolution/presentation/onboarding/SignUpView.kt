@@ -5,6 +5,7 @@ package com.example.googlesolution.presentation.onboarding
 // Add section for sign in button, not signed up yet text and sign in text and forgot password
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -124,7 +125,7 @@ fun SignInView(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.CenterHorizontally),
-            horizontalArrangement = Arrangement.Center,
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = stringResource(id = have_account))
@@ -138,6 +139,21 @@ fun SignInView(
                     )
                 )
             }
+        }
+        // add skip button, align start and add padding
+        TextButton(
+            onClick = onSignIn,
+            modifier = Modifier
+                .align(Alignment.Start)
+                .padding(16.dp)
+                .width(80.dp)
+                .background(Color.Black, RoundedCornerShape(8))
+            ,
+        ) {
+            Text(
+                text = "Skip",
+                color = Color.White,
+            )
         }
     }
 }

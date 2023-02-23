@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.googlesolution.R
@@ -34,21 +35,9 @@ import com.example.googlesolution.ui.theme.White
 // Button is placed at the bottom of the screen
 // text color is set to white
 
+
 @Composable
-fun OnBoardScreen(
-    image: ImageBitmap,
-    description: String,
-    onButtonClick: () -> Unit,
-    isLastScreen: Boolean = false
-) {
-    var visible by remember { mutableStateOf(false) }
-    val alpha by animateFloatAsState(
-        targetValue = if (visible) 1f else 0f,
-        animationSpec = tween(1000)
-    )
-    LaunchedEffect(key1 = true) {
-        visible = true
-    }
+fun OnBoardScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +52,7 @@ fun OnBoardScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                bitmap = image,
+                bitmap = ImageBitmap.imageResource(id = R.drawable.hospital),
                 contentDescription = null,
                 modifier = Modifier
                     .width(300.dp)
@@ -72,28 +61,20 @@ fun OnBoardScreen(
                 contentScale = ContentScale.Crop
 
             )
-            AnimatedVisibility(
-                visible = visible,
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.h2,
-                    color = MaterialTheme.colors.onPrimary,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                )
-            }
+
+            Text(
+                text = "Find a Hospital near you",
+                style = MaterialTheme.typography.h2,
+                color = MaterialTheme.colors.onPrimary,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+
             Spacer(modifier = Modifier.height(30.dp))
-        AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
             Button(
-                onClick = onButtonClick,
+                onClick = { },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -105,30 +86,15 @@ fun OnBoardScreen(
                 )
             ) {
                 Text(
-                    text = if (isLastScreen) "Get Started" else "Go",
-                    style = MaterialTheme.typography.h6,
-                    color = White
+                    text = "Go",
+                    style = MaterialTheme.typography.h5,
+                    color = White,
+                    fontWeight = FontWeight.ExtraBold
                 )
-                if (isLastScreen) {
-                    Icon(
-                        imageVector = Icons.Default.Done,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                    )
-                } else {
-                    Icon(
-                        imageVector = Icons.Default.ArrowForward,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(start = 20.dp),
-                        tint = White
-                    )
-                }
             }
+
         }
     }
-}
 }
 
 
@@ -136,12 +102,7 @@ fun OnBoardScreen(
 @Preview
 @Composable
 fun OnBoardScreenPreview() {
-    OnBoardScreen(
-        image = ImageBitmap.imageResource(id = R.drawable.hospital),
-        description = "Find a Hospital near you",
-        onButtonClick = { },
-        isLastScreen = false
-    )
+    OnBoardScreen()
 }
 
 

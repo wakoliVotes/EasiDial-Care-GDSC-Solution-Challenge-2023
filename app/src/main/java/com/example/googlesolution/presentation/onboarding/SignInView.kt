@@ -5,6 +5,7 @@ package com.example.googlesolution.presentation.onboarding
 // Add section for sign up button, not signed up yet text and sign in text and forgot password
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -19,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.googlesolution.R
@@ -134,6 +135,21 @@ fun SignUpView(
             Text(
                 text = stringResource(id = sign_up),
                 color = Color.Black,
+            )
+        }
+        // add skip button, align start and add padding
+        TextButton(
+            onClick = onSignIn,
+            modifier = Modifier
+                .align(Alignment.Start)
+                .padding(16.dp)
+                .width(80.dp)
+                .background(Color.Black, RoundedCornerShape(8))
+            ,
+        ) {
+            Text(
+                text = "Skip",
+                color = Color.White,
             )
         }
     }
