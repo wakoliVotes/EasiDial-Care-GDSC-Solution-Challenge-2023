@@ -22,18 +22,13 @@ import androidx.compose.ui.unit.dp
 import com.example.googlesolution.R
 
 @Composable
-fun HomeView() {
+fun BackUpView() {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Hospital Finder") }
-            )
-        }
     ) {
         padding ->
         val hospitals = remember {
             listOf(
-                Hospital(
+                BackUpHospital(
                     name = "Hospital 1",
                     about = "This is a sample hospital.",
                     contact = "1234567890",
@@ -41,7 +36,7 @@ fun HomeView() {
                     services = "Emergency, Surgery, Pediatrics",
                     hasAmbulance = true
                 ),
-                Hospital(
+                BackUpHospital(
                     name = "Hospital 2",
                     about = "This is another sample hospital.",
                     contact = "0987654321",
@@ -49,7 +44,7 @@ fun HomeView() {
                     services = "Obstetrics, Cardiology, Neurology",
                     hasAmbulance = false
                 ),
-                Hospital(
+                BackUpHospital(
                     name = "Hospital 3",
                     about = "This is a third sample hospital.",
                     contact = "2468135790",
@@ -66,14 +61,14 @@ fun HomeView() {
                 .padding(16.dp)
         ) {
             Text(
-                text = "Nearest Hospitals",
-                style = MaterialTheme.typography.h6,
+                text = "Emergency Lessons",
+                style = MaterialTheme.typography.h4,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             LazyColumn(modifier = Modifier.weight(1f)) {
                 itemsIndexed(hospitals) { index, hospital ->
-                    HospitalListItem(hospital = hospital, expanded = index == 0)
+                    BackUpHospitalListItem(hospital = hospital, expanded = index == 0)
                 }
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))
@@ -93,7 +88,7 @@ fun HomeView() {
 }
 
 @Composable
-fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
+fun BackUpHospitalListItem(hospital: BackUpHospital, expanded: Boolean) {
     var isExpanded by remember { mutableStateOf(expanded) }
 
     Card(
@@ -116,15 +111,11 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
                     modifier = Modifier.size(64.dp)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                Column(
-                    modifier = Modifier.weight(1f)
-                        .fillMaxWidth()
-                ) {
                 Text(
                     text = "Hospital 1",
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.weight(.6f),
+                    modifier = Modifier.weight(1f),
                     color = Color.Blue
                 )
                 Icon(
@@ -133,7 +124,7 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
                     tint = Color.Gray,
                     modifier = Modifier.size(32.dp)
                 )
-            }
+
             }
             if (isExpanded) {
                 Column(
@@ -153,7 +144,7 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
 }
 
 @Composable
-fun HospitalInfoItem(title: String, value: String) {
+fun BackUpHospitalInfoItem(title: String, value: String) {
     Column(
         modifier = Modifier
             .padding(bottom = 8.dp)
@@ -174,7 +165,7 @@ fun HospitalInfoItem(title: String, value: String) {
 }
 
 @Composable
-fun AmbulanceListing(ambulanceNumber: String) {
+fun BackUpAmbulanceListing(ambulanceNumber: String) {
     Card(
         modifier = Modifier
             .padding(end = 8.dp)
@@ -202,7 +193,7 @@ fun AmbulanceListing(ambulanceNumber: String) {
     }
 }
 
-data class Hospital(
+data class BackUpHospital(
     val name: String,
     val about: String,
     val contact: String,
@@ -215,7 +206,7 @@ data class Hospital(
 // Add Preview
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun BackUpPreview() {
     HomeView()
 }
 

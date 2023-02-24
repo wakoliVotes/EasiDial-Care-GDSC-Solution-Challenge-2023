@@ -5,9 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.googlesolution.R
 import com.example.googlesolution.ui.theme.WaterMilder
 
@@ -73,27 +76,67 @@ fun HomeDashboard() {
                 }
             }
             // Add 2 buttons to move to Home and to MapView
+            Spacer(modifier = Modifier.height(20.dp))
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /* Navigate to ambulance view */ },
                     modifier = Modifier
-                        .fillMaxWidth(0.4f)
-                        .height(50.dp)
+                        .height(45.dp)
+                        .width(170.dp),
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 ) {
-                    Text(text = "Map View")
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(
+                            text = "Map",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            modifier = Modifier.padding(horizontal = 2.dp)
+                        )
+                        Icon(
+                            imageVector = Icons.Default.KeyboardArrowRight,
+                            contentDescription = "Arrow Forward",
+                            tint = Color.White,
+                            modifier = Modifier
+                                .padding(horizontal = 4.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /* Navigate to hospitals view */ },
                     modifier = Modifier
-                        .fillMaxWidth(0.4f)
-                        .height(50.dp)
+                        .height(45.dp)
+                        .width(170.dp),
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 ) {
-                    Text(text = "Ambulances")
+                    // add arrow icon to the right of the text
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(
+                            text = "Ambulances",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            modifier = Modifier.padding(horizontal = 2.dp)
+                        )
+                        Icon(
+                            imageVector = Icons.Default.KeyboardArrowRight,
+                            contentDescription = "Arrow Forward",
+                            tint = Color.White,
+                            modifier = Modifier
+                                .padding(horizontal = 4.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
                 }
             }
         }
