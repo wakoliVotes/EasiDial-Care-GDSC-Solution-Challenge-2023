@@ -45,7 +45,7 @@ fun HomeDashboard(
             Divider(modifier = Modifier.padding(vertical = 16.dp))
             Text(
                 text = "Top Hospitals",
-                style = MaterialTheme.typography.h5,
+                style = MaterialTheme.typography.h6,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)
             )

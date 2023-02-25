@@ -5,12 +5,12 @@ sealed class Screens(val route: String) {
     object SignUp: Screens("signup")
     object SignIn: Screens("signin")
     object ForgotPassword: Screens("forgotpassword")
+    object MainScreen: Screens("mainscreen")
     object Home: Screens("home")
     object Ambulances: Screens("ambulances")
     object EmergencyLessons: Screens("emergencylessons")
     object MapView: Screens("mapview")
     object About: Screens("about")
     object Account: Screens("account")
-    object Settings: Screens("settings")
     object Notifications: Screens("notifications")
 }

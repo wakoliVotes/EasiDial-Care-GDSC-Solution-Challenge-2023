@@ -1,10 +1,7 @@
 package com.example.googlesolution.navgraph
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
@@ -12,11 +9,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.googlesolution.presentation.bottomviews.AboutUsView
 import com.example.googlesolution.presentation.bottomviews.SettingsView
+import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HomeDashboard
+import com.example.googlesolution.presentation.locationviews.HospitalsMapView
 import com.example.kcauvibe.presentation.bottomviews.AccountView
-
-/* import androidx.navigation.NavHostController */
-
 
 sealed class BottomBarScreen(
     val route: String,
@@ -28,20 +24,20 @@ sealed class BottomBarScreen(
         title = "Home",
         icon = Icons.Default.Home
     )
+    object Map : BottomBarScreen(
+        route = "map",
+        title = "Map",
+        icon = Icons.Default.Place
+    )
+    object Explore : BottomBarScreen(
+        route = "explore",
+        title = "Explore",
+        icon = Icons.Default.List
+    )
     object About : BottomBarScreen(
         route = "about",
         title = "About",
         icon = Icons.Default.Info
-    )
-    object Notifications : BottomBarScreen(
-        route = "notifications",
-        title = "Notifications",
-        icon = Icons.Default.Home
-    )
-    object Profile : BottomBarScreen(
-        route = "profile",
-        title = "Profile",
-        icon = Icons.Default.Person
     )
     object Settings : BottomBarScreen(
         route = "settings",
@@ -60,15 +56,17 @@ fun BottomNavGraph(
         composable(route = BottomBarScreen.Home.route){
             HomeDashboard(navController = navController)
         }
-        composable(route = BottomBarScreen.Settings.route){
-            SettingsView(navController = navController)
+        composable(route = BottomBarScreen.Map.route){
+            HospitalsMapView(navController = navController)
+        }
+        composable(route = BottomBarScreen.Explore.route){
+            EmergencyLessons(navController = navController)
         }
         composable(route = BottomBarScreen.About.route){
             AboutUsView(navController = navController)
         }
-
-        composable(route = BottomBarScreen.Profile.route){
-            AccountView(navController = navController)
+        composable(route = BottomBarScreen.Settings.route){
+            SettingsView(navController = navController)
         }
     }
 }
