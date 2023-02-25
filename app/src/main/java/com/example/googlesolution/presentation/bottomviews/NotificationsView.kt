@@ -2,10 +2,11 @@ package com.example.googlesolution.presentation.bottomviews
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
-@Preview
 @Composable
-fun NotificationsView(){
+fun NotificationsView(navController: NavHostController){
 
 }
 
@@ -13,8 +14,17 @@ fun NotificationsView(){
 
 
 
-
+@Preview
 @Composable
 fun CreateNotifications(){
+
+}
+
+
+
+@Preview
+@Composable
+fun PreviewNotifications(){
+    NotificationsView(navController = rememberNavController()  )
 
 }

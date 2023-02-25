@@ -16,6 +16,8 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.ui.theme.White
 
@@ -29,7 +31,7 @@ import com.example.googlesolution.ui.theme.White
 
 
 @Composable
-fun OnBoardScreen() {
+fun OnBoardScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +68,9 @@ fun OnBoardScreen() {
 
             Spacer(modifier = Modifier.height(30.dp))
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate("signIn")
+                },
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
@@ -94,7 +98,7 @@ fun OnBoardScreen() {
 @Preview
 @Composable
 fun OnBoardScreenPreview() {
-    OnBoardScreen()
+    OnBoardScreen(navController = rememberNavController())
 }
 
 

@@ -19,10 +19,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 
 @Composable
-fun BackUpView() {
+fun BackUpView(
+    navController: NavHostController
+) {
     Scaffold(
     ) {
         padding ->
@@ -207,7 +211,7 @@ data class BackUpHospital(
 @Preview(showBackground = true)
 @Composable
 fun BackUpPreview() {
-    HomeView()
+    BackUpView(navController = rememberNavController())
 }
 
 

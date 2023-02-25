@@ -1,12 +1,25 @@
 package com.example.googlesolution.presentation.locationviews
 
 import android.location.Location
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
@@ -14,7 +27,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 
 @Composable
-fun HospitalsMapView() {
+fun HospitalsMapView(
+    navController: NavHostController
+) {
     val context = LocalContext.current
     val mapView = MapView(context).apply {
         onCreate(null)
@@ -54,12 +69,82 @@ fun HospitalsMapView() {
             }
         }
     }
-
-    AndroidView(
-        modifier = Modifier.fillMaxSize(),
-        factory = { mapView }
-    ) {
-        it.onResume()
+    Column {
+        AndroidView(
+            modifier = Modifier.height(300.dp),
+            factory = { mapView }
+        ) {
+            it.onResume()
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(
+                onClick = {
+                    /* Navigate to ambulance view */
+                    navController.navigate("home")
+                },
+                modifier = Modifier
+                    .height(45.dp)
+                    .width(170.dp),
+                shape = RoundedCornerShape(4.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Text(
+                        text = "Hospitals",
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(horizontal = 2.dp)
+                    )
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowRight,
+                        contentDescription = "Arrow Forward",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .align(Alignment.CenterVertically)
+                    )
+                }
+            }
+            Button(
+                onClick = {
+                    /* Navigate to map view */
+                    navController.navigate("ambulances")
+                },
+                modifier = Modifier
+                    .height(45.dp)
+                    .width(170.dp),
+                shape = RoundedCornerShape(4.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
+            ) {
+                // add arrow icon to the right of the text
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Text(
+                        text = "Ambulances",
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(horizontal = 2.dp)
+                    )
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowRight,
+                        contentDescription = "Arrow Forward",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .align(Alignment.CenterVertically)
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -68,5 +153,5 @@ fun HospitalsMapView() {
 @Preview
 @Composable
 fun PreviewHospitalsMapView() {
-    HospitalsMapView()
+    HospitalsMapView(navController = rememberNavController())
 }

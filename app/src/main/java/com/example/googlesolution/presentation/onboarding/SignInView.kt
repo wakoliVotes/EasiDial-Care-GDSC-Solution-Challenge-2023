@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -21,19 +22,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.R.string.*
 
 @Composable
 fun SignUpView(
     modifier: Modifier = Modifier,
-    onSignUp: () -> Unit,
-    onSignIn: () -> Unit,
-    onForgotPassword: () -> Unit,
+// TODO - Add onSignUp, onSignIn and onForgotPassword parameters
+//    onSignUp: () -> Unit,
+//    onSignIn: () -> Unit,
+//    onForgotPassword: () -> Unit,
+
+    navController: NavHostController,
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -74,7 +82,8 @@ fun SignUpView(
                         contentDescription = null,
                     )
                 }
-            }
+            },
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -92,12 +101,17 @@ fun SignUpView(
                     )
                 }
             },
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go)
+            ,
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(20.dp))
         TextButton(
-            onClick = onForgotPassword,
+            onClick = {
+                // TODO - onForgotPassword
+                navController.navigate("forgotpassword")
+            },
             modifier = Modifier.align(End),
         ) {
             Text(
@@ -107,7 +121,10 @@ fun SignUpView(
         }
         Spacer(modifier = Modifier.height(40.dp))
         Button(
-            onClick = onSignUp,
+            onClick = {
+                // TODO - onSignUp implement validations later
+                navController.navigate("home")
+            },
             shape = RoundedCornerShape(8),
             modifier = Modifier
                 .fillMaxWidth()
@@ -129,7 +146,7 @@ fun SignUpView(
             modifier = Modifier.align(End),
         )
         TextButton(
-            onClick = onSignIn,
+            onClick = { /*TODO onSignIn */ },
             modifier = Modifier.align(End),
         ) {
             Text(
@@ -139,7 +156,10 @@ fun SignUpView(
         }
         // add skip button, align start and add padding
         TextButton(
-            onClick = onSignIn,
+            onClick = {
+                      /*TODO - skip to home screen  */
+                        navController.navigate("home")
+                      },
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(16.dp)
@@ -160,8 +180,12 @@ fun SignUpView(
 @Composable
 fun SignUpViewPreview() {
     SignUpView(
-        onSignUp = {},
+        /*
+        * TODO
+        *  ADD
+        * onSignUp = {},
         onSignIn = {},
-        onForgotPassword = {}
+        onForgotPassword = {},*/
+        navController = rememberNavController()
     )
 }

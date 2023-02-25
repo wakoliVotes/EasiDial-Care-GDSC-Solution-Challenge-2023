@@ -28,7 +28,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 
 @Composable
-fun ExpandableMapsView() {
+fun ExpandableMapsView(
+    navController: NavHostController
+) {
     val context = LocalContext.current
     val mapView = rememberMapViewWithLifecycle()
 
@@ -126,7 +128,7 @@ fun makeCall(context: Context, name: String) {
 @Preview
 @Composable
 fun PreviewHospitalsMapView() {
-    HospitalsMapView()
+    HospitalsMapView(navController = rememberNavController())
 }
 
  */

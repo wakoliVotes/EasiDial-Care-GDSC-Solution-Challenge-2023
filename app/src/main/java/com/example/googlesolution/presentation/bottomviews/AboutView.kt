@@ -16,11 +16,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.ui.theme.WaterAccent
 
 
 @Composable
-fun AboutUsView() {
+fun AboutUsView(
+    navController: NavHostController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -329,7 +333,7 @@ fun MilestoneBox(
 @Preview(showBackground = true)
 @Composable
 fun AboutUsViewPreview() {
-    AboutUsView()
+    AboutUsView(navController = rememberNavController())
 }
 
 

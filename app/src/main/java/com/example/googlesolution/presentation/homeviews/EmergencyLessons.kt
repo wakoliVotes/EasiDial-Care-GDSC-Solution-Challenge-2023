@@ -29,10 +29,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 
 @Composable
-fun HomeView() {
+fun EmergencyLessons (navController: NavHostController) {
     Scaffold { padding ->
         val hospitals = remember {
             listOf(
@@ -220,7 +222,7 @@ data class Hospital(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    HomeView()
+    EmergencyLessons( navController = rememberNavController() )
 }
 
 

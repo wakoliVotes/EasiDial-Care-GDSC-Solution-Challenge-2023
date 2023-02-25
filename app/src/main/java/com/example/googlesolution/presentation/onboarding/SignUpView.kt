@@ -22,6 +22,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.R.string.*
 import java.time.format.TextStyle
@@ -29,9 +31,11 @@ import java.time.format.TextStyle
 @Composable
 fun SignInView(
     modifier: Modifier = Modifier,
-    onSignUp: () -> Unit,
-    onSignIn: () -> Unit,
-    onForgotPassword: () -> Unit
+//    TODO - Add onSignUp, onSignIn and onForgotPassword parameters
+//    onSignUp: () -> Unit,
+//    onSignIn: () -> Unit,
+//    onForgotPassword: () -> Unit,
+    navController: NavHostController
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -106,9 +110,12 @@ fun SignInView(
 
         Spacer(modifier = Modifier.height(40.dp))
         Button(
-            onClick = onSignIn,
+            onClick = {
+                navController.navigate("home")
+                      },
             shape = RoundedCornerShape(8),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Black,
@@ -129,7 +136,11 @@ fun SignInView(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = stringResource(id = have_account))
-            TextButton(onClick = onSignUp) {
+            TextButton(
+                onClick = {
+                    navController.navigate("sign_in")
+                },
+            ) {
                 Text(
                     text = stringResource(id = R.string.sign_in),
                     style = androidx.compose.ui.text.TextStyle(
@@ -142,13 +153,14 @@ fun SignInView(
         }
         // add skip button, align start and add padding
         TextButton(
-            onClick = onSignIn,
+            onClick = {
+                navController.navigate("home")
+            },
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(16.dp)
                 .width(80.dp)
-                .background(Color.Black, RoundedCornerShape(8))
-            ,
+                .background(Color.Black, RoundedCornerShape(8)),
         ) {
             Text(
                 text = "Skip",
@@ -165,8 +177,6 @@ fun SignInView(
 @Composable
 fun SignInViewPreview() {
     SignInView(
-        onSignUp = {},
-        onSignIn = {},
-        onForgotPassword = {}
+        navController = rememberNavController()
     )
 }
