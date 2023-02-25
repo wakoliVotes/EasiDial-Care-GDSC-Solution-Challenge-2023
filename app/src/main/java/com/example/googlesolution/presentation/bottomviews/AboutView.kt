@@ -31,10 +31,10 @@ fun AboutUsView(
             .padding(horizontal = 16.dp)
     ) {
         Text(
-            text = "About Us",
+            text = "About",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp)
         )
         // SDG reference
         Text(
@@ -46,7 +46,6 @@ fun AboutUsView(
                 .padding(16.dp)
                 .alpha(0.8f)
         )
-
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,7 +65,6 @@ fun AboutUsView(
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp)
                 )
             }
-
         }
         Card(
             shape = RoundedCornerShape(4.dp),
@@ -171,7 +169,10 @@ fun AboutUsView(
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button(
-                onClick = { /* Navigate to ambulance view */ },
+                onClick = {
+                          /* Navigate to ambulance view */
+                            navController.navigate("ambulances")
+                          },
                 modifier = Modifier
                     .height(45.dp)
                     .width(170.dp),
@@ -199,7 +200,10 @@ fun AboutUsView(
                 }
             }
             Button(
-                onClick = { /* Navigate to hospitals view */ },
+                onClick = {
+                          /* Navigate to hospitals view */
+                          navController.navigate("home")
+                          },
                 modifier = Modifier
                     .height(45.dp)
                     .width(170.dp),
@@ -229,12 +233,13 @@ fun AboutUsView(
             }
         }
         // Bottom navigation bar with icons for home, about us, settings and profile
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(40.dp))
         BottomNavigation(
             backgroundColor = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
+                .padding(bottom = 0.dp)
         ) {
             BottomNavigationItem(
                 icon = {

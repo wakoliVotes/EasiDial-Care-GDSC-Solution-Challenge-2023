@@ -2,6 +2,7 @@ package com.example.googlesolution.presentation.homeviews
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -162,20 +163,32 @@ fun HomeDashboard(
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(8.dp),
+                            .padding(8.dp)
+                            .clickable {
+                                navController.navigate("emergency")
+                            }
+                        ,
                         verticalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Text(
                             text = "About Us",
                             style = MaterialTheme.typography.h6,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .padding(bottom = 8.dp)
+                                .clickable {
+                                    navController.navigate("about")
+                                }
                         )
                         Text(
                             text = "Learn more about us",
                             style = MaterialTheme.typography.body1,
                             fontWeight = FontWeight.Normal,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .padding(bottom = 8.dp)
+                                .clickable {
+                                    navController.navigate("about")
+                                }
                         )
                     }
                 }
@@ -190,20 +203,32 @@ fun HomeDashboard(
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(8.dp),
+                            .padding(8.dp)
+                            .clickable {
+                                navController.navigate("emergencylessons")
+                            }
+                        ,
                         verticalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Text(
                             text = "Emergency Lessons",
                             style = MaterialTheme.typography.h6,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .padding(bottom = 8.dp)
+                                .clickable {
+                                    navController.navigate("emergencylessons")
+                                }
                         )
                         Text(
                             text = "Learn how to handle emergencies",
                             style = MaterialTheme.typography.body1,
                             fontWeight = FontWeight.Normal,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .padding(bottom = 8.dp)
+                                .clickable {
+                                    navController.navigate("emergencylessons")
+                                }
                         )
                     }
                 }

@@ -71,14 +71,16 @@ fun HospitalsMapView(
     }
     Column {
         AndroidView(
-            modifier = Modifier.height(300.dp),
+            modifier = Modifier.weight(0.8f),
             factory = { mapView }
         ) {
             it.onResume()
         }
         Spacer(modifier = Modifier.height(20.dp))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .weight(0.2f)
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button(
