@@ -52,7 +52,7 @@ fun AboutUsView(
                 .padding(8.dp)
                 .height(120.dp)
         ) {
-            Column() {
+            Column {
                 Text(
                     text = "Our Mission",
                     fontSize = 18.sp,
@@ -73,7 +73,7 @@ fun AboutUsView(
                 .padding(8.dp)
                 .height(120.dp)
         ) {
-            Column() {
+            Column {
                 Text(
                     text = "Our Team",
                     fontSize = 18.sp,
@@ -95,7 +95,7 @@ fun AboutUsView(
                 .padding(8.dp)
                 .height(120.dp)
         ) {
-            Column() {
+            Column {
                 Text(
                     text = "Our Vision",
                     fontSize = 18.sp,
@@ -233,6 +233,7 @@ fun AboutUsView(
             }
         }
         // Bottom navigation bar with icons for home, about us, settings and profile
+        /*
         Spacer(modifier = Modifier.height(40.dp))
         BottomNavigation(
             backgroundColor = Color.White,
@@ -306,6 +307,8 @@ fun AboutUsView(
                 unselectedContentColor = Color.Gray,
             )
         }
+
+         */
     }
 }
 

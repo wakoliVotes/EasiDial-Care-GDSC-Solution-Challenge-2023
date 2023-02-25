@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.googlesolution.navgraph.NavGraph
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
+import com.example.googlesolution.presentation.onboarding.MainScreen
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +21,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             GoogleSolutionTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background) {
-                    NavGraph()
+                Surface(modifier = Modifier.fillMaxSize()) {
+                   MainScreen()
                 }
             }
         }
@@ -34,6 +34,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     GoogleSolutionTheme {
-       NavGraph()
+      MainScreen()
     }
 }

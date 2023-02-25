@@ -2,6 +2,7 @@ package com.example.googlesolution.navgraph
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,51 +22,10 @@ import com.example.googlesolution.presentation.onboarding.SignUpView
 import com.example.kcauvibe.presentation.bottomviews.AccountView
 
 
-class NavGraph (navController: NavHostController) {
-    val onBoardingScreen: () -> Unit = {
-        navController.navigate(Screens.OnBoarding.route)
-    }
-    val signUpScreen: () -> Unit = {
-        navController.navigate(Screens.SignUp.route)
-    }
-    val signInScreen: () -> Unit = {
-        navController.navigate(Screens.SignIn.route)
-    }
-    val homeScreen: () -> Unit = {
-        navController.navigate(Screens.Home.route)
-    }
-    val ambulancesScreen: () -> Unit = {
-        navController.navigate(Screens.Ambulances.route)
-    }
-    val emergencyLessonsScreen: () -> Unit = {
-        navController.navigate(Screens.EmergencyLessons.route)
-    }
-    val mapViewScreen: () -> Unit = {
-        navController.navigate(Screens.MapView.route)
-    }
-    val aboutScreen: () -> Unit = {
-        navController.navigate(Screens.About.route)
-    }
-    val accountScreen: () -> Unit = {
-        navController.navigate(Screens.Account.route)
-    }
-    val settingsScreen: () -> Unit = {
-        navController.navigate(Screens.Settings.route)
-    }
-    val notificationsScreen: () -> Unit = {
-        navController.navigate(Screens.Notifications.route)
-    }
-    val upPress: () -> Unit = {
-        navController.navigateUp()
-    }
-}
 
-//val actions = remember(navController) { NavGraph(navController) }
 @Composable
-// add NavHost
 fun NavGraph() {
     val navController = rememberNavController()
-    val actions = remember(navController) { NavGraph(navController) }
     NavHost(
         navController = navController,
         startDestination = Screens.OnBoarding.route) {

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.presentation.onboarding.MainScreen
 import com.example.googlesolution.ui.theme.WaterMilder
 
 @Composable
