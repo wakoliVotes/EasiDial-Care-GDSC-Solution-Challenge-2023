@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.presentation.bottomviews.AboutUsView
 import com.example.googlesolution.presentation.bottomviews.NotificationsView
+import com.example.googlesolution.presentation.bottomviews.SettingsView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HomeDashboard
@@ -52,6 +53,9 @@ fun NavGraph() {
         }
         composable(route = Screens.Account.route) {
             AccountView(navController = navController)
+        }
+        composable(route = Screens.Settings.route) {
+            SettingsView(navController = navController)
         }
         composable(route = Screens.Notifications.route) {
             NotificationsView(navController = navController)

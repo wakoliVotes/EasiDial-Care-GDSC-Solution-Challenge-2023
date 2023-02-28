@@ -46,7 +46,7 @@ fun BottomBar(navController: NavHostController) {
     val currentDestination = navBackStackEntry?.destination
 
 
-    BottomNavigation() {
+    BottomNavigation {
         screens.forEach { screen ->
             AddItem(screen = screen,
                 currentDestination = currentDestination,
@@ -76,7 +76,6 @@ fun RowScope.AddItem(
         } == true,
         onClick = {
             navController.navigate(screen.route)
-
         }
     )
 }
