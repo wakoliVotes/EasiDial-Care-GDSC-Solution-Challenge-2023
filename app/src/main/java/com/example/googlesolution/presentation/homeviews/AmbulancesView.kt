@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
 import com.example.googlesolution.ui.theme.WaterMilder
 
 @Composable
@@ -37,13 +38,12 @@ fun AmbulancesView(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp)
         ) {
             Text(
                 text = "Top Ambulance Services",
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp, start = 16.dp)
             )
             LazyRow {
                 items(5) { index ->
@@ -55,7 +55,7 @@ fun AmbulancesView(
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .padding(top = 30.dp, bottom = 28.dp, start = 10.dp)
+                    .padding(top = 30.dp, bottom = 28.dp, start = 16.dp)
             )
             LazyColumn(
                 modifier = Modifier
@@ -136,6 +136,8 @@ fun AmbulancesView(
                     }
                 }
             }
+            // Bottom Navigation Bar Items
+            BottomNavBarItems(navController = rememberNavController())
         }
     }
 }
@@ -144,7 +146,7 @@ fun AmbulancesView(
 fun AmbulancesList(hospitalName: String) {
     Card(
         modifier = Modifier
-            .padding(start = 5.dp, end = 5.dp, bottom = 8.dp)
+            .padding(start = 10.dp, end = 10.dp, bottom = 8.dp)
             .fillMaxWidth()
             .clip(MaterialTheme.shapes.medium),
         elevation = 4.dp

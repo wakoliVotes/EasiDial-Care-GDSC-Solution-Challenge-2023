@@ -77,13 +77,6 @@ fun HomeDashboard(
             Divider(modifier = Modifier
                 .padding(vertical = 10.dp)
             )
-            // Add card for about us and emergency lessons
-            Text(
-                text = "Explore",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, start = 16.dp)
-            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -95,11 +88,11 @@ fun HomeDashboard(
                 Button(
                     onClick = {
                               /* Navigate to ambulance view */
-                        navController.navigate("mapview")
+                        navController.navigate("emergencylessons")
                               },
                     modifier = Modifier
-                        .height(70.dp)
-                        .width(70.dp),
+                        .height(30.dp)
+                        .width(120.dp),
                     shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 ) {
@@ -141,7 +134,7 @@ fun HomeDashboard(
                         Text(
                             text = "Ambulances",
                             color = Color.White,
-                            fontSize = 10.sp,
+                            fontSize = 9.sp,
                             modifier = Modifier.padding(horizontal = 2.dp)
                         )
                         Icon(
@@ -182,9 +175,9 @@ fun HospitalListItem(hospitalName: String) {
                 contentDescription = "Hospital",
                 modifier = Modifier
                     .padding(start = 5.dp)
-                    .height(70.dp)
-                    .clip(MaterialTheme.shapes.medium)
-                    .weight(2f),
+                    .height(64.dp)
+                    .clip(MaterialTheme.shapes.small)
+                    .weight(1f),
                 contentScale = ContentScale.FillBounds
             )
             Spacer(modifier = Modifier.width(10.dp))
