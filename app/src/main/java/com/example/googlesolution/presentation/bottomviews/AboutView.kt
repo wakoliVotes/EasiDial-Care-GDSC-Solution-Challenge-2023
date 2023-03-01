@@ -32,6 +32,7 @@ fun AboutUsView(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .background(Color.White)
         ) {
             Column(
                 modifier = Modifier
@@ -297,10 +298,13 @@ fun BottomNavBarItems(
                     imageVector = Icons.Default.Home,
                     contentDescription = "Home",
                     tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             },
-            label = { Text(text = "Home") },
+            label = { Text(
+                text = "Home",
+                fontSize = 10.sp
+            ) },
             selected = true,
             onClick = {
                       /*TODO*/
@@ -316,10 +320,13 @@ fun BottomNavBarItems(
                     imageVector = Icons.Default.Place,
                     contentDescription = "Map",
                     tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             },
-            label = { Text(text = "Map") },
+            label = { Text(
+                text = "Map",
+                fontSize = 10.sp
+            ) },
             selected = false,
             onClick = { /*TODO*/ },
             alwaysShowLabel = true,
@@ -332,10 +339,13 @@ fun BottomNavBarItems(
                     imageVector = Icons.Default.List,
                     contentDescription = "Explore",
                     tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             },
-            label = { Text(text = "Explore") },
+            label = { Text(
+                text = "Explore",
+                fontSize = 10.sp
+            ) },
             selected = false,
             onClick = { /*TODO*/ },
             alwaysShowLabel = true,
@@ -348,10 +358,13 @@ fun BottomNavBarItems(
                     imageVector = Icons.Default.Info,
                     contentDescription = "About",
                     tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             },
-            label = { Text(text = "About") },
+            label = { Text(
+                text = "About",
+                fontSize = 10.sp
+            ) },
             selected = false,
             onClick = {
                       /*TODO*/
@@ -368,10 +381,13 @@ fun BottomNavBarItems(
                     imageVector = Icons.Default.Settings,
                     contentDescription = "Settings",
                     tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             },
-            label = { Text(text = "Settings") },
+            label = { Text(
+                text = "Settings",
+                fontSize = 10.sp
+            ) },
             selected = true,
             onClick = {
                       /*TODO*/

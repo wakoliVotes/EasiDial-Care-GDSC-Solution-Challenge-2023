@@ -6,11 +6,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,13 +22,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
 import com.example.googlesolution.presentation.onboarding.MainScreen
 import com.example.googlesolution.ui.theme.WaterMilder
 
@@ -40,14 +46,12 @@ fun HomeDashboard(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp)
         ) {
-            Divider(modifier = Modifier.padding(vertical = 16.dp))
             Text(
                 text = "Top Hospitals",
-                style = MaterialTheme.typography.h6,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 8.dp)
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 8.dp, top = 16.dp, start = 10.dp)
             )
             LazyRow {
                 items(5) { index ->
@@ -56,25 +60,37 @@ fun HomeDashboard(
             }
             Text(
                 text = "Hospitals",
-                style = MaterialTheme.typography.h5,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
                 modifier = Modifier
-                    .padding(top = 30.dp, bottom = 28.dp, start = 10.dp)
+                    .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
             )
             LazyColumn(
                 modifier = Modifier
                     .weight(1f)
+                    .padding(4.dp)
             ) {
                 items(10) { index ->
                     HospitalListItem(hospitalName = "Nairobi Hospital ${index + 1}")
                 }
             }
-            Divider(modifier = Modifier.padding(vertical = 16.dp))
-            // Add 2 buttons to move to Home and to MapView
-            Spacer(modifier = Modifier.height(20.dp))
+            Divider(modifier = Modifier
+                .padding(vertical = 10.dp)
+            )
+            // Add card for about us and emergency lessons
+            Text(
+                text = "Explore",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 8.dp, start = 16.dp)
+            )
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 20.dp)
+                ,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
                     onClick = {
@@ -82,9 +98,9 @@ fun HomeDashboard(
                         navController.navigate("mapview")
                               },
                     modifier = Modifier
-                        .height(45.dp)
-                        .width(170.dp),
-                    shape = RoundedCornerShape(4.dp),
+                        .height(70.dp)
+                        .width(70.dp),
+                    shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 ) {
                     Row(
@@ -92,17 +108,15 @@ fun HomeDashboard(
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Text(
-                            text = "Map",
+                            text = "Learn",
                             color = Color.White,
-                            fontSize = 16.sp,
-                            modifier = Modifier.padding(horizontal = 2.dp)
+                            fontSize = 9.sp,
                         )
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
                             contentDescription = "Arrow Forward",
                             tint = Color.White,
                             modifier = Modifier
-                                .padding(horizontal = 4.dp)
                                 .align(Alignment.CenterVertically)
                         )
                     }
@@ -113,20 +127,21 @@ fun HomeDashboard(
                         navController.navigate("ambulances")
                               },
                     modifier = Modifier
-                        .height(45.dp)
-                        .width(170.dp),
-                    shape = RoundedCornerShape(4.dp),
+                        .height(30.dp)
+                        .width(120.dp),
+                    shape = RoundedCornerShape(24.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                 ) {
                     // add arrow icon to the right of the text
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = "Ambulances",
                             color = Color.White,
-                            fontSize = 16.sp,
+                            fontSize = 10.sp,
                             modifier = Modifier.padding(horizontal = 2.dp)
                         )
                         Icon(
@@ -140,100 +155,7 @@ fun HomeDashboard(
                     }
                 }
             }
-            // Add card for about us and emergency lessons
-            Text(
-                text = "Explore",
-                style = MaterialTheme.typography.h6,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(16.dp)
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Card(
-                    modifier = Modifier
-                        .height(100.dp)
-                        .width(150.dp)
-                        .clip(RoundedCornerShape(4.dp))
-                        .background(Color.White),
-                    elevation = 4.dp
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp)
-                            .clickable {
-                                navController.navigate("emergency")
-                            }
-                        ,
-                        verticalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Text(
-                            text = "About Us",
-                            style = MaterialTheme.typography.h6,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier
-                                .padding(bottom = 8.dp)
-                                .clickable {
-                                    navController.navigate("about")
-                                }
-                        )
-                        Text(
-                            text = "Learn more about us",
-                            style = MaterialTheme.typography.body1,
-                            fontWeight = FontWeight.Normal,
-                            modifier = Modifier
-                                .padding(bottom = 8.dp)
-                                .clickable {
-                                    navController.navigate("about")
-                                }
-                        )
-                    }
-                }
-                Card(
-                    modifier = Modifier
-                        .height(100.dp)
-                        .width(150.dp)
-                        .clip(RoundedCornerShape(4.dp))
-                        .background(Color.White),
-                    elevation = 4.dp
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp)
-                            .clickable {
-                                navController.navigate("emergencylessons")
-                            }
-                        ,
-                        verticalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Text(
-                            text = "Emergency Lessons",
-                            style = MaterialTheme.typography.h6,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier
-                                .padding(bottom = 8.dp)
-                                .clickable {
-                                    navController.navigate("emergencylessons")
-                                }
-                        )
-                        Text(
-                            text = "Learn how to handle emergencies",
-                            style = MaterialTheme.typography.body1,
-                            fontWeight = FontWeight.Normal,
-                            modifier = Modifier
-                                .padding(bottom = 8.dp)
-                                .clickable {
-                                    navController.navigate("emergencylessons")
-                                }
-                        )
-                    }
-                }
-            }
+            BottomNavBarItems(navController = rememberNavController())
         }
     }
 }
@@ -244,13 +166,14 @@ fun HospitalListItem(hospitalName: String) {
         modifier = Modifier
             .padding(start = 5.dp, end = 5.dp, bottom = 8.dp)
             .fillMaxWidth()
-            .clip(MaterialTheme.shapes.medium),
+            .clip(MaterialTheme.shapes.medium)
+            .background(Color.LightGray)
+        ,
         elevation = 4.dp
     ) {
         Row(
             modifier = Modifier
                 .padding(2.dp)
-                .background(WaterMilder)
                 .alpha(0.8f)
                 .clip(MaterialTheme.shapes.medium)
         ) {
@@ -258,10 +181,11 @@ fun HospitalListItem(hospitalName: String) {
                 painter = painterResource(id = R.drawable.hospital),
                 contentDescription = "Hospital",
                 modifier = Modifier
-                    .height(100.dp)
+                    .padding(start = 5.dp)
+                    .height(70.dp)
                     .clip(MaterialTheme.shapes.medium)
-                    .weight(1.5f),
-                contentScale = ContentScale.Crop
+                    .weight(2f),
+                contentScale = ContentScale.FillBounds
             )
             Spacer(modifier = Modifier.width(10.dp))
             Column (
@@ -269,38 +193,71 @@ fun HospitalListItem(hospitalName: String) {
                     ) {
                 Text(
                     text = hospitalName,
-                    style = MaterialTheme.typography.subtitle1,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 5.dp, bottom = 4.dp)
+                    modifier = Modifier.padding(top = 5.dp, bottom = 4.dp),
+                    style = TextStyle(
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 12.sp
+                    )
                 )
                 Text(
-                    text = "Address",
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(bottom = 2.dp)
+                    text = "1026 Road, City, State",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 10.sp,
+                        color = Color.Gray
+                    )
                 )
                 Text(
-                    text = "Phone Number",
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(bottom = 2.dp)
+                    text = "020 06252617",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 10.sp
+                    )
                 )
                 Text(
-                    text = "Ambulance: YES/NO",
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(bottom = 2.dp)
+                    text = "Has Ambulance: Yes",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 10.sp
+                    )
                 )
             }
-            IconButton(
-                onClick = { /* TODO */ },
+            Column(
                 modifier = Modifier
-                    .align(Alignment.CenterVertically)
                     .weight(1f)
+                    .padding(top = 5.dp, bottom = 5.dp)
+                    .height(60.dp)
+                ,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+
             ) {
-                Icon(
-                    imageVector = Icons.Default.Call,
-                    contentDescription = "Call",
-                    tint = Color.Blue
-                )
+                IconButton(
+                    onClick = { /* TODO */ },
+                    modifier = Modifier
+                        .size(16.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Call",
+                        tint = Color.Blue
+                    )
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+                IconButton(
+                    onClick = { /* TODO */ },
+                    modifier = Modifier
+                        .size(16.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Call",
+                        tint = Color.Blue
+                    )
+                }
+                
             }
+
         }
     }
 }
@@ -312,9 +269,10 @@ fun TopHospitalListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(end = 8.dp)
-            .size(150.dp),
-        elevation = 5.dp
+            .padding(start = 5.dp)
+            .height(100.dp)
+            .width(120.dp),
+        elevation = 2.dp
     ) {
         Column(
             modifier = Modifier.padding(0.dp),
@@ -323,25 +281,36 @@ fun TopHospitalListItem(
             Image(
                 painter = painterResource(id = R.drawable.hosp0),
                 contentDescription = "hospitals",
-                modifier = Modifier.height(80.dp),
-                contentScale = ContentScale.FillWidth
+                modifier = Modifier
+                    .height(55.dp)
+                    .width(70.dp)
+                    .padding(top = 5.dp, bottom = 2.dp)
+                ,
+                contentScale = ContentScale.Crop
             )
             Text(
                 text = ambulanceName,
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.Bold,
+                style = TextStyle(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 12.sp,
+                    textAlign = TextAlign.Center,
+                ),
             )
             Row(
-                modifier = Modifier.padding(bottom = 8.dp),
+                modifier = Modifier.padding(top = 2.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+                horizontalArrangement = Arrangement.SpaceBetween,
+           ) {
                 Text(
                     text = ambulanceNumber,
-                    style = MaterialTheme.typography.caption,
-                    fontWeight = FontWeight.SemiBold,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 11.sp,
+                        textAlign = TextAlign.Center,
+                    ),
                 )
                 // Add an Icon button to call the ambulance
+                Spacer(modifier = Modifier.width(5.dp))
                 IconButton(
                     onClick = {
                               /* TODO */
@@ -349,6 +318,7 @@ fun TopHospitalListItem(
                               },
                     modifier = Modifier
                         .padding(bottom = 4.dp)
+                        .size(12.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
