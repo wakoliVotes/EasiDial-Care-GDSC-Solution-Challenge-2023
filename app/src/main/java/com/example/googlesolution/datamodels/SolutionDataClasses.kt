@@ -3,6 +3,7 @@ package com.example.googlesolution.datamodels
 import com.example.googlesolution.R
 import com.example.googlesolution.presentation.homeviews.Hospital
 
+/*
 data class Hospital(
     val hospImage: Int = R.drawable.hospital,
     val name: String,
@@ -85,8 +86,8 @@ data class Hospital(
                 location = "1357, LMN Street, GHI City",
                 services = "Oncology, Dermatology, Psychiatry",
                 hasAmbulance = true
+            )
         )
-    )
 }
 
 
@@ -138,11 +139,12 @@ data class Ambulances(
             ),
         )
 }
-/*
-data class EmergencyLessons (
+
+data class EmergencyLessons(
     val lessonImage: Int,
     val lessonName: String,
-    val description: String
+    val description: String,
+    val severityState: String,
 ) {
     val emergencyLessons =
         listOf(
@@ -150,146 +152,178 @@ data class EmergencyLessons (
             EmergencyLessons(
                 lessonImage = R.drawable.allergicreaction,
                 lessonName = "Allergic Reactions",
-                description = "An allergic reaction is a reaction to a substance that your body sees as harmful. The immune system makes antibodies to fight the substance. These antibodies cause symptoms such as a rash, hives, or swelling. An allergic reaction is a medical emergency. If you think you or someone else is having an allergic reaction, call 911 right away."
+                description = "An allergic reaction is a reaction to a substance that your body sees as harmful. The immune system makes antibodies to fight the substance. These antibodies cause symptoms such as a rash, hives, or swelling. An allergic reaction is a medical emergency. If you think you or someone else is having an allergic reaction, call 911 right away.",
+                severityState = "Mild"
             ),
             // add asthma attacks
             EmergencyLessons(
                 lessonImage = R.drawable.asthma,
                 lessonName = "Asthma Attacks",
-                description = "Asthma is a lung disease that causes the airways to narrow and swell. This makes it hard to breathe. Asthma attacks can be mild, moderate, or severe. An asthma attack is a medical emergency. If you think you or someone else is having an asthma attack, call 911 right away."
+                description = "Asthma is a lung disease that causes the airways to narrow and swell. This makes it hard to breathe. Asthma attacks can be mild, moderate, or severe. An asthma attack is a medical emergency. If you think you or someone else is having an asthma attack, call 911 right away.",
+                severityState = "Mild"
+
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.heartattack,
                 lessonName = "Heart Attack",
-                description = "A heart attack occurs when the flow of blood to the heart is blocked. This can happen when a blood clot forms in an artery that supplies blood to the heart muscle. The heart muscle begins to die, and the heart can't pump blood as well as it should. A heart attack is a medical emergency. If you think you or someone else is having a heart attack, call 911 right away."
+                description = "A heart attack occurs when the flow of blood to the heart is blocked. This can happen when a blood clot forms in an artery that supplies blood to the heart muscle. The heart muscle begins to die, and the heart can't pump blood as well as it should. A heart attack is a medical emergency. If you think you or someone else is having a heart attack, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.burns,
                 lessonName = "Burns",
-                description = "A burn is damage to the skin or other tissues caused by heat, electricity, chemicals, or radiation. Burns can be minor, such as a sunburn, or major, such as a burn from a fire or an explosion. Burns can affect the skin, muscles, tendons, ligaments, and bones. A burn is a medical emergency. If you think you or someone else has a burn, call 911 right away."
+                description = "A burn is damage to the skin or other tissues caused by heat, electricity, chemicals, or radiation. Burns can be minor, such as a sunburn, or major, such as a burn from a fire or an explosion. Burns can affect the skin, muscles, tendons, ligaments, and bones. A burn is a medical emergency. If you think you or someone else has a burn, call 911 right away.",
+                severityState = "Mild"
             ),
             // add carbon monoxide poisoning
             EmergencyLessons(
                 lessonImage = R.drawable.carbonmonoxidepoisoning,
                 lessonName = "Carbon Monoxide Poisoning",
-                description = "Carbon monoxide is a colorless, odorless gas. It's produced when fuel doesn't burn completely. Carbon monoxide can build up in enclosed spaces. This can cause poisoning. Carbon monoxide poisoning is a medical emergency. If you think you or someone else is having carbon monoxide poisoning, call 911 right away."
+                description = "Carbon monoxide is a colorless, odorless gas. It's produced when fuel doesn't burn completely. Carbon monoxide can build up in enclosed spaces. This can cause poisoning. Carbon monoxide poisoning is a medical emergency. If you think you or someone else is having carbon monoxide poisoning, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.choking,
                 lessonName = "Choking",
-                description = "Choking is when food, an object, or another substance blocks the airway. This can cause breathing problems or even death. Choking is a medical emergency. If you think you or someone else is choking, call 911 right away."
+                description = "Choking is when food, an object, or another substance blocks the airway. This can cause breathing problems or even death. Choking is a medical emergency. If you think you or someone else is choking, call 911 right away.",
+                severityState = "Mild"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.cpr,
                 lessonName = "CPR",
-                description = "CPR stands for cardiopulmonary resuscitation. It's a lifesaving technique that combines chest compressions with rescue breaths. CPR is used when someone's heart has stopped or when they're not breathing normally. CPR can keep oxygen-rich blood flowing to the brain and other vital organs until emergency medical services arrive. CPR is a medical emergency. If you think you or someone else needs CPR, call 911 right away."
+                description = "CPR stands for cardiopulmonary resuscitation. It's a lifesaving technique that combines chest compressions with rescue breaths. CPR is used when someone's heart has stopped or when they're not breathing normally. CPR can keep oxygen-rich blood flowing to the brain and other vital organs until emergency medical services arrive. CPR is a medical emergency. If you think you or someone else needs CPR, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.diabetes,
                 lessonName = "Diabetes",
-                description = "Diabetes is a disease in which your blood glucose, or blood sugar, levels are too high. Glucose comes from the foods you eat. Insulin is a hormone that helps the glucose get into your cells to give them energy . With diabetes, your body either doesn't make enough insulin or can't use its own insulin as well as it should. This causes glucose to build up in your blood instead of going into your cells. Over time, high blood glucose can cause serious health problems."
+                description = "Diabetes is a disease in which your blood glucose, or blood sugar, levels are too high. Glucose comes from the foods you eat. Insulin is a hormone that helps the glucose get into your cells to give them energy . With diabetes, your body either doesn't make enough insulin or can't use its own insulin as well as it should. This causes glucose to build up in your blood instead of going into your cells. Over time, high blood glucose can cause serious health problems.",
+                severityState = "Mild"
             ),
             // add drowning
             EmergencyLessons(
                 lessonImage = R.drawable.drowning,
                 lessonName = "Drowning",
-                description = "Drowning is when a person's breathing or ability to move is impaired by being in or under water. Drowning can happen in as little as 30 seconds. Drowning is a medical emergency. If you think you or someone else is drowning, call 911 right away."
+                description = "Drowning is when a person's breathing or ability to move is impaired by being in or under water. Drowning can happen in as little as 30 seconds. Drowning is a medical emergency. If you think you or someone else is drowning, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.electrical,
                 lessonName = "Electrical Shock",
-                description = "An electrical shock occurs when the body comes into contact with an electrical source. This can happen when a person touches a live wire or when a person is struck by lightning. Electrical shocks can cause burns, muscle spasms, and even death. An electrical shock is a medical emergency. If you think you or someone else has been shocked, call 911 right away."
+                description = "An electrical shock occurs when the body comes into contact with an electrical source. This can happen when a person touches a live wire or when a person is struck by lightning. Electrical shocks can cause burns, muscle spasms, and even death. An electrical shock is a medical emergency. If you think you or someone else has been shocked, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.fainting,
                 lessonName = "Fainting",
-                description = "Fainting is a temporary loss of consciousness caused by a lack of blood flow to the brain. It's also called syncope. Fainting can be caused by a variety of things, including low blood sugar, dehydration, and heart problems. Fainting is a medical emergency. If you think you or someone else is fainting, call 911 right away."
+                description = "Fainting is a temporary loss of consciousness caused by a lack of blood flow to the brain. It's also called syncope. Fainting can be caused by a variety of things, including low blood sugar, dehydration, and heart problems. Fainting is a medical emergency. If you think you or someone else is fainting, call 911 right away.",
+                severityState = "Mild"
             ),
             // add febrile seizures
             EmergencyLessons(
                 lessonImage = R.drawable.febrileseizures,
                 lessonName = "Febrile Seizures",
-                description = "A febrile seizure is a seizure that happens when a child has a fever. Febrile seizures are common in children. They usually last less than 15 minutes. Most febrile seizures are harmless. But they can be a medical emergency. If you think your child is having a febrile seizure, call 911 right away."
+                description = "A febrile seizure is a seizure that happens when a child has a fever. Febrile seizures are common in children. They usually last less than 15 minutes. Most febrile seizures are harmless. But they can be a medical emergency. If you think your child is having a febrile seizure, call 911 right away.",
+                severityState = "Mild"
+
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.frostbite,
                 lessonName = "Frostbite",
-                description = "Frostbite is a condition that occurs when your skin and tissues freeze. It most often affects your fingers, toes, ears, and nose. Frostbite can cause permanent damage to your body. Frostbite is a medical emergency. If you think you or someone else has frostbite, call 911 right away."
+                description = "Frostbite is a condition that occurs when your skin and tissues freeze. It most often affects your fingers, toes, ears, and nose. Frostbite can cause permanent damage to your body. Frostbite is a medical emergency. If you think you or someone else has frostbite, call 911 right away.",
+                severityState = "Mild"
             ),
             // add head injuries
             EmergencyLessons(
                 lessonImage = R.drawable.headinjuries,
                 lessonName = "Head Injuries",
-                description = "A head injury is any injury to the head or brain. Head injuries can be mild, such as a bump or bruise, or severe, such as a skull fracture or traumatic brain injury. Head injuries are a medical emergency. If you think you or someone else has a head injury, call 911 right away."
+                description = "A head injury is any injury to the head or brain. Head injuries can be mild, such as a bump or bruise, or severe, such as a skull fracture or traumatic brain injury. Head injuries are a medical emergency. If you think you or someone else has a head injury, call 911 right away.",
+                severityState = "Severe"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.heartattack,
                 lessonName = "Heart Attack",
-                description = "A heart attack occurs when the flow of blood to the heart is blocked. This can happen when a blood clot forms in an artery that supplies blood to the heart muscle. The heart muscle begins to die, and the heart can't pump blood as well as it should. A heart attack is a medical emergency. If you think you or someone else is having a heart attack, call 911 right away."
+                description = "A heart attack occurs when the flow of blood to the heart is blocked. This can happen when a blood clot forms in an artery that supplies blood to the heart muscle. The heart muscle begins to die, and the heart can't pump blood as well as it should. A heart attack is a medical emergency. If you think you or someone else is having a heart attack, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.heatstroke,
                 lessonName = "Heatstroke",
-                description = "Heatstroke is a serious medical condition that occurs when your body becomes unable to control its temperature. This happens when your body produces too much heat and can't sweat enough to cool down. Heatstroke can cause damage to your brain, heart, kidneys, and other organs. Heatstroke is a medical emergency. If you think you or someone else has heatstroke, call 911 right away."
+                description = "Heatstroke is a serious medical condition that occurs when your body becomes unable to control its temperature. This happens when your body produces too much heat and can't sweat enough to cool down. Heatstroke can cause damage to your brain, heart, kidneys, and other organs. Heatstroke is a medical emergency. If you think you or someone else has heatstroke, call 911 right away.",
+                severityState = "Life threatening"
             ),
             // add insect bites
             EmergencyLessons(
                 lessonImage = R.drawable.insectbites,
                 lessonName = "Insect Bites",
-                description = "Insect bites are caused by stinging insects, such as bees, wasps, and hornets. Insect bites can cause pain, swelling, and itching. Insect bites are a medical emergency. If you think you or someone else has been bitten by an insect, call 911 right away."
+                description = "Insect bites are caused by stinging insects, such as bees, wasps, and hornets. Insect bites can cause pain, swelling, and itching. Insect bites are a medical emergency. If you think you or someone else has been bitten by an insect, call 911 right away.",
+                severityState = "Mild"
             ),
 
             EmergencyLessons(
                 lessonImage = R.drawable.hypothermia,
                 lessonName = "Hypothermia",
-                description = "Hypothermia is a condition in which your body temperature drops below 95°F (35°C). Hypothermia can occur when you're exposed to cold temperatures for a long time or when you're in very cold water. Hypothermia can cause your heart, brain, and other vital organs to slow down or stop working. Hypothermia is a medical emergency. If you think you or someone else has hypothermia, call 911 right away."
+                description = "Hypothermia is a condition in which your body temperature drops below 95°F (35°C). Hypothermia can occur when you're exposed to cold temperatures for a long time or when you're in very cold water. Hypothermia can cause your heart, brain, and other vital organs to slow down or stop working. Hypothermia is a medical emergency. If you think you or someone else has hypothermia, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.poisoning,
                 lessonName = "Poisoning",
-                description = "Poisoning occurs when you take in a substance that can harm your body. This can happen when you eat or drink something poisonous, breathe in poisonous fumes, or get a poisonous substance on your skin. Poisoning can cause a variety of symptoms, including nausea, vomiting, diarrhea, and seizures. Poisoning is a medical emergency. If you think you or someone else has been poisoned, call 911 right away."
+                description = "Poisoning occurs when you take in a substance that can harm your body. This can happen when you eat or drink something poisonous, breathe in poisonous fumes, or get a poisonous substance on your skin. Poisoning can cause a variety of symptoms, including nausea, vomiting, diarrhea, and seizures. Poisoning is a medical emergency. If you think you or someone else has been poisoned, call 911 right away.",
+                severityState = "Life threatening"
             ),
             // add snake bites
             EmergencyLessons(
                 lessonImage = R.drawable.snakebites,
                 lessonName = "Snake Bites",
-                description = "Snake bites are caused by venomous snakes. Snake bites can cause pain, swelling, and itching. Snake bites are a medical emergency. If you think you or someone else has been bitten by a snake, call 911 right away."
+                description = "Snake bites are caused by venomous snakes. Snake bites can cause pain, swelling, and itching. Snake bites are a medical emergency. If you think you or someone else has been bitten by a snake, call 911 right away.",
+                severityState = "Mild"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.severebleeding,
                 lessonName = "Severe Bleeding",
-                description = "Severe bleeding is bleeding that won't stop on its own. It can be caused by a variety of things, including cuts, broken bones, and puncture wounds. Severe bleeding is a medical emergency. If you think you or someone else is bleeding severely, call 911 right away."
+                description = "Severe bleeding is bleeding that won't stop on its own. It can be caused by a variety of things, including cuts, broken bones, and puncture wounds. Severe bleeding is a medical emergency. If you think you or someone else is bleeding severely, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.seizures,
                 lessonName = "Seizures",
-                description = "A seizure is a sudden change in the way your brain works. It can cause changes in your behavior or how your body works. Seizures can be caused by a variety of things, including high fevers, head injuries, and certain medical conditions. Seizures are a medical emergency. If you think you or someone else is having a seizure, call 911 right away."
+                description = "A seizure is a sudden change in the way your brain works. It can cause changes in your behavior or how your body works. Seizures can be caused by a variety of things, including high fevers, head injuries, and certain medical conditions. Seizures are a medical emergency. If you think you or someone else is having a seizure, call 911 right away.",
+                severityState = "Mild"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.stroke,
                 lessonName = "Stroke",
-                description = "A stroke occurs when blood flow to part of your brain is interrupted or reduced, depriving brain tissue of oxygen and nutrients. This can cause brain cells to die. A stroke is a medical emergency. If you think you or someone else is having a stroke, call 911 right away."
+                description = "A stroke occurs when blood flow to part of your brain is interrupted or reduced, depriving brain tissue of oxygen and nutrients. This can cause brain cells to die. A stroke is a medical emergency. If you think you or someone else is having a stroke, call 911 right away.",
+                severityState = "Life threatening"
             ),
             // add suicidal thoughts
             EmergencyLessons(
                 lessonImage = R.drawable.suicidalthoughts,
                 lessonName = "Suicidal Thoughts",
-                description = "Suicidal thoughts are thoughts about killing yourself. Suicidal thoughts can be caused by a variety of things, including depression, anxiety, and substance abuse. Suicidal thoughts are a medical emergency. If you think you or someone else is having suicidal thoughts, call 911 right away."
+                description = "Suicidal thoughts are thoughts about killing yourself. Suicidal thoughts can be caused by a variety of things, including depression, anxiety, and substance abuse. Suicidal thoughts are a medical emergency. If you think you or someone else is having suicidal thoughts, call 911 right away.",
+                severityState = "Mild"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.traumaticbraininjury,
                 lessonName = "Traumatic Brain Injury",
-                description = "A traumatic brain injury (TBI) occurs when a bump, blow, or jolt to the head causes damage to the brain. A TBI can cause a variety of symptoms, including headaches, dizziness, and memory loss. A TBI is a medical emergency. If you think you or someone else has a TBI, call 911 right away."
+                description = "A traumatic brain injury (TBI) occurs when a bump, blow, or jolt to the head causes damage to the brain. A TBI can cause a variety of symptoms, including headaches, dizziness, and memory loss. A TBI is a medical emergency. If you think you or someone else has a TBI, call 911 right away.",
+                severityState = "Life threatening"
             ),
             // add unconsciousness
             EmergencyLessons(
                 lessonImage = R.drawable.unconsciousness,
                 lessonName = "Unconsciousness",
-                description = "Unconsciousness is a state in which you're not awake or aware of your surroundings. Unconsciousness can be caused by a variety of things, including head injuries, seizures, and heart attacks. Unconsciousness is a medical emergency. If you think you or someone else is unconscious, call 911 right away."
+                description = "Unconsciousness is a state in which you're not awake or aware of your surroundings. Unconsciousness can be caused by a variety of things, including head injuries, seizures, and heart attacks. Unconsciousness is a medical emergency. If you think you or someone else is unconscious, call 911 right away.",
+                severityState = "Life threatening"
             ),
             EmergencyLessons(
                 lessonImage = R.drawable.domesticviolence,
                 lessonName = "Domestic Violence",
-                description = "Domestic violence is a pattern of abusive behavior in any relationship that is used by one partner to gain or maintain power and control over another intimate partner. Domestic violence can be physical, sexual, emotional, economic, or psychological actions or threats of actions that influence another person. This includes any behaviors that intimidate, manipulate, humiliate, isolate, frighten, terrorize, coerce, threaten, blame, hurt, injure, or wound someone. Domestic violence is a medical emergency. If you think you or someone else is experiencing domestic violence, call 911 right away."
+                description = "Domestic violence is a pattern of abusive behavior in any relationship that is used by one partner to gain or maintain power and control over another intimate partner. Domestic violence can be physical, sexual, emotional, economic, or psychological actions or threats of actions that influence another person. This includes any behaviors that intimidate, manipulate, humiliate, isolate, frighten, terrorize, coerce, threaten, blame, hurt, injure, or wound someone. Domestic violence is a medical emergency. If you think you or someone else is experiencing domestic violence, call 911 right away.",
+                severityState = "Life threatening"
             ),
-            */
+        )
+}
+ */
+

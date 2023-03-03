@@ -136,11 +136,13 @@ fun BackUpHospitalListItem(hospital: BackUpHospital, expanded: Boolean) {
                         .padding(16.dp)
                         .fillMaxWidth()
                 ) {
+                    /*
                     HospitalInfoItem(title = "About", value = hospital.about)
                     HospitalInfoItem(title = "Contact", value = hospital.contact)
                     HospitalInfoItem(title = "Location", value = hospital.location)
                     HospitalInfoItem(title = "Services", value = hospital.services)
                     HospitalInfoItem(title = "Ambulance Available", value = if (hospital.hasAmbulance) "YES" else "NO")
+                     */
                 }
             }
         }

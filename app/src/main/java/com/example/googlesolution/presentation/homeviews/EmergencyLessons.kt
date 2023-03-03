@@ -1,10 +1,5 @@
 package com.example.googlesolution.presentation.homeviews
 
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -43,22 +38,79 @@ fun EmergencyLessons (navController: NavHostController) {
         val hospitals = remember {
             listOf(
                 Hospital(
-                    name = "Lesson 1",
+                    name = "Stroke",
                     description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
                     severity = "Life-threatening",
-                    hasAmbulance = true
                 ),
                 Hospital(
-                    name = "Lesson 2",
+                    name = "Heart Attack",
                     description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
                     severity = "Serious",
-                    hasAmbulance = false
                 ),
                 Hospital(
-                    name = "Lesson 3",
+                    name = "Insect Bite",
                     description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
                     severity = "Minor",
-                    hasAmbulance = true
+                ),
+                Hospital(
+                    name = "Stroke",
+                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
+                    severity = "Life-threatening",
+                ),
+                Hospital(
+                    name = "Heart Attack",
+                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
+                    severity = "Serious",
+                ),
+                Hospital(
+                    name = "Insect Bite",
+                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
+                    severity = "Minor",
+                ),
+                Hospital(
+                    name = "Stroke",
+                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
+                    severity = "Life-threatening",
+                ),
+                Hospital(
+                    name = "Heart Attack",
+                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
+                    severity = "Serious",
+                ),
+                Hospital(
+                    name = "Insect Bite",
+                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
+                    severity = "Minor",
+                ),
+                Hospital(
+                    name = "Stroke",
+                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
+                    severity = "Life-threatening",
+                ),
+                Hospital(
+                    name = "Heart Attack",
+                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
+                    severity = "Serious",
+                ),
+                Hospital(
+                    name = "Insect Bite",
+                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
+                    severity = "Minor",
+                ),
+                Hospital(
+                    name = "Stroke",
+                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
+                    severity = "Life-threatening",
+                ),
+                Hospital(
+                    name = "Heart Attack",
+                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
+                    severity = "Serious",
+                ),
+                Hospital(
+                    name = "Insect Bite",
+                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
+                    severity = "Minor",
                 ),
             )
         }
@@ -95,8 +147,8 @@ fun EmergencyLessons (navController: NavHostController) {
                 fontSize = 12.sp
             )
             LazyColumn(modifier = Modifier.weight(1f)) {
-                itemsIndexed(hospitals) { index, hospital ->
-                    HospitalListItem(hospital = hospital, expanded = index == 0)
+                itemsIndexed(hospitals) { index, lessons ->
+                    HospitalListItem(lessons = lessons, expanded = index == 0)
                 }
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))
@@ -118,7 +170,7 @@ fun EmergencyLessons (navController: NavHostController) {
 }
 
 @Composable
-fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
+fun HospitalListItem(lessons: Hospital, expanded: Boolean) {
     var isExpanded by remember { mutableStateOf(expanded) }
 
     Card(
@@ -146,7 +198,7 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = hospital.name,
+                    text = lessons.name,
                     style = MaterialTheme.typography.subtitle2,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.weight(1f),
@@ -168,10 +220,8 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
                         .padding(16.dp)
                         .fillMaxWidth(),
                 ) {
-                    HospitalInfoItem(title = "Description", value = hospital.description)
-                    HospitalInfoItem(title = "Severity", value = hospital.severity)
-                    HospitalInfoItem(title = "Risk State",
-                        value = if (hospital.hasAmbulance) "YES" else "NO")
+                    EmergencyInfoItem(title = "Description", value = lessons.description)
+                    EmergencyInfoItem(title = "Severity", value = lessons.severity)
                 }
             }
         }
@@ -179,7 +229,7 @@ fun HospitalListItem(hospital: Hospital, expanded: Boolean) {
 }
 
 @Composable
-fun HospitalInfoItem(title: String, value: String) {
+fun EmergencyInfoItem(title: String, value: String) {
     Column(
         modifier = Modifier
             .padding(bottom = 0.dp)
@@ -247,7 +297,6 @@ data class Hospital(
     val name: String,
     val description: String,
     val severity: String,
-    val hasAmbulance: Boolean,
 )
 
 
