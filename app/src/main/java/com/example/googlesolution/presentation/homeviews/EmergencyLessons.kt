@@ -1,18 +1,18 @@
 package com.example.googlesolution.presentation.homeviews
 
+import android.opengl.Visibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,91 +30,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.datamodels.EmergencyLessons
+import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
 
-@Composable
-fun EmergencyLessons (navController: NavHostController) {
-    Scaffold { padding ->
-        val hospitals = remember {
-            listOf(
-                Hospital(
-                    name = "Stroke",
-                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
-                    severity = "Life-threatening",
-                ),
-                Hospital(
-                    name = "Heart Attack",
-                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
-                    severity = "Serious",
-                ),
-                Hospital(
-                    name = "Insect Bite",
-                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
-                    severity = "Minor",
-                ),
-                Hospital(
-                    name = "Stroke",
-                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
-                    severity = "Life-threatening",
-                ),
-                Hospital(
-                    name = "Heart Attack",
-                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
-                    severity = "Serious",
-                ),
-                Hospital(
-                    name = "Insect Bite",
-                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
-                    severity = "Minor",
-                ),
-                Hospital(
-                    name = "Stroke",
-                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
-                    severity = "Life-threatening",
-                ),
-                Hospital(
-                    name = "Heart Attack",
-                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
-                    severity = "Serious",
-                ),
-                Hospital(
-                    name = "Insect Bite",
-                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
-                    severity = "Minor",
-                ),
-                Hospital(
-                    name = "Stroke",
-                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
-                    severity = "Life-threatening",
-                ),
-                Hospital(
-                    name = "Heart Attack",
-                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
-                    severity = "Serious",
-                ),
-                Hospital(
-                    name = "Insect Bite",
-                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
-                    severity = "Minor",
-                ),
-                Hospital(
-                    name = "Stroke",
-                    description = "A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die. A stroke is a medical emergency in which the blood supply to the brain is suddenly blocked, causing part of the brain to die.",
-                    severity = "Life-threatening",
-                ),
-                Hospital(
-                    name = "Heart Attack",
-                    description = "Heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die. A heart attack is a medical emergency in which the blood supply to the heart is suddenly blocked, causing part of the heart muscle to die.",
-                    severity = "Serious",
-                ),
-                Hospital(
-                    name = "Insect Bite",
-                    description = "Insect stings are a common medical emergency in which the body reacts to the bite of an insect. Insect stings are a common medical emergency in which the body reacts to the bite of an insect.",
-                    severity = "Minor",
-                ),
-            )
-        }
 
+
+
+@Composable
+fun EmergencyLessons(
+    navController: NavHostController,
+    lessons: List<EmergencyLessons>
+) {
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -129,10 +57,10 @@ fun EmergencyLessons (navController: NavHostController) {
             Text(
                 text = "Be Informed: Be Safe",
                 style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Medium,
                 modifier = Modifier
                     .padding(start = 16.dp, bottom = 25.dp, top = 5.dp)
-                    .alpha(0.6f)
+                    .alpha(0.5f)
             )
             Text(
                 text = "Emergencies can happen at any time, and it's important to be prepared to respond quickly and effectively. Whether it's a medical emergency, a natural disaster, or a personal crisis, knowing what to do in the moment can make all the difference.",
@@ -147,22 +75,12 @@ fun EmergencyLessons (navController: NavHostController) {
                 fontSize = 12.sp
             )
             LazyColumn(modifier = Modifier.weight(1f)) {
-                itemsIndexed(hospitals) { index, lessons ->
-                    HospitalListItem(lessons = lessons, expanded = index == 0)
-                }
+                   items(lessons) { lesson ->
+                       EmergencyListItem(lessons = lesson, expanded = false)
+
+                   }
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))
-            Text(
-                text = "Speed Dial Emergency Contacts",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
-            )
-            LazyRow {
-                items(5) { index ->
-                    AmbulanceListing(ambulanceNumber = "0725115427${index + 1}")
-                }
-            }
             BottomNavBarItems(navController = rememberNavController()
             )
         }
@@ -170,7 +88,7 @@ fun EmergencyLessons (navController: NavHostController) {
 }
 
 @Composable
-fun HospitalListItem(lessons: Hospital, expanded: Boolean) {
+fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
     var isExpanded by remember { mutableStateOf(expanded) }
 
     Card(
@@ -189,28 +107,28 @@ fun HospitalListItem(lessons: Hospital, expanded: Boolean) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.hospital),
+                    painter = painterResource(lessons.lessonImage),
                     contentDescription = "Lesson",
                     modifier = Modifier
-                        .size(30.dp)
+                        .size(if(isExpanded) 100.dp else 50.dp)
                         .clip(if (isExpanded) CircleShape else RoundedCornerShape(8.dp)),
                     contentScale = ContentScale.Crop,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = lessons.name,
+                    text = lessons.lessonName,
                     style = MaterialTheme.typography.subtitle2,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.weight(1f),
                     textAlign = if (isExpanded) TextAlign.Center else TextAlign.Start
                 )
                 Icon(
-                    imageVector = if (isExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    imageVector = if (isExpanded) Icons.Filled.Add else Icons.Filled.KeyboardArrowDown,
                     contentDescription = "Expand/Collapse",
                     tint = Color.Gray,
                     modifier = Modifier
                         .size(28.dp)
-                        .padding(end= 10.dp)
+                        .padding(end = 10.dp)
                 )
 
             }
@@ -220,91 +138,34 @@ fun HospitalListItem(lessons: Hospital, expanded: Boolean) {
                         .padding(16.dp)
                         .fillMaxWidth(),
                 ) {
-                    EmergencyInfoItem(title = "Description", value = lessons.description)
-                    EmergencyInfoItem(title = "Severity", value = lessons.severity)
+                    Text(
+                        text = lessons.description,
+                        style = MaterialTheme.typography.caption,
+                        textAlign = TextAlign.Justify,
+                    )
+                    Text(
+                        text = "Severity: "+ lessons.severityState,
+                        style = MaterialTheme.typography.subtitle2,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 4.dp)
+                            .alpha(0.5f)
+                    )
                 }
             }
         }
     }
 }
 
-@Composable
-fun EmergencyInfoItem(title: String, value: String) {
-    Column(
-        modifier = Modifier
-            .padding(bottom = 0.dp)
-            .fillMaxWidth()
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.subtitle1,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 4.dp)
-        )
-        Text(
-            text = value,
-            style = MaterialTheme.typography.caption,
-            textAlign = TextAlign.Justify,
-        )
-    }
-}
-
-@Composable
-fun AmbulanceListing(ambulanceNumber: String) {
-    Card(
-        modifier = Modifier
-            .padding(6.dp)
-            .width(120.dp),
-        elevation = 4.dp
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Name of Entity",
-                style = TextStyle(
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            )
-            Row(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Call,
-                    contentDescription = "Call",
-                    tint = Color.Gray,
-                    modifier = Modifier.size(12.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = ambulanceNumber,
-                    style = TextStyle(
-                        fontSize = 12.sp
-                    )
-                )
-            }
-
-        }
-    }
-}
-
-data class Hospital(
-    val name: String,
-    val description: String,
-    val severity: String,
-)
-
 
 // Add Preview
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    EmergencyLessons( navController = rememberNavController() )
+    EmergencyLessons(navController = rememberNavController(),
+         lessons = lessons
+
+    )
 }
 
 

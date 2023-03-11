@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.AboutUsView
 import com.example.googlesolution.presentation.bottomviews.SettingsView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
@@ -60,7 +61,7 @@ fun BottomNavGraph(
             HospitalsMapView(navController = navController)
         }
         composable(route = BottomBarScreen.Explore.route){
-            EmergencyLessons(navController = navController)
+            EmergencyLessons(navController = navController, lessons = lessons )
         }
         composable(route = BottomBarScreen.About.route){
             AboutUsView(navController = navController)

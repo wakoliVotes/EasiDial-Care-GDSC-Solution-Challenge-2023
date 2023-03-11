@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.AboutUsView
 import com.example.googlesolution.presentation.bottomviews.NotificationsView
 import com.example.googlesolution.presentation.bottomviews.SettingsView
@@ -43,7 +44,7 @@ fun NavGraph() {
             AmbulancesView(navController = navController)
         }
         composable(route = Screens.EmergencyLessons.route) {
-            EmergencyLessons(navController = navController)
+            EmergencyLessons(navController = navController, lessons = lessons)
         }
         composable(route = Screens.MapView.route) {
             HospitalsMapView(navController = navController)
