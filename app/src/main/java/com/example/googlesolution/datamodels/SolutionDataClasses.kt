@@ -193,11 +193,58 @@ val topHospitals = listOf(
 )
 
 // AMBULANCES
-data class Ambulances(
+data class TopAmbulances(
     val ambImage: Int,
     val name: String,
     val contact: String,
     val location: String,
+)
+
+val topAmbulances =
+    listOf(
+        TopAmbulances(
+            ambImage = R.drawable.amb_stjohn,
+            name = "St. Johns Ambulance",
+            contact = "1234567890",
+            location = "1234, XYZ Street, ABC City",
+        ),
+        TopAmbulances(
+            ambImage = R.drawable.amb_redcross,
+            name = "Red Cross Ambulance",
+            contact = "0987654321",
+            location = "5678, PQR Street, DEF City",
+        ),
+        TopAmbulances(
+            ambImage = R.drawable.ambulance,
+            name = "Jetflare Ambulance",
+            contact = "2468135790",
+            location = "1357, LMN Street, GHI City",
+        ),
+        TopAmbulances(
+            ambImage = R.drawable.ambulance,
+            name = "Elite Rescue Services",
+            contact = "1357924680",
+            location = "2468, STU Street, JKL City",
+        ),
+        TopAmbulances(
+            ambImage = R.drawable.amb_amref,
+            name = "AMREF Flying Doctors Service",
+            contact = "0246813579",
+            location = "3579, VWX Street, MNO City",
+        ),
+        TopAmbulances(
+            ambImage = R.drawable.amb_ocoa,
+            name = "OCOA Ambulance Service",
+            contact = "1357924680",
+            location = "2468, STU Street, JKL City",
+        ),
+    )
+
+// AMBULANCES
+data class Ambulances(
+    val ambImage: Int,
+    val name: String,
+    val contact: String,
 )
 
 val ambulances =
@@ -206,39 +253,33 @@ val ambulances =
             ambImage = R.drawable.amb_stjohn,
             name = "St. Johns Ambulance",
             contact = "1234567890",
-            location = "1234, XYZ Street, ABC City",
         ),
         Ambulances(
             ambImage = R.drawable.amb_redcross,
             name = "Red Cross Ambulance",
             contact = "0987654321",
-            location = "5678, PQR Street, DEF City",
         ),
         Ambulances(
             ambImage = R.drawable.ambulance,
             name = "Jetflare Ambulance",
             contact = "2468135790",
-            location = "1357, LMN Street, GHI City",
         ),
         Ambulances(
             ambImage = R.drawable.ambulance,
             name = "Elite Rescue Services",
             contact = "1357924680",
-            location = "2468, STU Street, JKL City",
         ),
         // add AMREF Flying Doctors Service
         Ambulances(
             ambImage = R.drawable.amb_amref,
             name = "AMREF Flying Doctors Service",
             contact = "0246813579",
-            location = "3579, VWX Street, MNO City",
         ),
         // add OCOA Ambulance Service
         Ambulances(
             ambImage = R.drawable.amb_ocoa,
             name = "OCOA Ambulance Service",
             contact = "1357924680",
-            location = "2468, STU Street, JKL City",
         ),
     )
 

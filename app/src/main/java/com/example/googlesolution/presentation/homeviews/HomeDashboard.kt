@@ -161,8 +161,8 @@ fun HospitalListItem(
             Column (
                 modifier = Modifier
                     .weight(0.7f)
-                    .background(Color.Black.copy(alpha = 0.6f))
-                ,
+                    .background(Color.Black.copy(alpha = 0.6f)),
+                horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                 Text(
                     text = hospitals.name,
@@ -171,7 +171,8 @@ fun HospitalListItem(
                     style = TextStyle(
                         fontWeight = FontWeight.Normal,
                         fontSize = 15.sp,
-                        color = Color.White
+                        color = Color.White,
+                        textAlign = TextAlign.Center
                     ),
                     overflow = TextOverflow.Visible,
                 )
@@ -181,6 +182,7 @@ fun HospitalListItem(
                         fontWeight = FontWeight.ExtraLight,
                         fontSize = 13.sp,
                         color = Color.White,
+                        textAlign = TextAlign.Center
                     ),
                     overflow = TextOverflow.Visible,
                     modifier = Modifier
