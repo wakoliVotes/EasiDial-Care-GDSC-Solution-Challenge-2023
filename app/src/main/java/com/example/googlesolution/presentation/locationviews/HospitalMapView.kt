@@ -29,7 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 @Composable
 fun HospitalsMapView(
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     val context = LocalContext.current
     val mapView = MapView(context).apply {
@@ -41,11 +41,29 @@ fun HospitalsMapView(
             // Add marker for hospitals around Nairobi
             val nairobi = LatLng(-1.2921, 36.8219)
             val hospitals = listOf(
-                Pair("Nairobi Hospital", LatLng(-1.2906, 36.8045)),
                 Pair("Aga Khan Hospital", LatLng(-1.2654, 36.7992)),
-                Pair("Kenyatta National Hospital", LatLng(-1.3004, 36.7964)),
-                Pair("MP Shah Hospital", LatLng(-1.2511, 36.8126)),
-            )
+                Pair("Kenyatta National Hospital", LatLng(-1.3011079208974268, 36.807461974370995)),
+                Pair("MP Shah Hospital", LatLng(-1.2632898251491196, 36.812698016965435)),
+                Pair("The Mater Hospital - Kasarani Clinic",
+                    LatLng(-1.2193374499729221, 36.88892990566548)),
+                Pair("Kenyatta University Teaching Hospital",
+                    LatLng(-1.1774691190860256, 36.91608746146164)),
+                Pair("Pumwani Maternity Hospital", LatLng(-1.2921, 36.8219)),
+                Pair("Moi Teaching and Referral Hospital", LatLng(-1.2921, 36.8219)),
+                Pair("Agha Khan University Hospital", LatLng(-1.2921, 36.8219)),
+                Pair("Kenya Medical Training College", LatLng(-1.2921, 36.8219)),
+                Pair("The Nairobi Hospital", LatLng(-1.2956796273953772, 36.804067877003654)),
+                Pair("Ruaraka Uhai Neema Hospital", LatLng(-1.2921, 36.8219)),
+                Pair("St. Francis Hospital", LatLng(-1.2254778494632843, 36.915886972983834)),
+                Pair("St. Johns Hospital Githurai", LatLng(-1.203397121537523, 36.91464574411761)),
+                Pair("Guru Nanak Ramgarhia Sikh Hospital",
+                    LatLng(-1.269487777996648, 36.83308320366392)),
+                Pair("Mama Lucy Hospital", LatLng(-1.2738373715474747, 36.89944121637831)),
+                Pair("Ruaraka Uhai Neema Hospital", LatLng(-1.2267736492234802, 36.88558978151493)),
+                Pair("Gertrude's Children's Hospital -TRM Clinic",
+                    LatLng(-1.219656881257904, 36.88910708431577)),
+
+                )
             hospitals.forEach {
                 googleMap.addMarker(
                     MarkerOptions().position(it.second).title(it.first)

@@ -225,7 +225,7 @@ fun TopAmbulanceList(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ambulance1),
+                painter = painterResource(id = R.drawable.amb_stjohn),
                 contentDescription = "Ambulance",
                 modifier = Modifier.height(100.dp),
                 contentScale = ContentScale.FillWidth

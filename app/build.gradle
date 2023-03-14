@@ -90,6 +90,11 @@ dependencies {
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
+    // Sign in with google dependency
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    // Flow row AND Flow Column
+    implementation "com.google.accompanist:accompanist-flowlayout:0.28.0"
+
 
 
 }
