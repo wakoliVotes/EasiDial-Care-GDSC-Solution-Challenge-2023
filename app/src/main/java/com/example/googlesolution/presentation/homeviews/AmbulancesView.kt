@@ -90,13 +90,18 @@ fun AmbulancesView(
             )
             OutlinedTextField(
                 value = "",
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Color.DarkGray,
+                    unfocusedBorderColor =  Color.LightGray,
+                    focusedLabelColor =  Color.DarkGray,
+                    unfocusedLabelColor = Color.LightGray
+                ),
                 onValueChange = { /*TODO*/ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 8.dp, end = 8.dp)
                     .align(Alignment.CenterHorizontally)
-                    .size(55.dp)
-                ,
+                    .size(55.dp),
                 label = {
                     Text(
                         text = "Search",

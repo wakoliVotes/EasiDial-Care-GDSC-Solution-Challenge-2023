@@ -26,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -90,10 +91,16 @@ fun HomeDashboard(
             )
             OutlinedTextField(
                 value = "",
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Color.DarkGray,
+//                    unfocusedBorderColor =  Color.LightGray,
+                    focusedLabelColor =  Color.DarkGray,
+//                    unfocusedLabelColor = Color.LightGray
+                ),
                 onValueChange = { /*TODO*/ },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, end = 8.dp)
+                    .padding(8.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(55.dp)
                 ,
@@ -110,7 +117,8 @@ fun HomeDashboard(
                     Icons.Default.Search
                 },
                 keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Done,
+                    keyboardType = KeyboardType.Text
                 ),
 
             )
@@ -136,9 +144,9 @@ fun HospitalListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(4.dp)
+            .padding(8.dp)
             .width(176.dp)
-            .height(184.dp)
+            .height(176.dp)
             .clip(RoundedCornerShape(4.dp))
             .background(Color.LightGray),
         elevation = 4.dp
@@ -147,9 +155,7 @@ fun HospitalListItem(
             painter = painterResource(hospitals.hospImage),
             contentDescription = "Hospital",
             modifier = Modifier
-                .height(88.dp)
-                .clip(MaterialTheme.shapes.small)
-            ,
+                .clip(MaterialTheme.shapes.small)            ,
             contentScale = ContentScale.FillBounds
         )
         Row(
@@ -160,7 +166,6 @@ fun HospitalListItem(
 
             Column (
                 modifier = Modifier
-                    .weight(0.7f)
                     .background(Color.Black.copy(alpha = 0.6f)),
                 horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -190,7 +195,7 @@ fun HospitalListItem(
                 )
                 Row(
                     modifier = Modifier
-                        .padding(8.dp)
+                        .padding(4.dp)
                         .fillMaxWidth()
                     ,
                     horizontalArrangement = Arrangement.SpaceBetween,
