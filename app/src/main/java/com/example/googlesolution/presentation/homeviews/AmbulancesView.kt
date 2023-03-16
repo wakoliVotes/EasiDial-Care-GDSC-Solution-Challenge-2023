@@ -1,7 +1,6 @@
 package com.example.googlesolution.presentation.homeviews
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -14,12 +13,11 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -56,55 +54,39 @@ fun AmbulancesView(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, top = 40.dp, end = 8.dp)
-                    .height(40.dp)
+                    .padding(start = 16.dp, top = 20.dp, end = 16.dp)
+                    .height(36.dp)
             ) {
                 Text(
-                    text = "HEALTH CHECK",
+                    text = "Ambulances",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
                 )
-                Image(painter = painterResource(id = R.drawable.workspaces),
-                    contentDescription = "workspaces"
+                Image(
+                    painter = painterResource(id = R.drawable.workspaces),
+                    contentDescription = "workspaces",
                 )
             }
-            Text(
-                text = "Top Ambulances",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 16.dp, start = 10.dp)
-            )
-            LazyRow {
-                items(topAmbulances) { topAmbulances ->
-                    TopAmbulanceList(topAmbulances = topAmbulances)
-                }
-            }
-            Text(
-                text = "Ambulances",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
-                    .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
-            )
             OutlinedTextField(
                 value = "",
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
                     unfocusedBorderColor =  Color.LightGray,
                     focusedLabelColor =  Color.DarkGray,
-                    unfocusedLabelColor = Color.LightGray
+                    unfocusedLabelColor = Color.LightGray,
+                    cursorColor = Color.DarkGray
                 ),
                 onValueChange = { /*TODO*/ },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, end = 8.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(55.dp),
                 label = {
                     Text(
-                        text = "Search",
+                        text = "Find Ambulance",
                         style = TextStyle(
                             fontWeight = FontWeight.Normal,
                             fontSize = 11.sp
@@ -112,13 +94,34 @@ fun AmbulancesView(
                     )
                 },
                 trailingIcon = {
-                    Icons.Default.Search
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "search"
+                    )
                 },
                 keyboardOptions = KeyboardOptions(
                     imeAction = ImeAction.Done
                 ),
 
                 )
+            Text(
+                text = "Popular",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp)
+            )
+            LazyRow {
+                items(topAmbulances) { topAmbulances ->
+                    TopAmbulanceList(topAmbulances = topAmbulances)
+                }
+            }
+            Text(
+                text = "More",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
+            )
             FlowRow(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
@@ -141,84 +144,66 @@ fun AmbulancesListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(4.dp)
-            .width(120.dp)
-            .height(144.dp)
-            .clip(RoundedCornerShape(4.dp))
-            .background(Color.LightGray),
-        elevation = 4.dp
+            .padding(all = 8.dp)
+            .width(112.dp)
+            .clip(RoundedCornerShape(8.dp)),
+        elevation = 5.dp
     ) {
-        Image(
-            painter = painterResource(ambulances.ambImage),
-            contentDescription = "Hospital",
+        Column(
             modifier = Modifier
-                .clip(MaterialTheme.shapes.small),
-            contentScale = ContentScale.Crop
-        )
-        Row(
-            modifier = Modifier
-                .clip(MaterialTheme.shapes.medium),
-            verticalAlignment = Alignment.Bottom,
+                .padding(all = 4.dp),
         ) {
-
-            Column (
+            Image(
+                painter = painterResource(id = ambulances.ambImage),
+                contentDescription = "",
                 modifier = Modifier
-                    .weight(0.7f)
-                    .background(Color.Black.copy(alpha = 0.6f)),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .height(64.dp)
+                    .offset(35.dp, (0).dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = ambulances.name,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W500,
+                modifier = Modifier.padding(top = 5.dp),
+            )
+            Text(
+                text = ambulances.contact,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.W600,
+                modifier = Modifier.padding(),
+                color = Color.Gray
+            )
+            Row(
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .fillMaxWidth()                ,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = ambulances.name,
+                IconButton(
+                    onClick = { /*TODO*/ },
                     modifier = Modifier
-                        .padding(start = 4.dp, end = 4.dp),
-                    style = TextStyle(
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    ),
-                    overflow = TextOverflow.Visible,
-                )
-                Row(
-                    modifier = Modifier
-                        .padding(2.dp)
-                        .fillMaxWidth()
-                    ,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-
+                        .size(15.dp),
                 ) {
-                    IconButton(
-                        onClick = { /* TODO */ },
-                        modifier = Modifier
-                            .size(15.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Call,
-                            contentDescription = "Call",
-                            tint = Color.Blue
-                        )
-                    }
-                    Text(
-                        text = ambulances.contact,
-                        style = TextStyle(
-                            fontWeight = FontWeight.Light,
-                            fontSize = 13.sp,
-                            color = Color.White
-                        )
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Share",
+                        tint = Color.DarkGray
                     )
-                    IconButton(
-                        onClick = { /* TODO */ },
-                        modifier = Modifier
-                            .size(15.dp)
-                            .rotate(-40f)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Send,
-                            contentDescription = "Share",
-                            tint = Color.Blue
-                        )
-                    }
+                }
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .size(15.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Call",
+                        tint = Color.DarkGray
+                    )
+
                 }
             }
         }
@@ -273,7 +258,7 @@ fun TopAmbulanceList(
 
                     },
                     modifier = Modifier
-                        .size(15.dp)
+                        .size(17.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
@@ -301,4 +286,92 @@ fun AmbulancePreview() {
     AmbulancesView(
         navController = rememberNavController()
     )
+}
+
+
+
+@Preview
+@Composable
+fun TestUIS() {
+    Card(
+        modifier = Modifier
+            .padding(all = 8.dp)
+            .width(176.dp)
+            .clip(RoundedCornerShape(8.dp)),
+        elevation = 5.dp
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(all = 8.dp),
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.amb_stjohn),
+                contentDescription = "",
+                modifier = Modifier
+                    .height(80.dp)
+//                    .offset(-14.dp, (-8).dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = "St. John Ambulance",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W500,
+                modifier = Modifier.padding(top = 2.dp),
+            )
+            Text(
+                text = "Thika Road, Nairobi",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W400,
+                modifier = Modifier.padding(),
+                color = Color.Gray
+            )
+            Text(
+                text = "020 55262728",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W600,
+                modifier = Modifier.padding(),
+                color = Color.Gray
+            )
+            Row(
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .fillMaxWidth()                ,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .size(15.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Share",
+                        tint = Color.DarkGray
+                    )
+
+                }
+                Text(
+                    text = "020 55262728",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.W600,
+                    modifier = Modifier.padding(),
+                    color = Color.Gray
+                )
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .size(15.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Call",
+                        tint = Color.DarkGray
+                    )
+
+                }
+            }
+        }
+    }
 }

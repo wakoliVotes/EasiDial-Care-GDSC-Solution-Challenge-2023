@@ -1,9 +1,7 @@
 package com.example.googlesolution.presentation.homeviews
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -14,12 +12,11 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -57,11 +54,11 @@ fun HomeDashboard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, top = 40.dp, end = 8.dp)
+                    .padding(start = 16.dp, top = 20.dp, end = 16.dp)
                     .height(40.dp)
             ) {
                 Text(
-                    text = "HEALTH CHECK",
+                    text = "Hospitals",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
@@ -71,56 +68,59 @@ fun HomeDashboard(
                     contentDescription = "workspaces"
                 )
             }
-            Text(
-                text = "Top Hospitals",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 16.dp, start = 10.dp)
-            )
-            LazyRow {
-                items(topHospitals) { topHospitals ->
-                    TopHospitalsListItem(topHospitals =topHospitals)
-                }
-            }
-            Text(
-                text = "Hospitals",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
-                    .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
-            )
             OutlinedTextField(
                 value = "",
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
 //                    unfocusedBorderColor =  Color.LightGray,
                     focusedLabelColor =  Color.DarkGray,
-//                    unfocusedLabelColor = Color.LightGray
+//                    unfocusedLabelColor = Color.LightGray,
+                    cursorColor = Color.DarkGray,
                 ),
                 onValueChange = { /*TODO*/ },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .align(Alignment.CenterHorizontally)
-                    .size(55.dp)
-                ,
+                    .size(55.dp),
                 label = {
                     Text(
-                        text = "Search",
+                        text = "Find Hospital",
                         style = TextStyle(
                             fontWeight = FontWeight.Normal,
                             fontSize = 11.sp
                         )
                     )
-                        },
+                },
                 trailingIcon = {
-                    Icons.Default.Search
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "search"
+                    )
                 },
                 keyboardOptions = KeyboardOptions(
                     imeAction = ImeAction.Done,
                     keyboardType = KeyboardType.Text
                 ),
-
+            )
+            Text(
+                text = "Popular",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp)
+            )
+            LazyRow {
+                items(topHospitals) { topHospitals ->
+                    TopHospitalsListItem(topHospitals =topHospitals)
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "More",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .padding(top = 8.dp, bottom = 0.dp, start = 16.dp)
             )
             FlowRow(
                 modifier = Modifier
@@ -144,102 +144,76 @@ fun HospitalListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(all = 8.dp)
             .width(176.dp)
-            .height(176.dp)
-            .clip(RoundedCornerShape(4.dp))
-            .background(Color.LightGray),
-        elevation = 4.dp
+            .clip(RoundedCornerShape(8.dp)),
+        elevation = 5.dp
     ) {
-        Image(
-            painter = painterResource(hospitals.hospImage),
-            contentDescription = "Hospital",
+        Column(
             modifier = Modifier
-                .clip(MaterialTheme.shapes.small)            ,
-            contentScale = ContentScale.FillBounds
-        )
-        Row(
-            modifier = Modifier
-                .clip(MaterialTheme.shapes.medium),
-            verticalAlignment = Alignment.Bottom
+                .padding(all = 8.dp),
         ) {
-
-            Column (
+            Image(
+                painter = painterResource(id = hospitals.hospImage),
+                contentDescription = "",
                 modifier = Modifier
-                    .background(Color.Black.copy(alpha = 0.6f)),
-                horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                Text(
-                    text = hospitals.name,
+                    .height(80.dp)
+//                    .offset(-14.dp, (-8).dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = hospitals.name,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W500,
+                modifier = Modifier.padding(top = 2.dp),
+            )
+            Text(
+                hospitals.location,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W400,
+                modifier = Modifier.padding(),
+                color = Color.Gray
+            )
+            Row(
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .fillMaxWidth()                ,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(
+                    onClick = { /*TODO*/ },
                     modifier = Modifier
-                        .padding(start = 4.dp, end = 4.dp),
-                    style = TextStyle(
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    ),
-                    overflow = TextOverflow.Visible,
-                )
-                Text(
-                    text = hospitals.location,
-                    style = TextStyle(
-                        fontWeight = FontWeight.ExtraLight,
-                        fontSize = 13.sp,
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    ),
-                    overflow = TextOverflow.Visible,
-                    modifier = Modifier
-                        .padding(start = 4.dp, end = 4.dp)
-                )
-                Row(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .fillMaxWidth()
-                    ,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-
+                        .size(15.dp),
                 ) {
-                    IconButton(
-                        onClick = { /* TODO */ },
-                        modifier = Modifier
-                            .size(15.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Call,
-                            contentDescription = "Call",
-                            tint = Color.Blue
-                        )
-                    }
-                    Text(
-                        text = hospitals.contact,
-                        style = TextStyle(
-                            fontWeight = FontWeight.Light,
-                            fontSize = 13.sp,
-                            color = Color.White
-                        )
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Share",
+                        tint = Color.DarkGray
                     )
-                    IconButton(
-                        onClick = { /* TODO */ },
-                        modifier = Modifier
-                            .size(15.dp)
-                            .rotate(-40f)
 
-
-
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Send,
-                            contentDescription = "Share",
-                            tint = Color.Blue
-                        )
-                    }
+                }
+                Text(
+                    text = hospitals.contact,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.W600,
+                    modifier = Modifier.padding(),
+                    color = Color.Gray
+                )
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .size(15.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Call",
+                        tint = Color.DarkGray
+                    )
 
                 }
             }
-
         }
     }
 }

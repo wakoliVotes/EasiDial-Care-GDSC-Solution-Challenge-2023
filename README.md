@@ -40,6 +40,12 @@
 - Phase 3 - 05 - 11 March
 - Presentation 12 March 2023
 
+### Sample Output
+![Screenshot_20230314_140123](https://user-images.githubusercontent.com/77758884/224985450-7b125604-4bb6-4723-9d98-9c0d0c655226.png)
+
+![Screenshot_20230314_140209](https://user-images.githubusercontent.com/77758884/224985499-5af4bc17-8458-46b0-89d3-c55a453463f2.png)
+
+
 
 ### A.I. Description Script
 Consider this prompts
@@ -55,7 +61,7 @@ Now, based on the above, do this ----->
 ### Emergencies Based on Severity
 common emergencies grouped into three categories based on their severity:
 
-Group 1: Life-Threatening Emergencies
+**Group 1: Life-Threatening Emergencies**
 
 Heart attack
 Stroke
@@ -67,7 +73,8 @@ Severe allergic reactions (anaphylaxis)
 Electric shock
 Carbon monoxide poisoning
 Near-drowning incidents
-Group 2: Serious Emergencies
+
+**Group 2: Serious Emergencies**
 
 Burns
 Broken bones
@@ -79,7 +86,8 @@ Hypothermia
 Drowning
 Severe dehydration
 Major cuts or wounds
-Group 3: Minor Emergencies
+
+**Group 3: Minor Emergencies**
 
 Insect bites or stings
 Minor burns
@@ -94,32 +102,4 @@ Mild fever or flu-like symptoms
 Note that the severity of an emergency can vary depending on a number of factors, including age, overall health, and other individual circumstances. It's always important to take any emergency seriously and seek professional medical help when necessary.
 
 
-#### Lessons 
-Q: Is there a Boolean operation that can help me select between the three categories with kotlin?
-A: Yes, you can use the when expression in Kotlin to select between the three categories based on the severity of the emergency. Here's an example:
-
-**kotlin**
-
-***Copy code***
-
-``kt
-fun getEmergencyCategory(severity: String): String {
-    return when(severity) {
-        "life-threatening" -> "Group 1: Life-Threatening Emergencies"
-        "serious" -> "Group 2: Serious Emergencies"
-        "minor" -> "Group 3: Minor Emergencies"
-        else -> "Unknown emergency severity"
-    }
-}
-```
-
-In this example, the getEmergencyCategory function takes a severity parameter as a string and uses the when expression to return the appropriate emergency category based on the input severity. If the severity is not one of the three known categories, the function returns an "Unknown emergency severity" message.
-
-You can then call this function with the severity of an emergency to get the corresponding emergency category as a string. For example:
-
-```kt
-val emergencySeverity = "life-threatening"
-val emergencyCategory = getEmergencyCategory(emergencySeverity)
-println(emergencyCategory) // Output: "Group 1: Life-Threatening Emergencies"
-```
 
