@@ -1,6 +1,7 @@
 package com.example.googlesolution.presentation.homeviews
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -37,6 +38,9 @@ import com.example.googlesolution.datamodels.TopAmbulances
 import com.example.googlesolution.datamodels.ambulances
 import com.example.googlesolution.datamodels.topAmbulances
 import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
+import com.example.googlesolution.ui.theme.BlueMilder
+import com.example.googlesolution.ui.theme.BlueMildest
+import com.example.googlesolution.ui.theme.WaterMild
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -49,6 +53,7 @@ fun AmbulancesView(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .background(BlueMildest)
         ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -144,9 +149,9 @@ fun AmbulancesListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(all = 8.dp)
-            .width(112.dp)
-            .clip(RoundedCornerShape(8.dp)),
+            .padding(4.dp)
+            .width(120.dp)
+            .clip(RoundedCornerShape(16.dp)),
         elevation = 5.dp
     ) {
         Column(
@@ -170,14 +175,14 @@ fun AmbulancesListItem(
             )
             Text(
                 text = ambulances.contact,
-                fontSize = 12.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.W600,
                 modifier = Modifier.padding(),
                 color = Color.Gray
             )
             Row(
                 modifier = Modifier
-                    .padding(top = 4.dp)
+                    .padding(top = 4.dp, end = 8.dp, start = 8.dp, bottom = 4.dp)
                     .fillMaxWidth()                ,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
@@ -216,10 +221,10 @@ fun TopAmbulanceList(
 ) {
     Card(
         modifier = Modifier
-            .padding(start = 12.dp)
+            .padding(start = 8.dp)
             .height(144.dp)
             .width(120.dp)
-            .clip(RoundedCornerShape(4.dp)),
+            .clip(RoundedCornerShape(8.dp)),
     ) {
         Column(
             modifier = Modifier.padding(0.dp),

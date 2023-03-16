@@ -1,6 +1,8 @@
 package com.example.googlesolution.presentation.homeviews
 
+import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -19,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -29,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
@@ -37,6 +41,7 @@ import com.example.googlesolution.datamodels.TopHospitals
 import com.example.googlesolution.datamodels.hospitals
 import com.example.googlesolution.datamodels.topHospitals
 import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
+import com.example.googlesolution.ui.theme.*
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -44,12 +49,15 @@ import com.google.accompanist.flowlayout.FlowRow
 fun HomeDashboard(
     navController: NavHostController,
 ) {
-    Scaffold {
+    Scaffold (
+        modifier = Modifier
+            .background(color = Color.Blue),
+            ) {
         padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-        ) {
+                .background(BlueMildest)) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
@@ -142,48 +150,63 @@ fun HomeDashboard(
 fun HospitalListItem(
     hospitals: Hospital,
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
-            .padding(all = 8.dp)
-            .width(176.dp)
-            .clip(RoundedCornerShape(8.dp)),
+            .padding(all = 4.dp)
+            .width(184.dp)
+            .height(184.dp)
+            .clip(RoundedCornerShape(24.dp)),
         elevation = 5.dp
     ) {
         Column(
             modifier = Modifier
-                .padding(all = 8.dp),
+                .padding(all = 4.dp),
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
                 contentDescription = "",
                 modifier = Modifier
                     .height(80.dp)
+                    .width(184.dp)
 //                    .offset(-14.dp, (-8).dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
+                    .clip(RoundedCornerShape(24.dp, 24.dp, 0.dp, 0.dp)),
+                contentScale = ContentScale.FillBounds
             )
             Text(
                 text = hospitals.name,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W500,
-                modifier = Modifier.padding(top = 2.dp),
+                modifier = Modifier
+                    .height(40.dp)
+                    .padding(top = 2.dp),
+                overflow = TextOverflow.Visible,
             )
             Text(
                 hospitals.location,
-                fontSize = 15.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.W400,
                 modifier = Modifier.padding(),
                 color = Color.Gray
             )
             Row(
                 modifier = Modifier
-                    .padding(top = 4.dp)
+                    .padding(top = 4.dp, start = 8.dp, end = 8.dp)
                     .fillMaxWidth()                ,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                              /*TODO*/
+                              // allow share via text, email, whatsapp, telegram, etc
+                                val intent = Intent(Intent.ACTION_SEND).apply {
+                                        type = "text/plain"
+                                        putExtra(Intent.EXTRA_TEXT, "Check out this hospital: ${hospitals.name}")
+                                    }
+                                context.startActivity(intent)
+                              },
                     modifier = Modifier
                         .size(15.dp),
                 ) {
@@ -202,7 +225,15 @@ fun HospitalListItem(
                     color = Color.Gray
                 )
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                              /*TODO*/
+                              // open dialer
+                                val intent = Intent(Intent.ACTION_DIAL).apply {
+                                    data = "tel:${hospitals.contact}".toUri()
+                                }
+                        context.startActivity(intent)
+
+                              },
                     modifier = Modifier
                         .size(15.dp)
                 ) {
@@ -287,7 +318,7 @@ fun TopHospitalsListItem(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun HomeDashboardPreview() {
     HomeDashboard(

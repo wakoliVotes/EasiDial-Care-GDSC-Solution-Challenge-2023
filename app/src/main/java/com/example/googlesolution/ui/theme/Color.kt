@@ -30,11 +30,15 @@ val BlackAccentLight = Color(0xFF333333)
 val BlackAccentDark = Color(0xFF000000)
 val BlackAccentText = Color(0xFFFFFFFF)
 
+val BlueMild = Color(0xffad9ef1)
+val BlueMildest = Color(0xfff8f7fe)
+val BlueMilder = Color(0xff7a62e9)
+
 
 val Water = Color(0xFF2196F3)
 val WaterLight = Color(0xFF6EC6FF)
 val WaterMilder = Color(0xfff9feff)
-val WaterMild = Color(0xffe8fbff)
+val WaterMild = Color(0xfffdf0f8)
 val WaterDark = Color(0xFF0069C0)
 val WaterAccent = Color(0xFF03A9F4)
 val WaterAccentLight = Color(0xFF6EC6FF)
