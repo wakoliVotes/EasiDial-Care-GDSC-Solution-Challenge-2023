@@ -164,7 +164,7 @@ fun AmbulancesListItem(
                 contentDescription = "",
                 modifier = Modifier
                     .height(64.dp)
-                    .offset(30.dp, (-4).dp)
+                    .offset(40.dp, (-4).dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
