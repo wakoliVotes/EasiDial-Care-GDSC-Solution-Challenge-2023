@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.googlesolution.navgraph.NavGraph
+import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.White)
+                        .background(BlueMildest)
                 ) {
                     NavGraph()
                 }

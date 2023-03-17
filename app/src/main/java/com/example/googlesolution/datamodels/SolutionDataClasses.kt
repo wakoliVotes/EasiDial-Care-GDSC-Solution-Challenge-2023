@@ -234,7 +234,7 @@ val topAmbulances =
         ),
         TopAmbulances(
             ambImage = R.drawable.amb_ocoa,
-            name = "OCOA Ambulance Service",
+            name = "OCOA Service Ambulance",
             contact = "1357924680",
             location = "2468, STU Street, JKL City",
         ),
@@ -278,7 +278,7 @@ val ambulances =
         // add OCOA Ambulance Service
         Ambulances(
             ambImage = R.drawable.amb_ocoa,
-            name = "OCOA Ambulance Service",
+            name = "OCOA Service Ambulance",
             contact = "1357924680",
         ),
     )

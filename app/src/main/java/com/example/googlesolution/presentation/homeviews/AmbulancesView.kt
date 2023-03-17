@@ -151,6 +151,7 @@ fun AmbulancesListItem(
         modifier = Modifier
             .padding(4.dp)
             .width(120.dp)
+            .height(164.dp)
             .clip(RoundedCornerShape(16.dp)),
         elevation = 5.dp
     ) {
@@ -163,7 +164,7 @@ fun AmbulancesListItem(
                 contentDescription = "",
                 modifier = Modifier
                     .height(64.dp)
-                    .offset(35.dp, (0).dp)
+                    .offset(30.dp, (-4).dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
@@ -171,13 +172,17 @@ fun AmbulancesListItem(
                 text = ambulances.name,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W500,
-                modifier = Modifier.padding(top = 5.dp),
+                modifier = Modifier
+                    .padding(top = 5.dp, bottom = 8.dp)
+                    .height(24.dp)
+                ,
+                overflow = TextOverflow.Visible
             )
             Text(
                 text = ambulances.contact,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.W600,
-                modifier = Modifier.padding(),
+                modifier = Modifier.padding(top = 8.dp),
                 color = Color.Gray
             )
             Row(

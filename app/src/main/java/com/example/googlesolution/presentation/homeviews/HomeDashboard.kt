@@ -1,23 +1,20 @@
 package com.example.googlesolution.presentation.homeviews
 
 import android.content.Intent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -62,8 +59,8 @@ fun HomeDashboard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, top = 20.dp, end = 16.dp)
-                    .height(40.dp)
+                    .padding(start = 16.dp, top = 8.dp, end = 16.dp)
+                    .height(24.dp)
             ) {
                 Text(
                     text = "Hospitals",
@@ -155,12 +152,12 @@ fun HospitalListItem(
     Card(
         modifier = Modifier
             .padding(all = 4.dp)
-            .width(184.dp)
-            .height(184.dp)
-            .clip(RoundedCornerShape(24.dp)),
+            .fillMaxWidth()
+            .height(80.dp)
+            .clip(RoundedCornerShape(8.dp)),
         elevation = 5.dp
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .padding(all = 4.dp),
         ) {
@@ -168,83 +165,86 @@ fun HospitalListItem(
                 painter = painterResource(id = hospitals.hospImage),
                 contentDescription = "",
                 modifier = Modifier
-                    .height(80.dp)
-                    .width(184.dp)
-//                    .offset(-14.dp, (-8).dp)
-                    .clip(RoundedCornerShape(24.dp, 24.dp, 0.dp, 0.dp)),
+                    .height(100.dp)
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                    .clip(RoundedCornerShape(8.dp, 0.dp, 0.dp,8.dp)),
                 contentScale = ContentScale.FillBounds
             )
-            Text(
-                text = hospitals.name,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.W500,
-                modifier = Modifier
-                    .height(40.dp)
-                    .padding(top = 2.dp),
-                overflow = TextOverflow.Visible,
-            )
-            Text(
-                hospitals.location,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.W400,
-                modifier = Modifier.padding(),
-                color = Color.Gray
-            )
-            Row(
-                modifier = Modifier
-                    .padding(top = 4.dp, start = 8.dp, end = 8.dp)
-                    .fillMaxWidth()                ,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(
-                    onClick = {
-                              /*TODO*/
-                              // allow share via text, email, whatsapp, telegram, etc
-                                val intent = Intent(Intent.ACTION_SEND).apply {
-                                        type = "text/plain"
-                                        putExtra(Intent.EXTRA_TEXT, "Check out this hospital: ${hospitals.name}")
-                                    }
-                                context.startActivity(intent)
-                              },
-                    modifier = Modifier
-                        .size(15.dp),
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Share,
-                        contentDescription = "Share",
-                        tint = Color.DarkGray
-                    )
-
-                }
+            Column() {
                 Text(
-                    text = hospitals.contact,
+                    text = hospitals.name,
                     fontSize = 15.sp,
-                    fontWeight = FontWeight.W600,
+                    fontWeight = FontWeight.W500,
+                    modifier = Modifier
+                        .padding(top = 2.dp),
+                    overflow = TextOverflow.Visible,
+                )
+                Text(
+                    hospitals.location,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.W400,
                     modifier = Modifier.padding(),
                     color = Color.Gray
                 )
-                IconButton(
-                    onClick = {
-                              /*TODO*/
-                              // open dialer
-                                val intent = Intent(Intent.ACTION_DIAL).apply {
-                                    data = "tel:${hospitals.contact}".toUri()
-                                }
-                        context.startActivity(intent)
-
-                              },
+                Row(
                     modifier = Modifier
-                        .size(15.dp)
+                        .padding(top = 4.dp, start = 8.dp, end = 8.dp)
+                        .fillMaxWidth()                ,
+                    horizontalArrangement = Arrangement.SpaceAround,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.Call,
-                        contentDescription = "Call",
-                        tint = Color.DarkGray
-                    )
+                    IconButton(
+                        onClick = {
+                            /*TODO*/
+                            // allow share via text, email, whatsapp, telegram, etc
+                            val intent = Intent(Intent.ACTION_SEND).apply {
+                                type = "text/plain"
+                                putExtra(Intent.EXTRA_TEXT, "Check out this hospital: ${hospitals.name}")
+                            }
+                            context.startActivity(intent)
+                        },
+                        modifier = Modifier
+                            .size(15.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Share,
+                            contentDescription = "Share",
+                            tint = Color.DarkGray
+                        )
 
+                    }
+                    Text(
+                        text = hospitals.contact,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.W600,
+                        modifier = Modifier.padding(),
+                        color = Color.Gray
+                    )
+                    IconButton(
+                        onClick = {
+                            /*TODO*/
+                            // open dialer
+                            val intent = Intent(Intent.ACTION_DIAL).apply {
+                                data = "tel:${hospitals.contact}".toUri()
+                            }
+                            context.startActivity(intent)
+
+                        },
+                        modifier = Modifier
+                            .size(15.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Call,
+                            contentDescription = "Call",
+                            tint = Color.DarkGray
+                        )
+
+                    }
                 }
+
             }
+
         }
     }
 }
@@ -255,10 +255,10 @@ fun TopHospitalsListItem(
 ) {
     Card(
         modifier = Modifier
-            .padding(start = 12.dp)
-            .height(144.dp)
-            .width(150.dp)
-            .clip(RoundedCornerShape(4.dp)),
+            .padding(start = 8.dp)
+            .height(152.dp)
+            .width(136.dp)
+            .clip(RoundedCornerShape(8.dp)),
     ) {
         Column(
             modifier = Modifier.padding(0.dp),
@@ -268,10 +268,12 @@ fun TopHospitalsListItem(
                 painter = painterResource(topHospitals.hospImage),
                 contentDescription = "hospitals",
                 modifier = Modifier
-                    .height(80.dp)
+                    .height(104.dp)
                     .width(150.dp)
-                    .padding(bottom = 2.dp),
-                contentScale = ContentScale.FillWidth
+                    .padding(4.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+
             )
             Text(
                 text = topHospitals.hospitalName,
@@ -280,12 +282,14 @@ fun TopHospitalsListItem(
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                 ),
-                overflow = TextOverflow.Visible,
-                modifier = Modifier.height(24.dp)
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .height(20.dp)
+                    .padding(start = 4.dp, end = 4.dp)
             )
             Row(
                 modifier = Modifier
-                    .padding(top=16.dp),
+                    .padding(top=4.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
            ) {
