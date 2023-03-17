@@ -70,6 +70,13 @@ fun SignUpView(
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.DarkGray,
+                unfocusedBorderColor =  Color.LightGray,
+                focusedLabelColor =  Color.DarkGray,
+                unfocusedLabelColor = Color.LightGray,
+                cursorColor = Color.DarkGray,
+            ),
             label = { Text(text = stringResource(id = R.string.email)) },
             leadingIcon = { Icon(imageVector = Icons.Filled.Email, contentDescription = null) },
             modifier = Modifier.fillMaxWidth(),
@@ -90,6 +97,13 @@ fun SignUpView(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.DarkGray,
+                unfocusedBorderColor =  Color.LightGray,
+                focusedLabelColor =  Color.DarkGray,
+                unfocusedLabelColor = Color.LightGray,
+                cursorColor = Color.DarkGray,
+            ),
             label = { Text(text = stringResource(id = R.string.password)) },
             leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = null) },
             trailingIcon = {

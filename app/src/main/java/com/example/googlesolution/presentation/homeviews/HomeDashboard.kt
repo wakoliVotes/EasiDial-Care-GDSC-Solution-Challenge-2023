@@ -48,7 +48,7 @@ fun HomeDashboard(
 ) {
     Scaffold (
         modifier = Modifier
-            .background(color = Color.Blue),
+            .background(BlueMildest),
             ) {
         padding ->
         Column(
@@ -66,7 +66,8 @@ fun HomeDashboard(
                     text = "Hospitals",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
+                        fontSize = 16.sp,
+                        color = Color.Black
                     )
                 )
                 Image(painter = painterResource(id = R.drawable.workspaces),
@@ -76,11 +77,11 @@ fun HomeDashboard(
             OutlinedTextField(
                 value = "",
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.DarkGray,
-//                    unfocusedBorderColor =  Color.LightGray,
-                    focusedLabelColor =  Color.DarkGray,
-//                    unfocusedLabelColor = Color.LightGray,
-                    cursorColor = Color.DarkGray,
+                    focusedBorderColor = Color.Gray,
+                    unfocusedBorderColor =  Color.LightGray,
+                    focusedLabelColor =  Color.Gray,
+                    unfocusedLabelColor = Color.Gray,
+                    cursorColor = Color.LightGray,
                 ),
                 onValueChange = { /*TODO*/ },
                 modifier = Modifier
@@ -100,7 +101,8 @@ fun HomeDashboard(
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "search"
+                        contentDescription = "search",
+                        tint = Color.Gray
                     )
                 },
                 keyboardOptions = KeyboardOptions(
@@ -112,7 +114,8 @@ fun HomeDashboard(
                 text = "Popular",
                 style = MaterialTheme.typography.subtitle2,
                 fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp)
+                modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
+                color = Color.Black,
             )
             LazyRow {
                 items(topHospitals) { topHospitals ->
@@ -125,13 +128,16 @@ fun HomeDashboard(
                 style = MaterialTheme.typography.subtitle2,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier
-                    .padding(top = 8.dp, bottom = 0.dp, start = 16.dp)
+                    .padding(top = 8.dp, bottom = 8.dp, start = 16.dp),
+                color = Color.Black
             )
             FlowRow(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
                     .weight(1f)
                     .padding(4.dp)
+                    .border(0.dp, Color.Transparent)
+                    .background(Color.White),
             ) {
                 hospitals.forEach {
                     HospitalListItem(hospitals = it)
@@ -154,12 +160,17 @@ fun HospitalListItem(
             .padding(all = 4.dp)
             .fillMaxWidth()
             .height(80.dp)
-            .clip(RoundedCornerShape(8.dp)),
-        elevation = 5.dp
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.White)
+            .border(0.dp, Color.Transparent)
+
+        ,
+        elevation = 0.dp
     ) {
         Row(
             modifier = Modifier
-                .padding(all = 4.dp),
+                .padding(all = 4.dp)
+                .background(Color.White),
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
@@ -168,14 +179,18 @@ fun HospitalListItem(
                     .height(100.dp)
                     .width(100.dp)
                     .padding(end = 8.dp)
+                    .background(Color.White)
                     .clip(RoundedCornerShape(8.dp, 0.dp, 0.dp,8.dp)),
                 contentScale = ContentScale.FillBounds
             )
-            Column() {
+            Column(
+
+            ) {
                 Text(
                     text = hospitals.name,
                     fontSize = 15.sp,
-                    fontWeight = FontWeight.W500,
+                    fontWeight = FontWeight.W400,
+                    color = Color.Black,
                     modifier = Modifier
                         .padding(top = 2.dp),
                     overflow = TextOverflow.Visible,
@@ -183,14 +198,15 @@ fun HospitalListItem(
                 Text(
                     hospitals.location,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.W400,
+                    fontWeight = FontWeight.W300,
                     modifier = Modifier.padding(),
                     color = Color.Gray
                 )
                 Row(
                     modifier = Modifier
-                        .padding(top = 4.dp, start = 8.dp, end = 8.dp)
-                        .fillMaxWidth()                ,
+                        .padding(top = 4.dp, start = 24.dp, end = 49.dp)
+                        .fillMaxWidth()
+                        .background(Color.White),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -217,7 +233,7 @@ fun HospitalListItem(
                     Text(
                         text = hospitals.contact,
                         fontSize = 15.sp,
-                        fontWeight = FontWeight.W600,
+                        fontWeight = FontWeight.W500,
                         modifier = Modifier.padding(),
                         color = Color.Gray
                     )
@@ -253,11 +269,14 @@ fun HospitalListItem(
 fun TopHospitalsListItem(
     topHospitals: TopHospitals
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .padding(start = 8.dp)
             .height(152.dp)
             .width(136.dp)
+            .background(Color.White)
             .clip(RoundedCornerShape(8.dp)),
     ) {
         Column(
@@ -296,6 +315,10 @@ fun TopHospitalsListItem(
                 IconButton(
                     onClick = {
                         /* TODO */
+                              val intent = Intent(Intent.ACTION_DIAL).apply {
+                                  data = "tel:${topHospitals.hospitalContacts}".toUri()
+                              }
+                        context.startActivity(intent)
 
                     },
                     modifier = Modifier

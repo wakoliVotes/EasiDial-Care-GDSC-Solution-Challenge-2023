@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.*
@@ -64,14 +65,39 @@ fun SignInView(
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.DarkGray,
+                unfocusedBorderColor =  Color.LightGray,
+                focusedLabelColor =  Color.DarkGray,
+                unfocusedLabelColor = Color.LightGray,
+                cursorColor = Color.DarkGray,
+            ),
             label = { Text(text = stringResource(id = R.string.email)) },
-            leadingIcon = { Icon(imageVector = Icons.Filled.Email, contentDescription = null) },
+            leadingIcon = {
+                Icon(imageVector = Icons.Filled.Email,
+                    contentDescription = null)
+                          },
+            trailingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = null,
+                    )
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.DarkGray,
+                unfocusedBorderColor =  Color.LightGray,
+                focusedLabelColor =  Color.DarkGray,
+                unfocusedLabelColor = Color.LightGray,
+                cursorColor = Color.DarkGray,
+            ),
             label = { Text(text = stringResource(id = R.string.password)) },
             leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = null) },
             trailingIcon = {
@@ -79,7 +105,7 @@ fun SignInView(
                     // User painter resource to add visibility icon
                     Image(
                         painter = painterResource(id = if (passwordVisibility) R.drawable.visibility else R.drawable.visibility_off),
-                        contentDescription = null
+                        contentDescription = null,
                     )
                 }
             },
@@ -93,6 +119,13 @@ fun SignInView(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.DarkGray,
+                unfocusedBorderColor =  Color.LightGray,
+                focusedLabelColor =  Color.DarkGray,
+                unfocusedLabelColor = Color.LightGray,
+                cursorColor = Color.DarkGray,
+            ),
             label = { Text(text = stringResource(id = R.string.confirm_password)) },
             leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = null) },
             trailingIcon = {

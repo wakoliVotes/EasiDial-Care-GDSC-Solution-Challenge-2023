@@ -1,5 +1,6 @@
 package com.example.googlesolution.presentation.homeviews
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
@@ -66,7 +69,8 @@ fun AmbulancesView(
                     text = "Ambulances",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
+                        fontSize = 16.sp,
+                        color = Color.Black
                     )
                 )
                 Image(
@@ -101,7 +105,8 @@ fun AmbulancesView(
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "search"
+                        contentDescription = "search",
+                        tint = Color.DarkGray
                     )
                 },
                 keyboardOptions = KeyboardOptions(
@@ -113,7 +118,8 @@ fun AmbulancesView(
                 text = "Popular",
                 style = MaterialTheme.typography.subtitle2,
                 fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp)
+                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp),
+                color = Color.Black
             )
             LazyRow {
                 items(topAmbulances) { topAmbulances ->
@@ -124,6 +130,7 @@ fun AmbulancesView(
                 text = "More",
                 style = MaterialTheme.typography.subtitle2,
                 fontWeight = FontWeight.SemiBold,
+                color = Color.Black,
                 modifier = Modifier
                     .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
             )
@@ -147,6 +154,8 @@ fun AmbulancesView(
 fun AmbulancesListItem(
     ambulances: Ambulances,
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -204,7 +213,13 @@ fun AmbulancesListItem(
                     )
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                              /*TODO - Open Dialer */
+                        val intent = Intent(Intent.ACTION_DIAL).apply {
+                            data = "tel:${ambulances.contact}".toUri()
+                        }
+                        context.startActivity(intent)
+                              },
                     modifier = Modifier
                         .size(15.dp)
                 ) {
@@ -224,6 +239,8 @@ fun AmbulancesListItem(
 fun TopAmbulanceList(
     topAmbulances: TopAmbulances
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .padding(start = 8.dp)
@@ -264,7 +281,11 @@ fun TopAmbulanceList(
             ) {
                 IconButton(
                     onClick = {
-                        /* TODO */
+                        /* TODO - Open Dialer */
+                        val intent = Intent(Intent.ACTION_DIAL).apply {
+                            data = "tel:${topAmbulances.contact}".toUri()
+                        }
+                        context.startActivity(intent)
 
                     },
                     modifier = Modifier
