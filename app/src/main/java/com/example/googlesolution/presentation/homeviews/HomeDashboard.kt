@@ -5,16 +5,16 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -37,8 +37,7 @@ import com.example.googlesolution.datamodels.Hospital
 import com.example.googlesolution.datamodels.TopHospitals
 import com.example.googlesolution.datamodels.hospitals
 import com.example.googlesolution.datamodels.topHospitals
-import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
-import com.example.googlesolution.ui.theme.*
+import com.example.googlesolution.ui.theme.BlueMildest
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -46,6 +45,9 @@ import com.google.accompanist.flowlayout.FlowRow
 fun HomeDashboard(
     navController: NavHostController,
 ) {
+    var searchHosp by remember {
+        mutableStateOf("")
+    }
     Scaffold (
         modifier = Modifier
             .background(BlueMildest),
@@ -75,7 +77,7 @@ fun HomeDashboard(
                 )
             }
             OutlinedTextField(
-                value = "",
+                value = searchHosp,
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.Gray,
                     unfocusedBorderColor =  Color.LightGray,
@@ -83,12 +85,17 @@ fun HomeDashboard(
                     unfocusedLabelColor = Color.Gray,
                     cursorColor = Color.LightGray,
                 ),
-                onValueChange = { /*TODO*/ },
+                onValueChange = { /*TODO*/
+                                searchHosp = it
+                                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(55.dp),
+                textStyle = TextStyle(
+                    color = Color.Black
+                ),
                 label = {
                     Text(
                         text = "Find Hospital",
@@ -136,15 +143,12 @@ fun HomeDashboard(
                     .verticalScroll(rememberScrollState())
                     .weight(1f)
                     .padding(4.dp)
-                    .border(0.dp, Color.Transparent)
-                    .background(Color.White),
             ) {
                 hospitals.forEach {
                     HospitalListItem(hospitals = it)
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
-            BottomNavBarItems(navController = rememberNavController())
         }
     }
 }
@@ -159,28 +163,22 @@ fun HospitalListItem(
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(80.dp)
+            .height(88.dp)
             .clip(RoundedCornerShape(8.dp))
-            .background(Color.White)
-            .border(0.dp, Color.Transparent)
-
-        ,
-        elevation = 0.dp
     ) {
         Row(
             modifier = Modifier
-                .padding(all = 4.dp)
-                .background(Color.White),
+                .padding()
+                .background(Color.White)
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
                 contentDescription = "",
                 modifier = Modifier
-                    .height(100.dp)
+                    .height(88.dp)
                     .width(100.dp)
                     .padding(end = 8.dp)
-                    .background(Color.White)
-                    .clip(RoundedCornerShape(8.dp, 0.dp, 0.dp,8.dp)),
+                    .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.FillBounds
             )
             Column(
@@ -205,8 +203,7 @@ fun HospitalListItem(
                 Row(
                     modifier = Modifier
                         .padding(top = 4.dp, start = 24.dp, end = 49.dp)
-                        .fillMaxWidth()
-                        .background(Color.White),
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -216,7 +213,7 @@ fun HospitalListItem(
                             // allow share via text, email, whatsapp, telegram, etc
                             val intent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
-                                putExtra(Intent.EXTRA_TEXT, "Check out this hospital: ${hospitals.name}")
+                                putExtra(Intent.EXTRA_TEXT, "Check out: ${hospitals.name}, ${hospitals.contact}")
                             }
                             context.startActivity(intent)
                         },
@@ -255,12 +252,9 @@ fun HospitalListItem(
                             contentDescription = "Call",
                             tint = Color.DarkGray
                         )
-
                     }
                 }
-
             }
-
         }
     }
 }

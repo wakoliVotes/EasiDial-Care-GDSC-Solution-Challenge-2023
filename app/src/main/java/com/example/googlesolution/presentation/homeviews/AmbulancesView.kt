@@ -16,7 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,10 +40,7 @@ import com.example.googlesolution.datamodels.Ambulances
 import com.example.googlesolution.datamodels.TopAmbulances
 import com.example.googlesolution.datamodels.ambulances
 import com.example.googlesolution.datamodels.topAmbulances
-import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
-import com.example.googlesolution.ui.theme.BlueMilder
 import com.example.googlesolution.ui.theme.BlueMildest
-import com.example.googlesolution.ui.theme.WaterMild
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -51,6 +48,10 @@ import com.google.accompanist.flowlayout.FlowRow
 fun AmbulancesView(
     navController: NavHostController,
 ) {
+    var searchAmb by remember {
+        mutableStateOf("")
+    }
+
     Scaffold {
             padding ->
         Column(
@@ -79,7 +80,7 @@ fun AmbulancesView(
                 )
             }
             OutlinedTextField(
-                value = "",
+                value = searchAmb,
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
                     unfocusedBorderColor =  Color.LightGray,
@@ -87,12 +88,17 @@ fun AmbulancesView(
                     unfocusedLabelColor = Color.LightGray,
                     cursorColor = Color.DarkGray
                 ),
-                onValueChange = { /*TODO*/ },
+                onValueChange = { /*TODO*/
+                                searchAmb = it
+                                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(55.dp),
+                textStyle = TextStyle(
+                    color = Color.Black
+                ),
                 label = {
                     Text(
                         text = "Find Ambulance",
@@ -145,7 +151,6 @@ fun AmbulancesView(
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
-            BottomNavBarItems(navController = rememberNavController())
         }
     }
 }
@@ -202,7 +207,13 @@ fun AmbulancesListItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                              /*TODO - Share as Plain Text */
+                              val intent = Intent(Intent.ACTION_SEND).apply {
+                                  type = "text/plain"
+                                  putExtra(Intent.EXTRA_TEXT, "Check out ${ambulances.name}, ${ambulances.contact}")
+                              }
+                              },
                     modifier = Modifier
                         .size(15.dp),
                 ) {
@@ -228,7 +239,6 @@ fun AmbulancesListItem(
                         contentDescription = "Call",
                         tint = Color.DarkGray
                     )
-
                 }
             }
         }
@@ -317,92 +327,4 @@ fun AmbulancePreview() {
     AmbulancesView(
         navController = rememberNavController()
     )
-}
-
-
-
-@Preview
-@Composable
-fun TestUIS() {
-    Card(
-        modifier = Modifier
-            .padding(all = 8.dp)
-            .width(176.dp)
-            .clip(RoundedCornerShape(8.dp)),
-        elevation = 5.dp
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(all = 8.dp),
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.amb_stjohn),
-                contentDescription = "",
-                modifier = Modifier
-                    .height(80.dp)
-//                    .offset(-14.dp, (-8).dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                text = "St. John Ambulance",
-                fontSize = 15.sp,
-                fontWeight = FontWeight.W500,
-                modifier = Modifier.padding(top = 2.dp),
-            )
-            Text(
-                text = "Thika Road, Nairobi",
-                fontSize = 15.sp,
-                fontWeight = FontWeight.W400,
-                modifier = Modifier.padding(),
-                color = Color.Gray
-            )
-            Text(
-                text = "020 55262728",
-                fontSize = 15.sp,
-                fontWeight = FontWeight.W600,
-                modifier = Modifier.padding(),
-                color = Color.Gray
-            )
-            Row(
-                modifier = Modifier
-                    .padding(top = 4.dp)
-                    .fillMaxWidth()                ,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .size(15.dp),
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Share,
-                        contentDescription = "Share",
-                        tint = Color.DarkGray
-                    )
-
-                }
-                Text(
-                    text = "020 55262728",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.W600,
-                    modifier = Modifier.padding(),
-                    color = Color.Gray
-                )
-                IconButton(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .size(15.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Call,
-                        contentDescription = "Call",
-                        tint = Color.DarkGray
-                    )
-
-                }
-            }
-        }
-    }
 }

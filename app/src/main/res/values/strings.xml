@@ -6,6 +6,6 @@
     <string name="forgot_password">Forgot password? Reset</string>
     <string name="not_signed_up_yet">Not Signed Up Yet?</string>
     <string name="have_account">Have Account?</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">Login</string>
     <string name="confirm_password">Confirm Password</string>
 </resources>

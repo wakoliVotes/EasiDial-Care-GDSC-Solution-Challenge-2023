@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
@@ -166,8 +165,6 @@ fun HospitalsMapView(
                 }
             }
         }
-        // Bottom Navigation Bar Items
-        BottomNavBarItems(navController = rememberNavController())
     }
 }
 

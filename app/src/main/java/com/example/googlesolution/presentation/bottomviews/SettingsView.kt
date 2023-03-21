@@ -48,18 +48,6 @@ fun ProfileView() {
         horizontalAlignment = Alignment.CenterHorizontally,
     )
     {
-        // TO DO
-        /* Image Name + email next line
-        * General
-        * Ratings and Reviews
-        * Customer Support
-        * Help and Feedback
-        * About
-        * More
-        * Privacy Policy
-        * Terms of Use
-        * Logout
-        * */
         Column(modifier = Modifier.padding(10.dp)) {
             OwnerInfo()
             Spacer(modifier = Modifier.height(10.dp))

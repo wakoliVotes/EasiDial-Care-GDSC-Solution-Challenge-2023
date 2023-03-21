@@ -1,8 +1,5 @@
 package com.example.googlesolution.presentation.onboarding
 
-// Create composable function for SignInView and add modifier to fill the entire screen with OutlinedTextField for email and password and trailing icons for email and password
-// Add modifier to fill the entire screen with OutlinedTextField for email and password and trailing icons for email and password
-// Add section for sign in button, not signed up yet text and sign in text and forgot password
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,6 +24,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.R.string.*
+import com.example.googlesolution.ui.theme.BlueMildest
 import java.time.format.TextStyle
 
 @Composable
@@ -45,7 +43,9 @@ fun SignInView(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(36.dp)
+            .background(BlueMildest)
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -191,7 +191,7 @@ fun SignInView(
             },
             modifier = Modifier
                 .align(Alignment.Start)
-                .padding(16.dp)
+                .padding(4.dp)
                 .width(80.dp)
                 .background(Color.Black, RoundedCornerShape(8)),
         ) {

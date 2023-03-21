@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "323981049709",
+    "project_id": "exam-bank-app",
+    "storage_bucket": "exam-bank-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323981049709:android:e2b36d57f33ab0005ee464",
+        "android_client_info": {
+          "package_name": "com.example.exambank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUMaEAO5ngM-EWfteuSJaLZpoIc3lXgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323981049709:android:81b99de3aa7beadb5ee464",
+        "android_client_info": {
+          "package_name": "com.example.exambankcompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUMaEAO5ngM-EWfteuSJaLZpoIc3lXgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323981049709:android:51a1cb6460d68a175ee464",
+        "android_client_info": {
+          "package_name": "com.example.googlesolution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUMaEAO5ngM-EWfteuSJaLZpoIc3lXgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323981049709-mnmak189b01dkjsshpvjv6cs1pgh62ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

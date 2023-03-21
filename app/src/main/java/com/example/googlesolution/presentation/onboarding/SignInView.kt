@@ -32,6 +32,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.R.string.*
+import com.example.googlesolution.ui.theme.BlueMildest
 
 @Composable
 fun SignUpView(
@@ -50,7 +51,9 @@ fun SignUpView(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(36.dp)
+            .background(BlueMildest)
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -66,7 +69,7 @@ fun SignUpView(
             text = stringResource(id = app_name),
             style = MaterialTheme.typography.h4
         )
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(80.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -93,7 +96,7 @@ fun SignUpView(
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -120,7 +123,7 @@ fun SignUpView(
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         TextButton(
             onClick = {
                 // TODO - onForgotPassword
@@ -133,7 +136,7 @@ fun SignUpView(
                 color = Color.Black,
             )
         }
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(28.dp))
         Button(
             onClick = {
                 // TODO - onSignUp implement validations later
@@ -154,7 +157,7 @@ fun SignUpView(
             )
         }
 
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(50.dp))
         Text(
             text = stringResource(id = not_signed_up_yet),
             modifier = Modifier.align(End),
@@ -168,7 +171,6 @@ fun SignUpView(
                 color = Color.Black,
             )
         }
-        // add skip button, align start and add padding
         TextButton(
             onClick = {
                       /*TODO - skip to home screen  */
@@ -176,7 +178,7 @@ fun SignUpView(
                       },
             modifier = Modifier
                 .align(Alignment.Start)
-                .padding(16.dp)
+                .padding(4.dp)
                 .width(80.dp)
                 .background(Color.Black, RoundedCornerShape(8))
             ,

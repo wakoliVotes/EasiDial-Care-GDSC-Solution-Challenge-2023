@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +28,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datamodels.EmergencyLessons
 import com.example.googlesolution.datamodels.lessons
-import com.example.googlesolution.presentation.bottomviews.BottomNavBarItems
 import com.example.googlesolution.ui.theme.BlueMildest
 
 
@@ -81,7 +81,6 @@ fun EmergencyLessons(
                 }
                    items(lessons) { lesson ->
                        EmergencyListItem(lessons = lesson, expanded = false)
-
                    }
                 item {
                     Text(
@@ -91,10 +90,78 @@ fun EmergencyLessons(
                         .alpha(0.8f)
                     )
                 }
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Button(
+                            onClick = {
+                                /* Navigate to ambulance view */
+                                navController.navigate("ambulances")
+                            },
+                            modifier = Modifier
+                                .height(45.dp)
+                                .width(170.dp),
+                            shape = RoundedCornerShape(4.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
+                        ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                Text(
+                                    text = "Ambulances",
+                                    color = Color.White,
+                                    fontSize = 16.sp,
+                                    modifier = Modifier.padding(horizontal = 2.dp)
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.KeyboardArrowRight,
+                                    contentDescription = "Arrow Forward",
+                                    tint = Color.White,
+                                    modifier = Modifier
+                                        .padding(horizontal = 4.dp)
+                                        .align(Alignment.CenterVertically)
+                                )
+                            }
+                        }
+                        Button(
+                            onClick = {
+                                /* Navigate to hospitals view */
+                                navController.navigate("home")
+                            },
+                            modifier = Modifier
+                                .height(45.dp)
+                                .width(170.dp),
+                            shape = RoundedCornerShape(4.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
+                        ) {
+                            // add arrow icon to the right of the text
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                Text(
+                                    text = "Hospitals",
+                                    color = Color.White,
+                                    fontSize = 16.sp,
+                                    modifier = Modifier.padding(horizontal = 2.dp)
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.KeyboardArrowRight,
+                                    contentDescription = "Arrow Forward",
+                                    tint = Color.White,
+                                    modifier = Modifier
+                                        .padding(horizontal = 4.dp)
+                                        .align(Alignment.CenterVertically)
+                                )
+                            }
+                        }
+                    }
+                }
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))
-            BottomNavBarItems(navController = rememberNavController()
-            )
         }
     }
 }
