@@ -228,7 +228,7 @@ val topAmbulances =
         ),
         TopAmbulances(
             ambImage = R.drawable.amb_amref,
-            name = "AMREF Flying Doctors Service",
+            name = "AMREF Flying Doctors",
             contact = "0246813579",
             location = "3579, VWX Street, MNO City",
         ),
@@ -272,7 +272,7 @@ val ambulances =
         // add AMREF Flying Doctors Service
         Ambulances(
             ambImage = R.drawable.amb_amref,
-            name = "AMREF Flying Doctors Service",
+            name = "AMREF Flying Doctors",
             contact = "0246813579",
         ),
         // add OCOA Ambulance Service

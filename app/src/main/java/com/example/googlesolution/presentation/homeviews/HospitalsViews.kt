@@ -1,12 +1,15 @@
 package com.example.googlesolution.presentation.homeviews
 
 import android.content.Intent
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -42,7 +45,7 @@ import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
 
-fun HomeDashboard(
+fun HospitalsViews(
     navController: NavHostController,
 ) {
     var searchHosp by remember {
@@ -163,7 +166,7 @@ fun HospitalListItem(
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(88.dp)
+            .height(72.dp)
             .clip(RoundedCornerShape(8.dp))
     ) {
         Row(
@@ -202,7 +205,7 @@ fun HospitalListItem(
                 )
                 Row(
                     modifier = Modifier
-                        .padding(top = 4.dp, start = 24.dp, end = 49.dp)
+                        .padding(top = 4.dp, start = 24.dp, end = 96.dp)
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
@@ -267,23 +270,24 @@ fun TopHospitalsListItem(
 
     Card(
         modifier = Modifier
-            .padding(start = 8.dp)
-            .height(152.dp)
-            .width(136.dp)
-            .background(Color.White)
-            .clip(RoundedCornerShape(8.dp)),
+            .padding(8.dp)
+            .height(156.dp)
+            .width(176.dp)
+            .clip(RoundedCornerShape(8.dp))
     ) {
         Column(
-            modifier = Modifier.padding(0.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(topHospitals.hospImage),
                 contentDescription = "hospitals",
                 modifier = Modifier
-                    .height(104.dp)
-                    .width(150.dp)
-                    .padding(4.dp)
+                    .height(100.dp)
+                    .width(176.dp)
+                    .padding(bottom = 4.dp)
                     .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop
 
@@ -342,7 +346,7 @@ fun TopHospitalsListItem(
 @Preview(showBackground = true)
 @Composable
 fun HomeDashboardPreview() {
-    HomeDashboard(
+    HospitalsViews(
         navController = rememberNavController()
     )
 }

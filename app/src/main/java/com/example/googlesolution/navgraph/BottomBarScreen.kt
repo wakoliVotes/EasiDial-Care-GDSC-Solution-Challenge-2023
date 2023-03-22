@@ -1,37 +1,46 @@
 package com.example.googlesolution.navgraph
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.annotation.DrawableRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import com.example.googlesolution.R
 
+
+// create a sealed class that has a route, title and image using painterResource
 sealed class BottomBarScreen(
     val route: String,
     val title: String,
-    val icon: ImageVector
+    val icon: Int
 ) {
     object Home : BottomBarScreen(
         route = "home",
         title = "Home",
-        icon = Icons.Default.Home
+        icon = R.drawable.home
+    )
+    object Hospitals : BottomBarScreen(
+        route = "hospitals",
+        title = "Hospitals",
+        icon = R.drawable.first_aid
     )
     object Map : BottomBarScreen(
         route = "map",
         title = "Map",
-        icon = Icons.Default.Place
+        icon = R.drawable.place
     )
     object Ambulances : BottomBarScreen(
         route = "ambulances",
         title = "Ambulances",
-        Icons.Default.Settings
+        icon = R.drawable.car
     )
-    object Explore : BottomBarScreen(
-        route = "explore",
+    object Learn : BottomBarScreen(
+        route = "learn",
         title = "Learn",
-        icon = Icons.Default.List
+        icon = R.drawable.library_books
     )
-    object Account : BottomBarScreen(
-        route = "account",
-        title = "Account",
-        icon = Icons.Default.Person
-    )
+}
+
+@Composable
+fun painterFromResource(@DrawableRes resourceId: Int): Painter {
+    return painterResource(id = resourceId)
 }

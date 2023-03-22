@@ -1,7 +1,6 @@
 package com.example.googlesolution.navgraph
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,17 +9,13 @@ import com.example.googlesolution.datamodels.firebaseauth.login.LoginScreen
 import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.datamodels.firebaseauth.login.SignUpScreen
 import com.example.googlesolution.datamodels.lessons
-import com.example.googlesolution.presentation.bottomviews.AboutUsView
-import com.example.googlesolution.presentation.bottomviews.NotificationsView
-import com.example.googlesolution.presentation.bottomviews.SettingsView
+import com.example.googlesolution.presentation.bottomviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
+import com.example.googlesolution.presentation.homeviews.HospitalsViews
 import com.example.googlesolution.presentation.homeviews.MainScreen
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
-import com.example.googlesolution.presentation.onboarding.ForgotPasswordView
 import com.example.googlesolution.presentation.onboarding.OnBoardScreen
-import com.example.googlesolution.presentation.onboarding.SignInView
-import com.example.googlesolution.presentation.onboarding.SignUpView
 import com.example.kcauvibe.presentation.bottomviews.AccountView
 
 
@@ -82,6 +77,12 @@ fun NavGraph(
         composable(route = Screens.MainScreen.route) {
             MainScreen()
         }
+        composable(route = Screens.Home.route) {
+            HomeView(navController = navController)
+        }
+        composable(route = Screens.HospitalsView.route) {
+            HospitalsViews(navController = navController)
+        }
         composable(route = Screens.Ambulances.route) {
             AmbulancesView(navController = navController)
         }
@@ -91,17 +92,8 @@ fun NavGraph(
         composable(route = Screens.MapView.route) {
             HospitalsMapView(navController = navController)
         }
-        composable(route = Screens.About.route) {
-            AboutUsView(navController = navController)
-        }
         composable(route = Screens.Account.route) {
             AccountView(navController = navController)
-        }
-        composable(route = Screens.Settings.route) {
-            SettingsView(navController = navController)
-        }
-        composable(route = Screens.Notifications.route) {
-            NotificationsView(navController = navController)
         }
     }
 }

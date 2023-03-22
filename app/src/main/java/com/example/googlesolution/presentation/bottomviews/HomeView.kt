@@ -4,8 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +20,7 @@ import com.example.googlesolution.ui.theme.WaterAccent
 
 
 @Composable
-fun AboutUsView(
+fun HomeView(
     navController: NavHostController,
 ) {
     Scaffold(
@@ -207,7 +205,7 @@ fun MilestoneBox(
 @Preview(showBackground = true)
 @Composable
 fun AboutUsViewPreview() {
-    AboutUsView(navController = rememberNavController())
+    HomeView(navController = rememberNavController())
 }
 
 

@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -166,7 +167,7 @@ fun AmbulancesListItem(
             .padding(4.dp)
             .width(120.dp)
             .height(164.dp)
-            .clip(RoundedCornerShape(16.dp)),
+            .clip(RoundedCornerShape(8.dp)),
         elevation = 5.dp
     ) {
         Column(
@@ -188,14 +189,14 @@ fun AmbulancesListItem(
                 fontWeight = FontWeight.W500,
                 modifier = Modifier
                     .padding(top = 5.dp, bottom = 8.dp)
-                    .height(24.dp)
-                ,
+                    .height(24.dp),
                 overflow = TextOverflow.Visible
             )
             Text(
                 text = ambulances.contact,
                 fontSize = 14.sp,
-                fontWeight = FontWeight.W600,
+                textAlign = TextAlign.Right,
+                fontWeight = FontWeight.Normal,
                 modifier = Modifier.padding(top = 8.dp),
                 color = Color.Gray
             )
@@ -255,11 +256,13 @@ fun TopAmbulanceList(
         modifier = Modifier
             .padding(start = 8.dp)
             .height(144.dp)
-            .width(120.dp)
-            .clip(RoundedCornerShape(8.dp)),
+            .width(136.dp)
+            .clip(RoundedCornerShape(12.dp)),
     ) {
         Column(
-            modifier = Modifier.padding(0.dp),
+            modifier = Modifier
+                .background(Color.White)
+                .padding(0.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -267,9 +270,9 @@ fun TopAmbulanceList(
                 contentDescription = "hospitals",
                 modifier = Modifier
                     .height(72.dp)
-                    .width(72.dp)
-                    .padding(0.dp)
-                    .clip(CircleShape)
+                    .width(128.dp)
+                    .padding(top=4.dp)
+                    .clip(RoundedCornerShape(8.dp))
                 ,
                 contentScale = ContentScale.Crop
             )

@@ -87,83 +87,17 @@ fun HospitalsMapView(
             }
         }
     }
-    Column {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        // TODO - Add top bar items
+
         AndroidView(
             modifier = Modifier.weight(0.8f),
             factory = { mapView }
         ) {
             it.onResume()
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        Row(
-            modifier = Modifier
-                .weight(0.2f)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Button(
-                onClick = {
-                    /* Navigate to ambulance view */
-                    navController.navigate("home")
-                },
-                modifier = Modifier
-                    .height(45.dp)
-                    .width(170.dp),
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(
-                        text = "Hospitals",
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        modifier = Modifier.padding(horizontal = 2.dp)
-                    )
-                    Icon(
-                        imageVector = Icons.Default.KeyboardArrowRight,
-                        contentDescription = "Arrow Forward",
-                        tint = Color.White,
-                        modifier = Modifier
-                            .padding(horizontal = 4.dp)
-                            .align(Alignment.CenterVertically)
-                    )
-                }
-            }
-            Button(
-                onClick = {
-                    /* Navigate to map view */
-                    navController.navigate("ambulances")
-                },
-                modifier = Modifier
-                    .height(45.dp)
-                    .width(170.dp),
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
-            ) {
-                // add arrow icon to the right of the text
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(
-                        text = "Ambulances",
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        modifier = Modifier.padding(horizontal = 2.dp)
-                    )
-                    Icon(
-                        imageVector = Icons.Default.KeyboardArrowRight,
-                        contentDescription = "Arrow Forward",
-                        tint = Color.White,
-                        modifier = Modifier
-                            .padding(horizontal = 4.dp)
-                            .align(Alignment.CenterVertically)
-                    )
-                }
-            }
         }
     }
 }
