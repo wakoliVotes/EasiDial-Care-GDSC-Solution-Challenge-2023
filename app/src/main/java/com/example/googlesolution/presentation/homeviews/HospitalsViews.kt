@@ -75,7 +75,7 @@ fun HospitalsViews(
                         color = Color.Black
                     )
                 )
-                Image(painter = painterResource(id = R.drawable.workspaces),
+                Image(painter = painterResource(id = R.drawable.person),
                     contentDescription = "workspaces"
                 )
             }
@@ -166,7 +166,7 @@ fun HospitalListItem(
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(72.dp)
+            .height(80.dp)
             .clip(RoundedCornerShape(8.dp))
     ) {
         Row(
@@ -298,6 +298,7 @@ fun TopHospitalsListItem(
                     fontWeight = FontWeight.Normal,
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
+                    color = Color.Black
                 ),
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
@@ -335,6 +336,7 @@ fun TopHospitalsListItem(
                         fontWeight = FontWeight.Light,
                         fontSize = 14.sp,
                         textAlign = TextAlign.Center,
+                        color = Color.Black
                     ),
                 )
             }

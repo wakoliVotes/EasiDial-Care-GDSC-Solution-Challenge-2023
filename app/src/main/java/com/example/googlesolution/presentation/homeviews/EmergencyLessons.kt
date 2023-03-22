@@ -49,12 +49,14 @@ fun EmergencyLessons(
                         text = "Emergency Lessons",
                         style = MaterialTheme.typography.h6,
                         fontWeight = FontWeight.Bold,
+                        color = Color.Black,
                         modifier = Modifier
                             .padding(start = 16.dp, bottom = 5.dp, top = 40.dp)
                     )
                     Text(
                         text = "Be Informed: Be Safe",
                         style = MaterialTheme.typography.subtitle2,
+                        color = Color.Black,
                         fontWeight = FontWeight.Medium,
                         modifier = Modifier
                             .padding(start = 16.dp, bottom = 25.dp, top = 5.dp)
@@ -66,8 +68,9 @@ fun EmergencyLessons(
                             .padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
                             .alpha(0.7f),
                         textAlign = TextAlign.Justify,
-                        fontSize = 12.sp
-                    )
+                        fontSize = 12.sp,
+                        color = Color.Black,
+                        )
                     Text(
                         text = "The following lessons will help you prepare for and respond to emergencies. You can also find more information on accessing care and services in the Hospital and Ambulances pages.",
                         modifier = Modifier
@@ -85,80 +88,11 @@ fun EmergencyLessons(
                 item {
                     Text(
                         text = "End of Lessons. Stay Safe!",
+                        color = Color.Black,
                         modifier = Modifier
                             .padding(16.dp)
                         .alpha(0.8f)
                     )
-                }
-                item {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Button(
-                            onClick = {
-                                /* Navigate to ambulance view */
-                                navController.navigate("ambulances")
-                            },
-                            modifier = Modifier
-                                .height(45.dp)
-                                .width(170.dp),
-                            shape = RoundedCornerShape(4.dp),
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                Text(
-                                    text = "Ambulances",
-                                    color = Color.White,
-                                    fontSize = 16.sp,
-                                    modifier = Modifier.padding(horizontal = 2.dp)
-                                )
-                                Icon(
-                                    imageVector = Icons.Default.KeyboardArrowRight,
-                                    contentDescription = "Arrow Forward",
-                                    tint = Color.White,
-                                    modifier = Modifier
-                                        .padding(horizontal = 4.dp)
-                                        .align(Alignment.CenterVertically)
-                                )
-                            }
-                        }
-                        Button(
-                            onClick = {
-                                /* Navigate to hospitals view */
-                                navController.navigate("home")
-                            },
-                            modifier = Modifier
-                                .height(45.dp)
-                                .width(170.dp),
-                            shape = RoundedCornerShape(4.dp),
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
-                        ) {
-                            // add arrow icon to the right of the text
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                Text(
-                                    text = "Hospitals",
-                                    color = Color.White,
-                                    fontSize = 16.sp,
-                                    modifier = Modifier.padding(horizontal = 2.dp)
-                                )
-                                Icon(
-                                    imageVector = Icons.Default.KeyboardArrowRight,
-                                    contentDescription = "Arrow Forward",
-                                    tint = Color.White,
-                                    modifier = Modifier
-                                        .padding(horizontal = 4.dp)
-                                        .align(Alignment.CenterVertically)
-                                )
-                            }
-                        }
-                    }
                 }
             }
             Divider(modifier = Modifier.padding(vertical = 16.dp))

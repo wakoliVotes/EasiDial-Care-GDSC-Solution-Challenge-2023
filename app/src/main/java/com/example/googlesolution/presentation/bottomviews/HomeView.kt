@@ -38,10 +38,11 @@ fun HomeView(
                     .padding(horizontal = 16.dp)
             ) {
                 Text(
-                    text = "About",
+                    text = "EasierHelp",
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+                    color = Color.Black
                 )
                 // SDG reference
                 Text(
@@ -163,8 +164,8 @@ fun HomeView(
                                 .width(1.dp)
                         )
                         MilestoneBox(
-                            milestoneName = "Counties Covered",
-                            milestoneNumber = "47",
+                            milestoneName = "Estates Covered",
+                            milestoneNumber = "112",
                             modifier = Modifier
                                 .weight(1f)
                         )
