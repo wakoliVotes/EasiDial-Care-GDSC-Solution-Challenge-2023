@@ -85,7 +85,7 @@ fun HomeView(
                         modifier = Modifier
                             .weight(0.5f)
                             .padding(5.dp)
-                            .height(196.dp),
+                            .height(180.dp),
                         elevation = 4.dp
                     ) {
                         Column(
@@ -113,6 +113,7 @@ fun HomeView(
                         modifier = Modifier
                             .padding(start = 8.dp, end = 16.dp)
                             .weight(0.5f)
+                            .offset(y = 26.dp)
                             .height(220.dp),
                         elevation = 4.dp,
                         shape = RoundedCornerShape(8.dp)
@@ -149,6 +150,7 @@ fun HomeView(
                         modifier = Modifier
                             .padding(8.dp)
                             .weight(0.5f)
+                            .offset(y = -26.dp)
                             .height(240.dp),
                         elevation = 4.dp,
                         shape = RoundedCornerShape(8.dp)
@@ -156,9 +158,8 @@ fun HomeView(
                     ) {
                         Box(
                             modifier = Modifier
-//                            .offset(5.dp, 0.dp)
                                 .fillMaxSize()
-                                .padding(4.dp)
+                                .padding(0.dp)
                                 .clip(RoundedCornerShape(8.dp))
 
                         ) {
@@ -176,8 +177,9 @@ fun HomeView(
                         shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
                             .weight(0.5f)
+                            .offset(y = 0.dp)
                             .padding(8.dp)
-                            .height(196.dp),
+                            .height(190.dp),
                         elevation = 4.dp
                     ) {
                         Column(
