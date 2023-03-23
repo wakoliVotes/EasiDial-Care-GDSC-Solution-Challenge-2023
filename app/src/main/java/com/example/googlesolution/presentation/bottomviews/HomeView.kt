@@ -2,6 +2,7 @@ package com.example.googlesolution.presentation.bottomviews
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -118,63 +120,50 @@ fun HomeView(
                     modifier = Modifier
                         .padding(8.dp)
                         .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Card(
                         shape = RoundedCornerShape(16.dp),
                         modifier = Modifier
-                            .width(192.dp)
+                            .weight(0.8f)
                             .padding(4.dp)
-                            .height(148.dp),
+                            .height(140.dp),
                         elevation = 8.dp
                     ) {
                         Column(
-                            modifier = Modifier.background(WaterAccent)
+                            modifier = Modifier.background(Blue)
                         ) {
                             Text(
                                 text = "Our Mission",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .alpha(0.6f)
+                                    .padding(8.dp),
+                                color = Color.White
                             )
                             Text(
-                                text = "To improve access to critical healthcare services for everyone, regardless of their location or economic status.",
+                                text = "To improve access to critical care services for everyone, regardless of location or economic status.",
                                 fontSize = 14.sp,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp)
-                                    .alpha(0.8f)
+                                    .alpha(0.9f),
+                                color = Color.White
                             )
                         }
                     }
                     Card(
                         shape = RoundedCornerShape(16.dp),
                         modifier = Modifier
-                            .width(192.dp)
+                            .weight(0.2f)
                             .padding(4.dp)
-                            .height(148.dp),
+                            .height(140.dp),
                         elevation = 8.dp
 
                     ) {
                         Column(
-                            modifier = Modifier.background(RedAccentDark)
+                            modifier = Modifier.background(Red)
                         ) {
-                            Text(
-                                text = "Our Team",
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier
-                                    .padding(8.dp)
-                                    .alpha(0.6f)
-                            )
-                            Text(
-                                text = "We are a team of passionate individuals who are committed to making healthcare accessible to everyone.",
-                                fontSize = 14.sp,
-                                modifier = Modifier
-                                    .padding(start = 8.dp, end = 8.dp)
-                                    .alpha(0.8f)
-                            )
 
                         }
                     }
@@ -184,7 +173,8 @@ fun HomeView(
                     modifier = Modifier
                         .padding(8.dp)
                         .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Card(
                         modifier = Modifier
@@ -197,10 +187,10 @@ fun HomeView(
                     ) {
                             Box(
                                 modifier = Modifier
-//                            .offset(140.dp, 0.dp)
+//                            .offset(5.dp, 0.dp)
                                     .fillMaxSize()
                                     .padding(4.dp)
-                                .clip(RoundedCornerShape(8.dp))
+                                .clip(CircleShape)
 
                             ) {
                                 Image(
@@ -209,7 +199,6 @@ fun HomeView(
                                     contentDescription = "",
                                     modifier = Modifier
                                         .fillMaxSize()
-                                        .alpha(0.8f)
                                         .clip(RoundedCornerShape(8.dp))
                                 )
                             }
@@ -234,7 +223,6 @@ fun HomeView(
                                 color = Color.White,
                                 modifier = Modifier
                                     .padding(8.dp)
-                                    .alpha(0.8f)
                             )
                             Text(
                                 text = "A world where every person has access to the healthcare services they need, when and where they need them.",
@@ -242,7 +230,7 @@ fun HomeView(
                                 color = Color.White,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp)
-                                    .alpha(0.7f)
+                                    .alpha(0.8f)
                             )
                         }
                     }
