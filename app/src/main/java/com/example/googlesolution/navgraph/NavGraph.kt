@@ -21,7 +21,8 @@ import com.example.kcauvibe.presentation.bottomviews.AccountView
 
 enum class LoginRoutes {
     SignIn,
-    SignUp
+    SignUp,
+    LogOut
 }
 
 @Composable
@@ -93,7 +94,7 @@ fun NavGraph(
             HospitalsMapView(navController = navController)
         }
         composable(route = Screens.Account.route) {
-            AccountView(navController = navController)
+            AccountView(navController = navController, loginViewModel = loginViewModel)
         }
     }
 }

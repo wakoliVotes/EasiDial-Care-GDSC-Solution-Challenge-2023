@@ -4,12 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HospitalsViews
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
+import com.example.kcauvibe.presentation.bottomviews.AccountView
 
 
 @Composable
@@ -28,6 +30,9 @@ fun BottomNavGraph(
         composable(route = BottomBarScreen.Hospitals.route){
             HospitalsViews(navController = navController)
         }
+        composable(route = Screens.HospitalsView.route){
+            HospitalsViews(navController = navController)
+        }
         composable(route = BottomBarScreen.Map.route){
             HospitalsMapView(navController = navController)
         }
@@ -42,6 +47,9 @@ fun BottomNavGraph(
         }
         composable(route = BottomBarScreen.Ambulances.route){
             AmbulancesView(navController = navController)
+        }
+        composable(route = Screens.Account.route){
+            AccountView(navController = navController, loginViewModel = LoginViewModel())
         }
     }
 }

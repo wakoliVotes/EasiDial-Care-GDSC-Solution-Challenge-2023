@@ -57,4 +57,8 @@ class AuthRepository : Application() {
                 }
             }.await()
     }
+
+    suspend fun logout() = withContext(Dispatchers.IO){
+        Firebase.auth.signOut()
+    }
 }

@@ -76,7 +76,7 @@ fun AmbulancesView(
                     )
                 )
                 Image(
-                    painter = painterResource(id = R.drawable.workspaces),
+                    painter = painterResource(id = R.drawable.person),
                     contentDescription = "workspaces",
                 )
             }

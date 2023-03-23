@@ -99,8 +99,6 @@ class LoginViewModel(
             } finally {
                 loginUiState = loginUiState.copy(isLoading = false)
             }
-
-
     }
 
     fun loginUser(context: Context) = viewModelScope.launch {
@@ -142,8 +140,10 @@ class LoginViewModel(
 
 
     }
-
-
+    // implementing logout user
+    fun logoutUser() = viewModelScope.launch {
+            repository.logout()
+        }
 }
 
 
