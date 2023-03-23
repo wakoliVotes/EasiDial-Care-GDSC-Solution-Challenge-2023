@@ -2,7 +2,6 @@ package com.example.googlesolution.presentation.bottomviews
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -69,53 +68,11 @@ fun HomeView(
                     fontWeight = FontWeight.Normal,
                     color = Color.Black,
                     modifier = Modifier
-                        .padding(start=16.dp, end = 16.dp, top = 4.dp)
+                        .padding(start = 16.dp, end = 16.dp, top = 4.dp)
                         .alpha(0.8f)
                 )
-                // First Banner
-                Card(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                        .height(168.dp),
-                    elevation = 0.dp,
-                    shape = RoundedCornerShape(24.dp)
-
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(4.dp),
-                        verticalArrangement = Arrangement.Bottom
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(RoundedCornerShape(24.dp))
-
-                        ) {
-                            Image(
-                                contentScale = ContentScale.FillBounds,
-                                painter = painterResource(id = R.drawable.familytwo),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .alpha(0.8f)
-                            )
-                            Text(
-                                text = "Access To Hospitals & Ambulances",
-                                fontWeight = FontWeight.ExtraLight,
-                                textAlign = TextAlign.Center,
-                                fontFamily = FontFamily.Monospace,
-                                color = Color.White,
-                                modifier = Modifier
-                                    .padding(8.dp)
-                                    .offset(0.dp, 104.dp)
-                            )
-                        }
-                    }
-                }
-                // Second Banner - Mission + Team + Vision
+                Spacer(modifier = Modifier.height(20.dp))
+                // Banner - Mission + Team + Vision
                 Row(
                     modifier = Modifier
                         .padding(8.dp)
@@ -124,12 +81,12 @@ fun HomeView(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Card(
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
-                            .weight(0.8f)
-                            .padding(4.dp)
-                            .height(140.dp),
-                        elevation = 8.dp
+                            .weight(0.5f)
+                            .padding(5.dp)
+                            .height(196.dp),
+                        elevation = 4.dp
                     ) {
                         Column(
                             modifier = Modifier.background(Blue)
@@ -153,22 +110,34 @@ fun HomeView(
                         }
                     }
                     Card(
-                        shape = RoundedCornerShape(16.dp),
                         modifier = Modifier
-                            .weight(0.2f)
-                            .padding(4.dp)
-                            .height(140.dp),
-                        elevation = 8.dp
+                            .padding(start = 8.dp, end = 16.dp)
+                            .weight(0.5f)
+                            .height(220.dp),
+                        elevation = 4.dp,
+                        shape = RoundedCornerShape(8.dp)
 
                     ) {
-                        Column(
-                            modifier = Modifier.background(Red)
-                        ) {
-
-                        }
+                        Image(
+                            contentScale = ContentScale.FillBounds,
+                            painter = painterResource(id = R.drawable.familytwo),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .alpha(0.8f)
+                        )
+                        Text(
+                            text = "Access To Hospitals & Ambulances",
+                            fontWeight = FontWeight.ExtraLight,
+                            textAlign = TextAlign.Center,
+                            fontFamily = FontFamily.Monospace,
+                            color = Color.White,
+                            modifier = Modifier
+                                .padding(4.dp),
+                        )
                     }
                 }
-                // Third Banner - Vision + image
+                // Second Banner - Vision + image
                 Row(
                     modifier = Modifier
                         .padding(8.dp)
@@ -179,37 +148,37 @@ fun HomeView(
                     Card(
                         modifier = Modifier
                             .padding(8.dp)
-                            .weight(0.4f)
-                            .height(138.dp),
-                        elevation = 0.dp,
+                            .weight(0.5f)
+                            .height(240.dp),
+                        elevation = 4.dp,
                         shape = RoundedCornerShape(8.dp)
 
                     ) {
-                            Box(
-                                modifier = Modifier
+                        Box(
+                            modifier = Modifier
 //                            .offset(5.dp, 0.dp)
-                                    .fillMaxSize()
-                                    .padding(4.dp)
-                                .clip(CircleShape)
+                                .fillMaxSize()
+                                .padding(4.dp)
+                                .clip(RoundedCornerShape(8.dp))
 
-                            ) {
-                                Image(
-                                    contentScale = ContentScale.FillBounds,
-                                    painter = painterResource(id = R.drawable.familythree),
-                                    contentDescription = "",
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .clip(RoundedCornerShape(8.dp))
-                                )
-                            }
+                        ) {
+                            Image(
+                                contentScale = ContentScale.FillBounds,
+                                painter = painterResource(id = R.drawable.familythree),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(8.dp))
+                            )
+                        }
                     }
                     Card(
                         shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
-                            .weight(0.6f)
+                            .weight(0.5f)
                             .padding(8.dp)
-                            .height(138.dp),
-                        elevation = 8.dp
+                            .height(196.dp),
+                        elevation = 4.dp
                     ) {
                         Column(
                             modifier = Modifier
@@ -239,14 +208,14 @@ fun HomeView(
                     shape = RoundedCornerShape(4.dp),
                     modifier = Modifier
                         .padding(16.dp)
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .background(Color.White),
                     elevation = 8.dp
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp)
-                            .background(Color.White),
+                            .padding(8.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         MilestoneBox(
