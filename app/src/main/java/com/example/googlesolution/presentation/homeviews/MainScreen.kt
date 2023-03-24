@@ -75,7 +75,7 @@ fun RowScope.AddItem(
                     currentDestination?.hierarchy?.any {
                         it.route == screen.route
                     } == true
-                ) BlueMilder else Color.Black
+                ) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.onSecondary
             )
         },
 icon = {
@@ -86,7 +86,7 @@ icon = {
                currentDestination?.hierarchy?.any {
                    it.route == screen.route
                } == true
-           ) BlueMilder else Color.Black,
+           ) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.onSecondary,
        )
 },
         selected = currentDestination?.hierarchy?.any {

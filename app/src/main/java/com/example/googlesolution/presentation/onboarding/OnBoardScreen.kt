@@ -35,7 +35,7 @@ fun OnBoardScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.primary)
+            .background(MaterialTheme.colors.primaryVariant)
     ) {
 
         Column(
@@ -77,14 +77,14 @@ fun OnBoardScreen(navController: NavHostController) {
                     .height(50.dp),
                 shape = MaterialTheme.shapes.medium,
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Black,
+                    backgroundColor = MaterialTheme.colors.onBackground,
                     contentColor = MaterialTheme.colors.onSecondary
                 )
             ) {
                 Text(
                     text = "Go",
                     style = MaterialTheme.typography.h5,
-                    color = White,
+                    color = MaterialTheme.colors.onPrimary,
                     fontWeight = FontWeight.ExtraBold
                 )
             }

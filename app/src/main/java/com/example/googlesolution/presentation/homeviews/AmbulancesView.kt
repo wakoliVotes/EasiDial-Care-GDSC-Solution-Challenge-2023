@@ -52,7 +52,7 @@ fun AmbulancesView(
     var searchAmb by remember {
         mutableStateOf("")
     }
-
+MaterialTheme() {
     Scaffold {
             padding ->
         Column(
@@ -155,6 +155,7 @@ fun AmbulancesView(
         }
     }
 }
+}
 
 @Composable
 fun AmbulancesListItem(
@@ -165,21 +166,22 @@ fun AmbulancesListItem(
     Card(
         modifier = Modifier
             .padding(4.dp)
-            .width(120.dp)
-            .height(164.dp)
-            .clip(RoundedCornerShape(8.dp)),
-        elevation = 5.dp
+            .width(184.dp)
+            .height(174.dp)
+            .clip(RoundedCornerShape(16.dp)),
+        elevation = 8.dp
     ) {
         Column(
             modifier = Modifier
                 .padding(all = 4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(id = ambulances.ambImage),
                 contentDescription = "",
                 modifier = Modifier
-                    .height(64.dp)
-                    .offset(40.dp, (-4).dp)
+                    .height(70.dp)
+                    .width(70.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
@@ -188,23 +190,22 @@ fun AmbulancesListItem(
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W500,
                 modifier = Modifier
-                    .padding(top = 5.dp, bottom = 8.dp)
-                    .height(24.dp),
+                    .padding(bottom = 2.dp),
                 overflow = TextOverflow.Visible
             )
             Text(
                 text = ambulances.contact,
-                fontSize = 14.sp,
-                textAlign = TextAlign.Right,
+                fontSize = 15.sp,
+                textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Normal,
-                modifier = Modifier.padding(top = 8.dp),
+                modifier = Modifier.padding(),
                 color = Color.Gray
             )
             Row(
                 modifier = Modifier
-                    .padding(top = 4.dp, end = 8.dp, start = 8.dp, bottom = 4.dp)
+                    .padding(top = 4.dp, end = 4.dp, start = 4.dp, bottom = 4.dp)
                     .fillMaxWidth()                ,
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
@@ -216,12 +217,17 @@ fun AmbulancesListItem(
                               }
                               },
                     modifier = Modifier
-                        .size(15.dp),
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .padding()
                 ) {
                     Icon(
                         imageVector = Icons.Default.Share,
                         contentDescription = "Share",
-                        tint = Color.DarkGray
+                        tint = MaterialTheme.colors.onPrimary,
+                        modifier = Modifier
+                            .background(MaterialTheme.colors.onSecondary)
+                            .padding(5.dp)
                     )
                 }
                 IconButton(
@@ -233,12 +239,17 @@ fun AmbulancesListItem(
                         context.startActivity(intent)
                               },
                     modifier = Modifier
-                        .size(15.dp)
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .padding()
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
                         contentDescription = "Call",
-                        tint = Color.DarkGray
+                        tint = MaterialTheme.colors.onPrimary,
+                        modifier = Modifier
+                            .background(MaterialTheme.colors.onSecondary)
+                            .padding(5.dp)
                     )
                 }
             }
@@ -271,7 +282,7 @@ fun TopAmbulanceList(
                 modifier = Modifier
                     .height(72.dp)
                     .width(128.dp)
-                    .padding(top=4.dp)
+                    .padding(top = 4.dp)
                     .clip(RoundedCornerShape(8.dp))
                 ,
                 contentScale = ContentScale.Crop
@@ -302,12 +313,17 @@ fun TopAmbulanceList(
 
                     },
                     modifier = Modifier
-                        .size(17.dp)
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .padding()
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
                         contentDescription = "Call",
-                        tint = Color.Blue
+                        tint = MaterialTheme.colors.onPrimary,
+                        modifier = Modifier
+                            .background(MaterialTheme.colors.onSecondary)
+                            .padding(5.dp)
                     )
                 }
                 Spacer(modifier = Modifier.width(5.dp))

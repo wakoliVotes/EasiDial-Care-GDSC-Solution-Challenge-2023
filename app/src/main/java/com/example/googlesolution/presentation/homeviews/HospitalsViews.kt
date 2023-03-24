@@ -5,8 +5,11 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -48,112 +51,113 @@ fun HospitalsViews(
     var searchHosp by remember {
         mutableStateOf("")
     }
-    Scaffold (
-        modifier = Modifier
-            .background(BlueMildest),
-            ) {
-        padding ->
-        Column(
+    MaterialTheme() {
+        Scaffold(
             modifier = Modifier
-                .fillMaxSize()
-                .background(BlueMildest)) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
+                .background(BlueMildest),
+        ) { padding ->
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 8.dp, end = 16.dp)
-                    .height(24.dp)
-            ) {
-                Text(
-                    text = "Hospitals",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        color = Color.Black
-                    )
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.person),
-                    contentDescription = "workspaces",
+                    .fillMaxSize()
+                    .background(BlueMildest)) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .clickable {
-                            navController.navigate("account")
-                        }
-                )
-            }
-            OutlinedTextField(
-                value = searchHosp,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Gray,
-                    unfocusedBorderColor =  Color.LightGray,
-                    focusedLabelColor =  Color.Gray,
-                    unfocusedLabelColor = Color.Gray,
-                    cursorColor = Color.LightGray,
-                ),
-                onValueChange = { /*TODO*/
-                                searchHosp = it
-                                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .size(55.dp),
-                textStyle = TextStyle(
-                    color = Color.Black
-                ),
-                label = {
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 8.dp, end = 16.dp)
+                        .height(24.dp)
+                ) {
                     Text(
-                        text = "Find Hospital",
+                        text = "Hospitals",
                         style = TextStyle(
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 11.sp
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colors.onSecondary
                         )
                     )
-                },
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "search",
-                        tint = Color.Gray
+                    Image(
+                        painter = painterResource(id = R.drawable.person),
+                        contentDescription = "workspaces",
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate("account")
+                            }
                     )
-                },
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Done,
-                    keyboardType = KeyboardType.Text
-                ),
-            )
-            Text(
-                text = "Popular",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
-                color = Color.Black,
-            )
-            LazyRow {
-                items(topHospitals) { topHospitals ->
-                    TopHospitalsListItem(topHospitals =topHospitals)
                 }
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "More",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
-                    .padding(top = 8.dp, bottom = 8.dp, start = 16.dp),
-                color = Color.Black
-            )
-            FlowRow(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .weight(1f)
-                    .padding(4.dp)
-            ) {
-                hospitals.forEach {
-                    HospitalListItem(hospitals = it)
+                OutlinedTextField(
+                    value = searchHosp,
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = Color.Gray,
+                        unfocusedBorderColor = Color.LightGray,
+                        focusedLabelColor = Color.Gray,
+                        unfocusedLabelColor = Color.Gray,
+                        cursorColor = Color.LightGray,
+                    ),
+                    onValueChange = { /*TODO*/
+                        searchHosp = it
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .size(55.dp),
+                    textStyle = TextStyle(
+                        color = MaterialTheme.colors.onSecondary
+                    ),
+                    label = {
+                        Text(
+                            text = "Find Hospital",
+                            style = TextStyle(
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 11.sp
+                            )
+                        )
+                    },
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "search",
+                            tint = Color.Gray
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Done,
+                        keyboardType = KeyboardType.Text
+                    ),
+                )
+                Text(
+                    text = "Popular",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
+                    color = MaterialTheme.colors.onSecondary
+                )
+                LazyRow {
+                    items(topHospitals) { topHospitals ->
+                        TopHospitalsListItem(topHospitals = topHospitals)
+                    }
                 }
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "More",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 8.dp, start = 16.dp),
+                    color = MaterialTheme.colors.onSecondary
+                )
+                FlowRow(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .weight(1f)
+                        .padding(4.dp)
+                ) {
+                    hospitals.forEach {
+                        HospitalListItem(hospitals = it)
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
             }
-            Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
@@ -168,183 +172,197 @@ fun HospitalListItem(
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(80.dp)
+            .height(96.dp)
             .clip(RoundedCornerShape(8.dp))
     ) {
         Row(
             modifier = Modifier
                 .padding()
-                .background(Color.White)
+                .background(MaterialTheme.colors.onPrimary)
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
                 contentDescription = "",
                 modifier = Modifier
-                    .height(88.dp)
-                    .width(100.dp)
+                    .height(96.dp)
+                    .width(120.dp)
                     .padding(end = 8.dp)
                     .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.FillBounds
             )
-            Column(
-
-            ) {
-                Text(
-                    text = hospitals.name,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.W400,
-                    color = Color.Black,
-                    modifier = Modifier
-                        .padding(top = 2.dp),
-                    overflow = TextOverflow.Visible,
-                )
-                Text(
-                    hospitals.location,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.W300,
-                    modifier = Modifier.padding(),
-                    color = Color.Gray
-                )
-                Row(
-                    modifier = Modifier
-                        .padding(top = 4.dp, start = 24.dp, end = 96.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
+                Column(
+                    verticalArrangement = Arrangement.SpaceBetween,
                 ) {
-                    IconButton(
-                        onClick = {
-                            /*TODO*/
-                            // allow share via text, email, whatsapp, telegram, etc
-                            val intent = Intent(Intent.ACTION_SEND).apply {
-                                type = "text/plain"
-                                putExtra(Intent.EXTRA_TEXT, "Check out: ${hospitals.name}, ${hospitals.contact}")
-                            }
-                            context.startActivity(intent)
-                        },
-                        modifier = Modifier
-                            .size(15.dp),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Share,
-                            contentDescription = "Share",
-                            tint = Color.DarkGray
-                        )
-
-                    }
                     Text(
-                        text = hospitals.contact,
+                        text = hospitals.name,
                         fontSize = 15.sp,
-                        fontWeight = FontWeight.W500,
+                        fontWeight = FontWeight.W400,
+                        color = MaterialTheme.colors.onSecondary,
+                        modifier = Modifier
+                            .padding(top = 2.dp),
+                        overflow = TextOverflow.Visible,
+                    )
+                    Text(
+                        hospitals.location,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.W300,
                         modifier = Modifier.padding(),
                         color = Color.Gray
                     )
-                    IconButton(
-                        onClick = {
-                            /*TODO*/
-                            // open dialer
-                            val intent = Intent(Intent.ACTION_DIAL).apply {
-                                data = "tel:${hospitals.contact}".toUri()
-                            }
-                            context.startActivity(intent)
-
-                        },
+                    Row(
                         modifier = Modifier
-                            .size(15.dp)
+                            .padding(top = 4.dp, start = 8.dp, end = 72.dp)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Call,
-                            contentDescription = "Call",
-                            tint = Color.DarkGray
+                            IconButton(
+                                onClick = {
+                                    /*TODO*/
+                                    // allow share via text, email, whatsapp, telegram, etc
+                                    val intent = Intent(Intent.ACTION_SEND).apply {
+                                        type = "text/plain"
+                                        putExtra(Intent.EXTRA_TEXT,
+                                            "Check out: ${hospitals.name}, ${hospitals.contact}")
+                                    }
+                                    context.startActivity(intent)
+                                },
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .clip(CircleShape)
+                                    .padding(),
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Share,
+                                    contentDescription = "Share",
+                                    tint = MaterialTheme.colors.onPrimary,
+                                    modifier = Modifier
+                                        .background(MaterialTheme.colors.onSecondary)
+                                        .padding(5.dp)
+                                )
+                            }
+                        Text(
+                            text = hospitals.contact,
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.W500,
+                            modifier = Modifier.padding(),
+                            color = Color.Gray
                         )
+                            IconButton(
+                                onClick = {
+                                    /*TODO*/
+                                    // open dialer
+                                    val intent = Intent(Intent.ACTION_DIAL).apply {
+                                        data = "tel:${hospitals.contact}".toUri()
+                                    }
+                                    context.startActivity(intent)
+
+                                },
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .clip(CircleShape)
+                                    .padding()
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Call,
+                                    contentDescription = "Call",
+                                    tint = MaterialTheme.colors.onPrimary,
+                                    modifier = Modifier
+                                        .background(MaterialTheme.colors.onSecondary)
+                                        .padding(5.dp)
+                                )
+                            }
                     }
                 }
-            }
         }
     }
 }
 
 @Composable
 fun TopHospitalsListItem(
-    topHospitals: TopHospitals
+    topHospitals: TopHospitals,
 ) {
     val context = LocalContext.current
 
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .height(156.dp)
-            .width(176.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .height(210.dp)
+            .width(196.dp)
+            .clip(RoundedCornerShape(16.dp)),
+        elevation = 8.dp
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(MaterialTheme.colors.onPrimary),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
                 painter = painterResource(topHospitals.hospImage),
                 contentDescription = "hospitals",
                 modifier = Modifier
-                    .height(100.dp)
-                    .width(176.dp)
+                    .height(140.dp)
+                    .fillMaxWidth()
                     .padding(bottom = 4.dp)
                     .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop
-
             )
-            Text(
-                text = topHospitals.hospitalName,
-                style = TextStyle(
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 15.sp,
-                    textAlign = TextAlign.Center,
-                    color = Color.Black
-                ),
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier
-                    .height(20.dp)
-                    .padding(start = 4.dp, end = 4.dp)
-            )
-            Row(
-                modifier = Modifier
-                    .padding(top=4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-           ) {
-                IconButton(
-                    onClick = {
-                        /* TODO */
-                              val intent = Intent(Intent.ACTION_DIAL).apply {
-                                  data = "tel:${topHospitals.hospitalContacts}".toUri()
-                              }
-                        context.startActivity(intent)
-
-                    },
+                Text(
+                    text = topHospitals.hospitalName,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 15.sp,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colors.onSecondary
+                    ),
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
-                        .size(15.dp)
+                        .height(25.dp)
+                        .padding(start = 4.dp, end = 4.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .padding(top = 2.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.Call,
-                        contentDescription = "Call",
-                        tint = Color.Blue
+                        IconButton(
+                            onClick = {
+                                /* TODO */
+                                val intent = Intent(Intent.ACTION_DIAL).apply {
+                                    data = "tel:${topHospitals.hospitalContacts}".toUri()
+                                }
+                                context.startActivity(intent)
+                            },
+                            modifier = Modifier
+                                .size(28.dp)
+                                .clip(CircleShape)
+                                .padding()
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Call,
+                                contentDescription = "Call",
+                                tint = MaterialTheme.colors.onPrimary,
+                                modifier = Modifier
+                                    .background(MaterialTheme.colors.onSecondary)
+                                    .padding(5.dp)
+                            )
+                        }
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = topHospitals.hospitalContacts,
+                        style = TextStyle(
+                            fontWeight = FontWeight.Light,
+                            fontSize = 15.sp,
+                            textAlign = TextAlign.Center,
+                            color = MaterialTheme.colors.onSecondary
+                        ),
                     )
                 }
-                Spacer(modifier = Modifier.width(5.dp))
-                Text(
-                    text = topHospitals.hospitalContacts,
-                    style = TextStyle(
-                        fontWeight = FontWeight.Light,
-                        fontSize = 14.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color.Black
-                    ),
-                )
             }
 
         }
-    }
 }
 
 @Preview(showBackground = true)

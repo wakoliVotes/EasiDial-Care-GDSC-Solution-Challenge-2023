@@ -50,7 +50,7 @@ fun HomeView(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 20.dp)
                         .alpha(0.8f),
-                    color = Color.Black
+                    color = MaterialTheme.colors.onSecondary
                 )
                 Text(
                     text = "We are here to help you",
@@ -59,14 +59,14 @@ fun HomeView(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 4.dp)
                         .alpha(0.5f),
-                    color = Color.Black
+                    color = MaterialTheme.colors.onSecondary
                 )
                 // SDG reference
                 Text(
                     text = "UN Sustainable Development Goal 3: Ensure healthy lives and promote well-being for all at all ages.",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Black,
+                    color = MaterialTheme.colors.onSecondary,
                     modifier = Modifier
                         .padding(start = 16.dp, end = 16.dp, top = 4.dp)
                         .alpha(0.8f)
@@ -89,7 +89,7 @@ fun HomeView(
                         elevation = 4.dp
                     ) {
                         Column(
-                            modifier = Modifier.background(Blue)
+                            modifier = Modifier.background(MaterialTheme.colors.primaryVariant)
                         ) {
                             Text(
                                 text = "Our Mission",
@@ -97,7 +97,7 @@ fun HomeView(
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
-                                color = Color.White
+                                color = MaterialTheme.colors.surface
                             )
                             Text(
                                 text = "To improve access to critical care services for everyone, regardless of location or economic status.",
@@ -105,7 +105,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp)
                                     .alpha(0.9f),
-                                color = Color.White
+                                color = MaterialTheme.colors.surface
                             )
                         }
                     }
@@ -132,7 +132,7 @@ fun HomeView(
                             fontWeight = FontWeight.ExtraLight,
                             textAlign = TextAlign.Center,
                             fontFamily = FontFamily.Monospace,
-                            color = Color.White,
+                            color = MaterialTheme.colors.onPrimary,
                             modifier = Modifier
                                 .padding(4.dp),
                         )
@@ -184,21 +184,21 @@ fun HomeView(
                     ) {
                         Column(
                             modifier = Modifier
-                                .background(Black)
+                                .background(MaterialTheme.colors.onSecondary)
                                 .padding(4.dp)
                         ) {
                             Text(
                                 text = "Our Vision",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = Color.White,
+                                color = MaterialTheme.colors.onPrimary,
                                 modifier = Modifier
                                     .padding(8.dp)
                             )
                             Text(
                                 text = "A world where every person has access to the healthcare services they need, when and where they need them.",
                                 fontSize = 14.sp,
-                                color = Color.White,
+                                color = MaterialTheme.colors.onPrimary,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp)
                                     .alpha(0.8f)
@@ -211,7 +211,7 @@ fun HomeView(
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxWidth()
-                        .background(Color.White),
+                        .background(MaterialTheme.colors.onPrimary),
                     elevation = 8.dp
                 ) {
                     Row(
