@@ -173,7 +173,9 @@ fun AmbulancesListItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(all = 4.dp),
+                .padding(all = 4.dp)
+                .background(MaterialTheme.colors.onPrimary)
+            ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -272,7 +274,7 @@ fun TopAmbulanceList(
     ) {
         Column(
             modifier = Modifier
-                .background(Color.White)
+                .background(MaterialTheme.colors.onPrimary)
                 .padding(0.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
