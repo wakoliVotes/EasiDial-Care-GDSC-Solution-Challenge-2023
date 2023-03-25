@@ -44,7 +44,7 @@ fun HomeView(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "EasierHelp",
+                    text = "EasiDial",
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
@@ -53,7 +53,7 @@ fun HomeView(
                     color = MaterialTheme.colors.onSecondary
                 )
                 Text(
-                    text = "We are here to help you",
+                    text = "Here to help you",
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier
@@ -62,15 +62,6 @@ fun HomeView(
                     color = MaterialTheme.colors.onSecondary
                 )
                 // SDG reference
-                Text(
-                    text = "UN Sustainable Development Goal 3: Ensure healthy lives and promote well-being for all at all ages.",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = MaterialTheme.colors.onSecondary,
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, top = 4.dp)
-                        .alpha(0.8f)
-                )
                 Spacer(modifier = Modifier.height(20.dp))
                 // Banner - Mission + Team + Vision
                 Row(
@@ -127,15 +118,6 @@ fun HomeView(
                                 .fillMaxSize()
                                 .alpha(0.8f)
                         )
-                        Text(
-                            text = "Access To Hospitals & Ambulances",
-                            fontWeight = FontWeight.ExtraLight,
-                            textAlign = TextAlign.Center,
-                            fontFamily = FontFamily.Monospace,
-                            color = MaterialTheme.colors.onPrimary,
-                            modifier = Modifier
-                                .padding(4.dp),
-                        )
                     }
                 }
                 // Second Banner - Vision + image
@@ -191,14 +173,14 @@ fun HomeView(
                                 text = "Our Vision",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colors.onPrimary,
+                                color = if (isSystemInDarkTheme()) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onPrimary,
                                 modifier = Modifier
                                     .padding(8.dp)
                             )
                             Text(
                                 text = "A world where every person has access to the healthcare services they need, when and where they need them.",
                                 fontSize = 14.sp,
-                                color = MaterialTheme.colors.onPrimary,
+                                color = if (isSystemInDarkTheme()) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onPrimary,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp)
                                     .alpha(0.8f)
@@ -207,18 +189,20 @@ fun HomeView(
                     }
                 }
                 Card(
-                    shape = RoundedCornerShape(4.dp),
+                    shape = RoundedCornerShape(8.dp),
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxWidth()
+                        .height(150.dp)
                         .background(MaterialTheme.colors.onPrimary),
-                    elevation = 8.dp
+                    elevation = 4.dp
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         MilestoneBox(
                             milestoneName = "Year Project Started",
@@ -228,7 +212,7 @@ fun HomeView(
                         Box(
                             modifier = Modifier
                                 .background(WaterAccent, RoundedCornerShape(4.dp))
-                                .height(60.dp)
+                                .height(100.dp)
                                 .width(1.dp)
                         )
                         MilestoneBox(
@@ -239,7 +223,7 @@ fun HomeView(
                         Box(
                             modifier = Modifier
                                 .background(WaterAccent, RoundedCornerShape(4.dp))
-                                .height(60.dp)
+                                .height(100.dp)
                                 .width(1.dp)
                         )
                         MilestoneBox(
@@ -250,7 +234,7 @@ fun HomeView(
                         Box(
                             modifier = Modifier
                                 .background(WaterAccent, RoundedCornerShape(4.dp))
-                                .height(60.dp)
+                                .height(100.dp)
                                 .width(1.dp)
                         )
                         MilestoneBox(
@@ -261,7 +245,7 @@ fun HomeView(
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(10.dp))
             }
         }
     }

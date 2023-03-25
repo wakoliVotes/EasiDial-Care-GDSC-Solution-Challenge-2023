@@ -268,9 +268,9 @@ fun TopAmbulanceList(
     Card(
         modifier = Modifier
             .padding(start = 8.dp)
-            .height(144.dp)
-            .width(136.dp)
-            .clip(RoundedCornerShape(12.dp)),
+            .height(200.dp)
+            .width(170.dp)
+            .clip(RoundedCornerShape(8.dp)),
     ) {
         Column(
             modifier = Modifier
@@ -280,11 +280,11 @@ fun TopAmbulanceList(
         ) {
             Image(
                 painter = painterResource(topAmbulances.ambImage),
-                contentDescription = "hospitals",
+                contentDescription = "ambulances",
                 modifier = Modifier
-                    .height(72.dp)
-                    .width(128.dp)
-                    .padding(top = 4.dp)
+                    .height(120.dp)
+                    .fillMaxWidth()
+                    .padding(start=4.dp,top=4.dp,end=4.dp)
                     .clip(RoundedCornerShape(8.dp))
                 ,
                 contentScale = ContentScale.Crop
