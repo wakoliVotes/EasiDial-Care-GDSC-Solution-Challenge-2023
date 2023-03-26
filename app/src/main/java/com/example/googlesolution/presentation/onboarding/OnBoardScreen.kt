@@ -37,6 +37,17 @@ fun OnBoardScreen(navController: NavHostController) {
             .fillMaxSize()
             .background(MaterialTheme.colors.primaryVariant)
     ) {
+        Image(
+            bitmap = ImageBitmap.imageResource(id = R.drawable.hospital),
+            contentDescription = null,
+            modifier = Modifier
+                .padding(top = 20.dp, start = 40.dp)
+                .width(300.dp)
+                .height(300.dp)
+                .clip(CircleShape),
+            contentScale = ContentScale.Crop
+
+        )
 
         Column(
             modifier = Modifier
@@ -46,16 +57,15 @@ fun OnBoardScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.hospital),
+                bitmap = ImageBitmap.imageResource(id = R.drawable.emergency_banner),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(300.dp)
-                    .height(300.dp)
+                    .padding(start = 100.dp, top = 40.dp)
+                    .width(220.dp)
+                    .height(220.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
-
             )
-
             Text(
                 text = "Find a Hospital near you",
                 style = MaterialTheme.typography.h2,
@@ -66,7 +76,7 @@ fun OnBoardScreen(navController: NavHostController) {
                     .padding(16.dp)
             )
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Button(
                 onClick = {
                     navController.navigate("signIn")

@@ -34,7 +34,10 @@ fun HomeView(
 ) {
     MaterialTheme {
         Scaffold(
-            modifier = Modifier.background(BlueMildest),
+            modifier = Modifier
+                .background(BlueMildest)
+                .fillMaxSize()
+            ,
         ) { paddingValues ->
             Column(
                 modifier = Modifier
@@ -72,7 +75,7 @@ fun HomeView(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Card(
-                        shape = RoundedCornerShape(8.dp),
+                        shape = RoundedCornerShape(24.dp),
                         modifier = Modifier
                             .weight(0.5f)
                             .padding(5.dp)
@@ -80,7 +83,9 @@ fun HomeView(
                         elevation = 4.dp
                     ) {
                         Column(
-                            modifier = Modifier.background(MaterialTheme.colors.primaryVariant)
+                            modifier = Modifier
+                                .background(MaterialTheme.colors.primaryVariant)
+                                .padding(8.dp)
                         ) {
                             Text(
                                 text = "Our Mission",
@@ -107,12 +112,12 @@ fun HomeView(
                             .offset(y = 26.dp)
                             .height(220.dp),
                         elevation = 4.dp,
-                        shape = RoundedCornerShape(8.dp)
+                        shape = RoundedCornerShape(24.dp)
 
                     ) {
                         Image(
                             contentScale = ContentScale.FillBounds,
-                            painter = painterResource(id = R.drawable.familytwo),
+                            painter = painterResource(id = R.drawable.emergency_banner),
                             contentDescription = "",
                             modifier = Modifier
                                 .fillMaxSize()
@@ -135,7 +140,7 @@ fun HomeView(
                             .offset(y = -26.dp)
                             .height(240.dp),
                         elevation = 4.dp,
-                        shape = RoundedCornerShape(8.dp)
+                        shape = RoundedCornerShape(24.dp)
 
                     ) {
                         Box(
@@ -147,7 +152,7 @@ fun HomeView(
                         ) {
                             Image(
                                 contentScale = ContentScale.FillBounds,
-                                painter = painterResource(id = R.drawable.familythree),
+                                painter = painterResource(id = R.drawable.familytwo),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -156,7 +161,7 @@ fun HomeView(
                         }
                     }
                     Card(
-                        shape = RoundedCornerShape(8.dp),
+                        shape = RoundedCornerShape(24.dp),
                         modifier = Modifier
                             .weight(0.5f)
                             .offset(y = 0.dp)
@@ -167,7 +172,7 @@ fun HomeView(
                         Column(
                             modifier = Modifier
                                 .background(MaterialTheme.colors.onSecondary)
-                                .padding(4.dp)
+                                .padding(8.dp)
                         ) {
                             Text(
                                 text = "Our Vision",
@@ -191,7 +196,7 @@ fun HomeView(
                 Card(
                     shape = RoundedCornerShape(8.dp),
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(8.dp)
                         .fillMaxWidth()
                         .height(150.dp)
                         .background(MaterialTheme.colors.onPrimary),
@@ -245,7 +250,6 @@ fun HomeView(
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
             }
         }
     }

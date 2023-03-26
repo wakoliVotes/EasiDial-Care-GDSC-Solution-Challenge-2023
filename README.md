@@ -15,88 +15,66 @@
 - Kotlin
 - Jetpack Compose
 - Firebase
+- Google Maps API
+- Google Analytics
+- Material Design 2
 
-### Mobile app features for inclusion
+### Mobile App features and section inclusion:
 #### Screens
 **Basics**:
-- Welcome
-- Sign In
-- Sign Up
-- Home
- -Settings 
+- Welcome, Login, Sign Up, Settings
 
-- **Home** - About 
+**Home** 
+- About 
 
-**Hospitals** -
-1. Full names
-2. Images of the hospitals
-3. Ambulance services availability - YES / NO
-4. Mobile numbers
-   1. Can be able click and call
-   2. Can be able to copy paste
-5. Locations
-   1. Google map shows locations
-   2. Availability of ambulances
+**DashBoards**
+- Hospitals 
+   - Images, Contact, Locations, Share + Call buttons
+- Hospital Locations
+   - MapView
+   - Hospital names
+- Ambulances
+   - Images, Contact, Locations, Share + Call buttons
+- Lessons 
+   - Image sample
+   - Description
+   - Severity
 
-### Timelines/Deadlines
-- Phase 1: 19 - 25 February
-- Phase 2 - 26 - 04 March
-- Phase 3 - 05 - 11 March
-- Presentation 12 March 2023
+### Project Timelines/Deadlines
+- Start January 2023
+- Finish March 2023
 
-### Sample Output
+## Sample Output Screens
+
 ![Screenshot_20230314_140123](https://user-images.githubusercontent.com/77758884/224985450-7b125604-4bb6-4723-9d98-9c0d0c655226.png)
 
 ![Screenshot_20230314_140209](https://user-images.githubusercontent.com/77758884/224985499-5af4bc17-8458-46b0-89d3-c55a453463f2.png)
 
 
 
-## Lessons Section
+### Instructions for using the app
+1. Clone or download the repository to your local machine.
+   - Downloading the repository means downloading a **ZIP file** of the repository to your computer.
+   - To download the repository, go to the repository's main page on GitHub and click on the "Code" button, then select "Download ZIP". This will download a compressed ZIP file containing the repository's code to your computer. You can then extract the ZIP file to a folder on your computer.
+   - To clone the repository, you need to have Git installed on your computer, and you can use the following command in your terminal:
 
-### Emergencies Based on Severity
-common emergencies grouped into three categories based on their severity:
+   ```kt
+   git clone https://github.com/wakoliVotes/GoogleSolutionChallengeApp.git
+   
+   ```
+2. Open Android Studio and select "**Open an existing Android Studio project**".
+3. Navigate to the directory where you downloaded the repository and select the project's root folder.
+4. Wait for Android Studio to build the project and sync all the dependencies.
+5. Connect your Android device to your computer via USB or use an emulator.
+6. Click on the "Run" button in Android Studio and select your device from the list.
+7. Wait for the app to be installed on your device.
+8. Once the app is installed, open it and follow the on-screen instructions to use the app.
 
-**Group 1: Life-Threatening Emergencies**
+**Note**: 
+- If you encounter any issues while building or running the app, please check the **[Android Home](https://developer.android.com/studio)** or Jetbrains page [Manage projects hosted on GitHub](https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html) for more help.
+- If the problem persists, please feel free to **create a new issue** with a detailed description of the problem you're facing, along with screenshots (if possible) to help us diagnose the issue.
+- We'll try our best to resolve the issue as soon as possible.
 
-- Heart attack
-- Stroke
-- Severe bleeding
-- Choking
-- Poisoning
-- Seizures
-- Severe allergic reactions (anaphylaxis)
-- Electric shock
-- Carbon monoxide poisoning
-- Near-drowning incidents
-
-**Group 2: Serious Emergencies**
-
-- Burns
-- Broken bones
-- Head injuries
-- Allergic reactions
-- Asthma attacks
-- Heat stroke
-- Hypothermia
-- Drowning
-- Severe dehydration
-- Major cuts or wounds
-
-**Group 3: Minor Emergencies**
-
-- Insect bites or stings
-- Mnor burns
-- Minor cuts or wounds
-- Sprains or strains
-- Nosebleeds
-- Minor allergic reactions
-- Minor fractures or broken bones
-- Toothache
-- Minor eye injuries
-- Mild fever or flu-like symptoms
-**Note**
-- The severity of an emergency can vary depending on a number of factors, including age, overall health, and other individual circumstances. 
-- It's always important to take any emergency seriously and seek professional medical help when necessary.
 
 
 
