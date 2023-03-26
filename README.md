@@ -71,7 +71,9 @@
 8. Once the app is installed, open it and follow the on-screen instructions to use the app.
 
 **Note**: 
-- If you encounter any issues while building or running the app, please check the **[Android Home](https://developer.android.com/studio)** or Jetbrains page [Manage projects hosted on GitHub](https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html) for more help.
+- If you encounter any issues while building or running the app, please check these resources:
+   -  **[Android Studio](https://developer.android.com/studio)** homepage or 
+   - Jetbrain's [Manage projects hosted on GitHub](https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html) for more help.
 - If the problem persists, please feel free to **create a new issue** with a detailed description of the problem you're facing, along with screenshots (if possible) to help us diagnose the issue.
 - We'll try our best to resolve the issue as soon as possible.
 
