@@ -1,16 +1,13 @@
 package com.example.googlesolution.presentation.homeviews
 
 import android.content.Intent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -78,6 +75,11 @@ MaterialTheme() {
                 Image(
                     painter = painterResource(id = R.drawable.person),
                     contentDescription = "workspaces",
+                    modifier = Modifier
+                        .clickable {
+                            // navigate to pesonssearch
+                            navController.navigate("account")
+                        }
                 )
             }
             OutlinedTextField(

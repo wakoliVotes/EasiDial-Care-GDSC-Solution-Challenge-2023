@@ -10,10 +10,7 @@ import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.datamodels.firebaseauth.login.SignUpScreen
 import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.HomeView
-import com.example.googlesolution.presentation.homeviews.AmbulancesView
-import com.example.googlesolution.presentation.homeviews.EmergencyLessons
-import com.example.googlesolution.presentation.homeviews.HospitalsViews
-import com.example.googlesolution.presentation.homeviews.MainScreen
+import com.example.googlesolution.presentation.homeviews.*
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
 import com.example.googlesolution.presentation.onboarding.OnBoardScreen
 import com.example.kcauvibe.presentation.bottomviews.AccountView
@@ -95,6 +92,9 @@ fun NavGraph(
         }
         composable(route = Screens.Account.route) {
             AccountView(navController = navController, loginViewModel = loginViewModel)
+        }
+        composable(route = Screens.PersonsSearch.route){
+            PersonsSearchView()
         }
     }
 }

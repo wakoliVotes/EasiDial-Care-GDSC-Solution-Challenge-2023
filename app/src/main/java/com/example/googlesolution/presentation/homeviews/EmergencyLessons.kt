@@ -181,7 +181,6 @@ fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
 fun DefaultPreview() {
     EmergencyLessons(navController = rememberNavController(),
          lessons = lessons
-
     )
 }
 
