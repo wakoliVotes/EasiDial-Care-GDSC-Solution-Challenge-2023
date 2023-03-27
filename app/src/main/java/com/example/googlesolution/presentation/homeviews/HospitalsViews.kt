@@ -8,8 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.selection.DisableSelection
-import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -33,12 +31,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.datamodels.Hospital
+import com.example.googlesolution.datamodels.HospitalsViewModel
 import com.example.googlesolution.datamodels.TopHospitals
-import com.example.googlesolution.datamodels.hospitals
 import com.example.googlesolution.datamodels.topHospitals
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.google.accompanist.flowlayout.FlowRow
@@ -48,9 +47,11 @@ import com.google.accompanist.flowlayout.FlowRow
 fun HospitalsViews(
     navController: NavHostController,
 ) {
-    var searchHosp by remember {
-        mutableStateOf("")
-    }
+    val viewModel = viewModel<HospitalsViewModel>()
+    val searchText by viewModel.searchText.collectAsState()
+    val hospitals by viewModel.hospitals.collectAsState()
+    val isSearching by viewModel.isSearching.collectAsState()
+
     MaterialTheme() {
         Scaffold(
             modifier = Modifier
@@ -84,8 +85,31 @@ fun HospitalsViews(
                             }
                     )
                 }
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Popular",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
+                    color = MaterialTheme.colors.onSecondary
+                )
+                LazyRow {
+                    items(topHospitals) { topHospitals ->
+                        TopHospitalsListItem(topHospitals = topHospitals)
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "More",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier
+                        .padding(top = 4.dp, bottom = 4.dp, start = 16.dp),
+                    color = MaterialTheme.colors.onSecondary
+                )
+                // Search TextField
                 OutlinedTextField(
-                    value = searchHosp,
+                    value = searchText,
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color.Gray,
                         unfocusedBorderColor = Color.LightGray,
@@ -94,11 +118,11 @@ fun HospitalsViews(
                         cursorColor = Color.LightGray,
                     ),
                     onValueChange = { /*TODO*/
-                        searchHosp = it
+                        viewModel.onSearchTermChange(it)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp, end = 16.dp)
+                        .padding(start = 8.dp, end = 8.dp, bottom = 4.dp)
                         .align(Alignment.CenterHorizontally)
                         .size(55.dp),
                     textStyle = TextStyle(
@@ -125,27 +149,7 @@ fun HospitalsViews(
                         keyboardType = KeyboardType.Text
                     ),
                 )
-                Text(
-                    text = "Popular",
-                    style = MaterialTheme.typography.subtitle2,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
-                    color = MaterialTheme.colors.onSecondary
-                )
-                LazyRow {
-                    items(topHospitals) { topHospitals ->
-                        TopHospitalsListItem(topHospitals = topHospitals)
-                    }
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "More",
-                    style = MaterialTheme.typography.subtitle2,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier
-                        .padding(top = 8.dp, bottom = 8.dp, start = 16.dp),
-                    color = MaterialTheme.colors.onSecondary
-                )
+                // End of Search TextField
                 FlowRow(
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())

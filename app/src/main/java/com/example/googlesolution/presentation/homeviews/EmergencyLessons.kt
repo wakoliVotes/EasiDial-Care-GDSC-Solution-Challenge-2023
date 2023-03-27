@@ -24,18 +24,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datamodels.EmergencyLessons
-import com.example.googlesolution.datamodels.lessons
+import com.example.googlesolution.datamodels.LessonSearchViewModel
+import com.example.googlesolution.datamodels.LessonsViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
 
 
 @Composable
 fun EmergencyLessons(
     navController: NavHostController,
-    lessons: List<EmergencyLessons>
 ) {
+
+    val viewModel = viewModel<LessonsViewModel>()
+    val searchText by viewModel.searchText.collectAsState()
+    val lessons by viewModel.lessons.collectAsState()
+    val isSearching by viewModel.isSearching.collectAsState()
+
+
     Scaffold { padding ->
         Column(
             modifier = Modifier
@@ -80,7 +89,19 @@ fun EmergencyLessons(
                         textAlign = TextAlign.Justify,
                         fontSize = 12.sp
                     )
-
+                }
+                item {
+                    TextField(
+                        value = searchText,
+                        onValueChange = viewModel::onSearchTermChange,
+                        label = {
+                            Text(text = "Search")
+                                },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                            .alpha(0.8f)
+                    )
                 }
                    items(lessons) { lesson ->
                        EmergencyListItem(lessons = lesson, expanded = false)
@@ -91,7 +112,7 @@ fun EmergencyLessons(
                         color = Color.Black,
                         modifier = Modifier
                             .padding(16.dp)
-                        .alpha(0.8f)
+                            .alpha(0.8f)
                     )
                 }
             }
@@ -180,7 +201,6 @@ fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
 @Composable
 fun DefaultPreview() {
     EmergencyLessons(navController = rememberNavController(),
-         lessons = lessons
     )
 }
 

@@ -31,13 +31,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
-import com.example.googlesolution.datamodels.Ambulances
-import com.example.googlesolution.datamodels.TopAmbulances
-import com.example.googlesolution.datamodels.ambulances
-import com.example.googlesolution.datamodels.topAmbulances
+import com.example.googlesolution.datamodels.*
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.google.accompanist.flowlayout.FlowRow
 
@@ -46,9 +44,12 @@ import com.google.accompanist.flowlayout.FlowRow
 fun AmbulancesView(
     navController: NavHostController,
 ) {
-    var searchAmb by remember {
-        mutableStateOf("")
-    }
+
+    val viewModel = viewModel<AmbulancesViewModel>()
+    val searchText by viewModel.searchText.collectAsState()
+    val ambulances by viewModel.ambulances.collectAsState()
+    val isSearching by viewModel.isSearching.collectAsState()
+
 MaterialTheme() {
     Scaffold {
             padding ->
@@ -82,8 +83,29 @@ MaterialTheme() {
                         }
                 )
             }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Popular",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp),
+                color = Color.Black
+            )
+            LazyRow {
+                items(topAmbulances) { topAmbulances ->
+                    TopAmbulanceList(topAmbulances = topAmbulances)
+                }
+            }
+            Text(
+                text = "More",
+                style = MaterialTheme.typography.subtitle2,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.Black,
+                modifier = Modifier
+                    .padding(top = 4.dp, bottom = 2.dp, start = 16.dp)
+            )
             OutlinedTextField(
-                value = searchAmb,
+                value = searchText,
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
                     unfocusedBorderColor =  Color.LightGray,
@@ -92,11 +114,11 @@ MaterialTheme() {
                     cursorColor = Color.DarkGray
                 ),
                 onValueChange = { /*TODO*/
-                                searchAmb = it
-                                },
+                    viewModel.onSearchTermChange(it)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
+                    .padding(start = 8.dp, end = 8.dp, bottom=4.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(55.dp),
                 textStyle = TextStyle(
@@ -123,26 +145,6 @@ MaterialTheme() {
                 ),
 
                 )
-            Text(
-                text = "Popular",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp),
-                color = Color.Black
-            )
-            LazyRow {
-                items(topAmbulances) { topAmbulances ->
-                    TopAmbulanceList(topAmbulances = topAmbulances)
-                }
-            }
-            Text(
-                text = "More",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black,
-                modifier = Modifier
-                    .padding(top = 10.dp, bottom = 5.dp, start = 16.dp)
-            )
             FlowRow(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())

@@ -5,7 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
-import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
@@ -41,10 +40,10 @@ fun BottomNavGraph(
             HospitalsMapView(navController = navController)
         }
         composable(route = BottomBarScreen.Learn.route){
-            EmergencyLessons(navController = navController, lessons = lessons )
+            EmergencyLessons(navController = navController)
         }
         composable(route = Screens.EmergencyLessons.route){
-            EmergencyLessons(navController = navController, lessons = lessons )
+            EmergencyLessons(navController = navController)
         }
         composable(route = BottomBarScreen.Ambulances.route){
             AmbulancesView(navController = navController)

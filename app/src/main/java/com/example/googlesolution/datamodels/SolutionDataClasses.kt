@@ -1,8 +1,40 @@
 package com.example.googlesolution.datamodels
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.googlesolution.R
+import kotlinx.coroutines.flow.*
 
+class HospitalsViewModel: ViewModel(){
 
+    private val _searchText = MutableStateFlow("")
+    val searchText = _searchText.asStateFlow()
+
+    private val _isSearching = MutableStateFlow(false)
+    val isSearching = _isSearching.asStateFlow()
+
+    private val _hospitals = MutableStateFlow(allhospitals)
+
+    val hospitals = searchText
+        .combine(_hospitals) { text, hospitals ->
+            if (text.isBlank()) {
+                hospitals
+            } else {
+                hospitals.filter {
+                    it.doesMatchSearchuery(text)
+                }
+            }
+        }
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            _hospitals.value
+        )
+
+    fun onSearchTermChange(text: String) {
+        _searchText.value = text
+    }
+}
 data class Hospital(
     val hospImage: Int,
     val name: String,
@@ -11,9 +43,24 @@ data class Hospital(
     val location: String,
     val services: String,
     val hasAmbulance: Boolean,
-)
+) {
+    fun doesMatchSearchuery(query: String): Boolean {
+        val matchingCombinations = listOf(
+            "${name}",
+            "${location}",
+            "${services}",
+            "${contact}",
+            "${name.first()} ${location.first()}",
+            "${hasAmbulance}",
+            "${name.first()} ${contact.first()}"
+        )
+        return matchingCombinations.any{
+            it.contains(query, ignoreCase = true)
+        }
+    }
+}
 
-val hospitals =
+private val allhospitals =
     listOf(
         Hospital(
             hospImage = R.drawable.hosp_agakhan,
@@ -307,13 +354,55 @@ val topAmbulances =
     )
 
 // AMBULANCES
+class AmbulancesViewModel: ViewModel(){
+
+    private val _searchText = MutableStateFlow("")
+    val searchText = _searchText.asStateFlow()
+
+    private val _isSearching = MutableStateFlow(false)
+    val isSearching = _isSearching.asStateFlow()
+
+    private val _ambulances = MutableStateFlow(allambulances)
+
+    val ambulances = searchText
+        .combine(_ambulances) { text, ambulances ->
+            if (text.isBlank()) {
+                ambulances
+            } else {
+                ambulances.filter {
+                    it.doesMatchSearchuery(text)
+                }
+            }
+        }
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            _ambulances.value
+        )
+
+    fun onSearchTermChange(text: String) {
+        _searchText.value = text
+    }
+}
+
 data class Ambulances(
     val ambImage: Int,
     val name: String,
     val contact: String,
-)
+) {
+    fun doesMatchSearchuery(query: String): Boolean {
+        val matchingCombinations = listOf(
+            "${name}",
+            "${contact}",
+            "${name.first()} ${contact.first()}"
+        )
+        return matchingCombinations.any{
+            it.contains(query, ignoreCase = true)
+        }
+    }
+}
 
-val ambulances =
+val allambulances =
     listOf(
         Ambulances(
             ambImage = R.drawable.amb_stjohn,
@@ -350,14 +439,58 @@ val ambulances =
     )
 
 // EMERGENCY LESSONS
+class LessonsViewModel: ViewModel(){
+
+    private val _searchText = MutableStateFlow("")
+    val searchText = _searchText.asStateFlow()
+
+    private val _isSearching = MutableStateFlow(false)
+    val isSearching = _isSearching.asStateFlow()
+
+    private val _lessons = MutableStateFlow(alllessons)
+
+    val lessons = searchText
+        .combine(_lessons) { text, lessons ->
+            if (text.isBlank()) {
+                lessons
+            } else {
+                lessons.filter {
+                    it.doesMatchSearchuery(text)
+                }
+            }
+        }
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            _lessons.value
+        )
+
+            fun onSearchTermChange(text: String) {
+                _searchText.value = text
+            }
+}
+
+
+
 data class EmergencyLessons(
     val lessonImage: Int,
     val lessonName: String,
     val description: String,
     val severityState: String,
-)
+) {
+    fun doesMatchSearchuery(query: String): Boolean {
+        val matchingCombinations = listOf(
+            "${lessonName}",
+            "${description}",
+            "${severityState}"
+        )
+        return matchingCombinations.any{
+            it.contains(query, ignoreCase = true)
+        }
+    }
+}
 
-val lessons =
+private val alllessons =
     listOf(
         // Allergic reactions
         EmergencyLessons(

@@ -8,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datamodels.firebaseauth.login.LoginScreen
 import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.datamodels.firebaseauth.login.SignUpScreen
-import com.example.googlesolution.datamodels.lessons
 import com.example.googlesolution.presentation.bottomviews.HomeView
 import com.example.googlesolution.presentation.homeviews.*
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
@@ -85,7 +84,7 @@ fun NavGraph(
             AmbulancesView(navController = navController)
         }
         composable(route = Screens.EmergencyLessons.route) {
-            EmergencyLessons(navController = navController, lessons = lessons)
+            EmergencyLessons(navController = navController)
         }
         composable(route = Screens.MapView.route) {
             HospitalsMapView(navController = navController)
