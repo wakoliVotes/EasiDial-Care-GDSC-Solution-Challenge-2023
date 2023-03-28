@@ -35,10 +35,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
-import com.example.googlesolution.datamodels.Hospital
-import com.example.googlesolution.datamodels.HospitalsViewModel
-import com.example.googlesolution.datamodels.TopHospitals
-import com.example.googlesolution.datamodels.topHospitals
+import com.example.googlesolution.datalayer.Hospital
+import com.example.googlesolution.datalayer.HospitalsViewModel
+import com.example.googlesolution.datalayer.TopHospitals
+import com.example.googlesolution.datalayer.topHospitals
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.google.accompanist.flowlayout.FlowRow
 

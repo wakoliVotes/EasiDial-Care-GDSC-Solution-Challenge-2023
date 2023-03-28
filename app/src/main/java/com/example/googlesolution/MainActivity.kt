@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
+import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.navgraph.NavGraph
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme

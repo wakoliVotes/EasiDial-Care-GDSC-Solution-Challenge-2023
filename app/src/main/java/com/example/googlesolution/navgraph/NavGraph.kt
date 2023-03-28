@@ -5,14 +5,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.googlesolution.datamodels.firebaseauth.login.LoginScreen
-import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
-import com.example.googlesolution.datamodels.firebaseauth.login.SignUpScreen
-import com.example.googlesolution.presentation.bottomviews.HomeView
+import com.example.googlesolution.presentation.onboarding.LoginScreen
+import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
+import com.example.googlesolution.presentation.onboarding.SignUpScreen
+import com.example.googlesolution.presentation.homeviews.HomeView
 import com.example.googlesolution.presentation.homeviews.*
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
 import com.example.googlesolution.presentation.onboarding.OnBoardScreen
-import com.example.kcauvibe.presentation.bottomviews.AccountView
+import com.example.googlesolution.presentation.homeviews.AccountView
 
 
 enum class LoginRoutes {

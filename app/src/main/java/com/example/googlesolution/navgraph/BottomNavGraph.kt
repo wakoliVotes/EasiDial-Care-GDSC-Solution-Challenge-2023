@@ -4,13 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.googlesolution.datamodels.firebaseauth.login.LoginViewModel
-import com.example.googlesolution.presentation.bottomviews.HomeView
+import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
+import com.example.googlesolution.presentation.homeviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HospitalsViews
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
-import com.example.kcauvibe.presentation.bottomviews.AccountView
+import com.example.googlesolution.presentation.homeviews.AccountView
 
 
 @Composable
