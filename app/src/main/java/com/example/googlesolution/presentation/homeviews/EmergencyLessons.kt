@@ -29,7 +29,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datamodels.EmergencyLessons
-import com.example.googlesolution.datamodels.LessonSearchViewModel
 import com.example.googlesolution.datamodels.LessonsViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
 
@@ -199,7 +198,7 @@ fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
 // Add Preview
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreview( ) {
     EmergencyLessons(navController = rememberNavController(),
     )
 }

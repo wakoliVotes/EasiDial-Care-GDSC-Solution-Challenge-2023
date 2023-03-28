@@ -58,7 +58,7 @@ fun LoginScreen(
                 .padding(bottom = 16.dp)
         )
         Text(
-            text = stringResource(id = R.string.app_name),
+            text = "EasiDialCare",
             style = MaterialTheme.typography.h3
         )
         Spacer(modifier = Modifier.height(80.dp))
@@ -220,7 +220,7 @@ fun SignUpScreen(
                 .padding(bottom = 16.dp)
         )
         Text(
-            text = stringResource(id = R.string.app_name),
+            text = "EasiDialCare",
             style = MaterialTheme.typography.h3
         )
         Spacer(modifier = Modifier.height(80.dp))

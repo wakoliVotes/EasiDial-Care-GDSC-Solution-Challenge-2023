@@ -92,8 +92,5 @@ fun NavGraph(
         composable(route = Screens.Account.route) {
             AccountView(navController = navController, loginViewModel = loginViewModel)
         }
-        composable(route = Screens.PersonsSearch.route){
-            PersonsSearchView()
-        }
     }
 }

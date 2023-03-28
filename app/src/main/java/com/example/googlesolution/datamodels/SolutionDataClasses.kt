@@ -407,34 +407,34 @@ val allambulances =
         Ambulances(
             ambImage = R.drawable.amb_stjohn,
             name = "St. Johns Ambulance",
-            contact = "1234567890",
+            contact = "0712345678",
         ),
         Ambulances(
             ambImage = R.drawable.amb_redcross,
             name = "Red Cross Ambulance",
-            contact = "0987654321",
+            contact = "02025354555",
         ),
         Ambulances(
             ambImage = R.drawable.ambulance,
             name = "Jetflare Ambulance",
-            contact = "2468135790",
+            contact = "0724681358",
         ),
         Ambulances(
             ambImage = R.drawable.ambulance,
             name = "Elite Rescue Services",
-            contact = "1357924680",
+            contact = "0723454545",
         ),
         // add AMREF Flying Doctors Service
         Ambulances(
             ambImage = R.drawable.amb_amref,
             name = "AMREF Flying Doctors",
-            contact = "0246813579",
+            contact = "0206813579",
         ),
         // add OCOA Ambulance Service
         Ambulances(
             ambImage = R.drawable.amb_ocoa,
             name = "OCOA Services",
-            contact = "1357924680",
+            contact = "02021575635",
         ),
     )
 
@@ -508,9 +508,9 @@ private val alllessons =
 
         ),
         EmergencyLessons(
-            lessonImage = R.drawable.learn_heart,
+            lessonImage = R.drawable.learn_cardiac,
             lessonName = "Heart Attack",
-            description = "A heart attack occurs when the flow of blood to the heart is blocked. This can happen when a blood clot forms in an artery that supplies blood to the heart muscle. The heart muscle begins to die, and the heart can't pump blood as well as it should. A heart attack is a medical emergency. If you think you or someone else is having a heart attack, call 911 right away.",
+            description = "Cardiac arrest is a medical emergency that occurs when the heart suddenly stops beating. This can lead to a sudden loss of consciousness, absence of breathing and pulse, and ultimately brain damage or death if not treated promptly. The severity of cardiac arrest is extremely high, as it can lead to irreversible damage to vital organs within minutes if not treated immediately. The survival rate is relatively low, and immediate CPR and defibrillation are essential to increase the chances of successful resuscitation and survival. Cardiac Arrest is a life threatening medical emergency. If you think you or someone else is having a heart attack, call 911 right away.",
             severityState = "Life threatening"
         ),
         EmergencyLessons(

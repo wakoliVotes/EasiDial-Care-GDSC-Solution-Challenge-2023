@@ -9,7 +9,6 @@ import com.example.googlesolution.presentation.bottomviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HospitalsViews
-import com.example.googlesolution.presentation.homeviews.PersonsSearchView
 import com.example.googlesolution.presentation.locationviews.HospitalsMapView
 import com.example.kcauvibe.presentation.bottomviews.AccountView
 
@@ -50,9 +49,6 @@ fun BottomNavGraph(
         }
         composable(route = Screens.Account.route){
             AccountView(navController = navController, loginViewModel = LoginViewModel())
-        }
-        composable(route = Screens.PersonsSearch.route){
-            PersonsSearchView()
         }
     }
 }

@@ -47,7 +47,7 @@ fun HomeView(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "EasiDial",
+                    text = "EasiDialCare",
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
