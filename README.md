@@ -20,14 +20,6 @@
 - Material Design 2
 
 ### Mobile App features and section inclusion:
-#### Screens
-**Basics**:
-- Welcome, Login, Sign Up, Settings
-
-**Home** 
-- About 
-
-**DashBoards**
 - Hospitals 
    - Images, Contact, Locations, Share + Call buttons
 - Hospital Locations
@@ -36,7 +28,7 @@
 - Ambulances
    - Images, Contact, Locations, Share + Call buttons
 - Lessons 
-   - Image sample
+   - Images
    - Description
    - Severity
 
@@ -46,20 +38,24 @@
 
 ## Sample Output Screens
 **Welcome Screen, Sign Up & Login Screens**
+
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325068-0f20a3f4-dfae-46c1-8f67-a0ad9e58f623.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325114-cf3a136d-4d38-4e66-a76e-82b75382d28f.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325131-2fea4a1c-8049-4636-843a-2dfa4060cda2.png" >
+
 **Home**
-**Hospitals & Hospitals MapView**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/224985450-7b125604-4bb6-4723-9d98-9c0d0c655226.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/224985499-5af4bc17-8458-46b0-89d3-c55a453463f2.png" >
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325155-56326ade-65fb-4cd7-897d-2d6857b661b1.png" >
 
-**Ambulances**
+**Hospitals & Ambulances**
 
-
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325179-cc920e80-478a-49e6-bc4f-c1cd5e5b1df2.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325212-1695dcfc-c6ba-49ac-bf47-7a20ae23d7e2.png" >
 
 **Lessons**
 
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325228-dd754e9d-ffeb-4c94-b61b-ef5a9ea86bc5.png" >
 
+**Hospitals MapView**
 
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325251-7b3f2aec-c240-4352-b68a-2e1cab51ff5a.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325280-3557fc40-6c38-4560-89c3-6081e94f3ee8.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325312-db9bdf3b-4020-405d-9499-a093a51db880.png" >
 
 
 ### Instructions for using the app
@@ -83,10 +79,6 @@
 **Note**: 
 - If you encounter any issues while building or running the app, please check these resources:
    -  **[Android Studio](https://developer.android.com/studio)** homepage or 
-   - Jetbrain's [Manage projects hosted on GitHub](https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html) for more help.
+   - Jetbrain's **[Manage projects hosted on GitHub](https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html)** for more help.
 - If the problem persists, please feel free to **create a new issue** with a detailed description of the problem you're facing, along with screenshots (if possible) to help us diagnose the issue.
 - We'll try our best to resolve the issue as soon as possible.
-
-
-
-
