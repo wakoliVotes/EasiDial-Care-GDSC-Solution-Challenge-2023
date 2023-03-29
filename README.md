@@ -137,3 +137,15 @@
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+<!-- TO DO -->
+<!-- 
+If user opens the app and for the next 2 minutes no action is taken, the app should display a notification to the user with these conditions:
+1. Ask use is there an emergency
+2. If yes, then send message to emergency contacts
+3. If no, return to screen
+4. If no action is taken for 2 minutes, then send message to emergency contacts
+
+5. If user is in an emergency, then the app should display a notification to the user with these conditions:
+if user clicks onn the call button and no calls are made, the app should send a message to emergency contacts
+ -->

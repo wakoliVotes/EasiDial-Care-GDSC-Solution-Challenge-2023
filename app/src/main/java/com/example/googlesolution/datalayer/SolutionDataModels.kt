@@ -46,13 +46,13 @@ data class Hospital(
 ) {
     fun doesMatchSearchuery(query: String): Boolean {
         val matchingCombinations = listOf(
-            "${name}",
-            "${location}",
-            "${services}",
-            "${contact}",
+            "${name}${contact}",
+            "${name.first()} ${contact}",
+            "${name} ${contact.first()}",
+            "${name} ${contact}",
+            "${name.first()} ${contact.first()}",
             "${name.first()} ${location.first()}",
             "${hasAmbulance}",
-            "${name.first()} ${contact.first()}"
         )
         return matchingCombinations.any{
             it.contains(query, ignoreCase = true)
@@ -260,6 +260,7 @@ data class TopHospitals(
     val hospImage: Int,
     val hospitalName: String,
     val hospitalContacts: String,
+    val hasAmbulance: Boolean
 )
 
 val topHospitals = listOf(
@@ -267,41 +268,49 @@ val topHospitals = listOf(
         hospImage = R.drawable.hosp_agakhan,
         hospitalName = "Aga Khan University Hospital",
         hospitalContacts = "1234567890",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_nairobihosp,
         hospitalName = "The Nairobi Hospital",
         hospitalContacts = "0987654321",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_ku,
         hospitalName = "Kenyatta University Hospital",
         hospitalContacts = "2468135790",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hospital,
         hospitalName = "Kenya Medical Training College",
         hospitalContacts = "1357924680",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_ruarakauhai,
         hospitalName = "Uhai Neema Hospital",
         hospitalContacts = "0246813579",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_stfrancis,
         hospitalName = "St. Francis Community Hospital",
         hospitalContacts = "1357924680",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_knh,
         hospitalName = "Kenyatta National Hospital",
         hospitalContacts = "0987654321",
+        hasAmbulance = true
     ),
     TopHospitals(
         hospImage = R.drawable.hosp_stjohn,
         hospitalName = "St. Johns Hospital - Githurai",
         hospitalContacts = "2468135790",
+        hasAmbulance = true
     )
 )
 
@@ -392,8 +401,12 @@ data class Ambulances(
 ) {
     fun doesMatchSearchuery(query: String): Boolean {
         val matchingCombinations = listOf(
-            "${name}",
-            "${contact}",
+            "${name}${contact}",
+            "${name.first()} ${contact}",
+            "${name} ${contact.first()}",
+            "${name} ${contact}",
+            "${name} ${contact.first()}",
+            "${name.first()} ${contact}",
             "${name.first()} ${contact.first()}"
         )
         return matchingCombinations.any{

@@ -225,6 +225,7 @@ fun AmbulancesListItem(
                                   type = "text/plain"
                                   putExtra(Intent.EXTRA_TEXT, "Check out ${ambulances.name}, ${ambulances.contact}")
                               }
+                                context.startActivity(intent)
                               },
                     modifier = Modifier
                         .size(28.dp)
