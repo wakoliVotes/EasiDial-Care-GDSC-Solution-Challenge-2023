@@ -36,6 +36,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.*
 import com.example.googlesolution.ui.theme.BlueMildest
+import com.example.googlesolution.ui.theme.lightGreener
+import com.example.googlesolution.ui.theme.lightGreenest
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -176,8 +178,9 @@ fun AmbulancesListItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(all = 4.dp)
-                .background(MaterialTheme.colors.onPrimary)
+                .padding(all = 8.dp)
+                .background(lightGreenest)
+                .clip(RoundedCornerShape(16.dp))
             ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -223,15 +226,15 @@ fun AmbulancesListItem(
                               },
                     modifier = Modifier
                         .size(28.dp)
+                        .background(Color.Black, CircleShape)
                         .clip(CircleShape)
-                        .padding()
+                        .padding(),
                 ) {
                     Icon(
                         imageVector = Icons.Default.Share,
                         contentDescription = "Share",
-                        tint = MaterialTheme.colors.onPrimary,
+                        tint = lightGreener,
                         modifier = Modifier
-                            .background(MaterialTheme.colors.onSecondary)
                             .padding(5.dp)
                     )
                 }
@@ -245,15 +248,15 @@ fun AmbulancesListItem(
                               },
                     modifier = Modifier
                         .size(28.dp)
+                        .background(lightGreener, CircleShape)
                         .clip(CircleShape)
-                        .padding()
+                        .padding(),
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
                         contentDescription = "Call",
-                        tint = MaterialTheme.colors.onPrimary,
+                        tint = Color.White,
                         modifier = Modifier
-                            .background(MaterialTheme.colors.onSecondary)
                             .padding(5.dp)
                     )
                 }
@@ -277,7 +280,7 @@ fun TopAmbulanceList(
     ) {
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colors.onPrimary)
+                .background(lightGreenest)
                 .padding(0.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -287,7 +290,7 @@ fun TopAmbulanceList(
                 modifier = Modifier
                     .height(120.dp)
                     .fillMaxWidth()
-                    .padding(start=4.dp,top=4.dp,end=4.dp)
+                    .padding(start=8.dp,top=8.dp,end=8.dp)
                     .clip(RoundedCornerShape(8.dp))
                 ,
                 contentScale = ContentScale.Crop
@@ -319,15 +322,15 @@ fun TopAmbulanceList(
                     },
                     modifier = Modifier
                         .size(28.dp)
+                        .background(lightGreener, CircleShape)
                         .clip(CircleShape)
-                        .padding()
+                        .padding(),
                 ) {
                     Icon(
                         imageVector = Icons.Default.Call,
                         contentDescription = "Call",
-                        tint = MaterialTheme.colors.onPrimary,
+                        tint = Color.White,
                         modifier = Modifier
-                            .background(MaterialTheme.colors.onSecondary)
                             .padding(5.dp)
                     )
                 }

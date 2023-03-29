@@ -7,6 +7,10 @@ val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
+val lightGreen = Color(0xffa7ef01)
+val lightGreener = Color(0xff83bc01)
+val lightGreenest = Color(0xfff5ffdf)
+
 
 val Red = Color(0xFFE53935)
 val RedLight = Color(0xFFEF9A9A)
@@ -33,7 +37,6 @@ val BlackAccentText = Color(0xFFFFFFFF)
 val BlueMild = Color(0xffad9ef1)
 val BlueMildest = Color(0xfff8f7fe)
 val BlueMilder = Color(0xff7a62e9)
-
 
 val Water = Color(0xFF2196F3)
 val WaterLight = Color(0xFF6EC6FF)

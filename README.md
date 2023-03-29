@@ -1,3 +1,5 @@
+<img width=100% height="380" src="https://user-images.githubusercontent.com/77758884/228333833-a2d4a207-1a83-4555-bf9e-14b0ea1e774b.jpeg" >
+
 ## Google Solution Challenge Mobile App
 ### Solution Challenge Project:
 - App that enables people to find the nearest hospitals around them and the mobile numbers of the hospitals ambulances which will make it easier to save lives.

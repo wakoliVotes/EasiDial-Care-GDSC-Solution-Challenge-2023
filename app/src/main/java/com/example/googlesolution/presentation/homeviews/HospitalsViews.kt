@@ -40,6 +40,9 @@ import com.example.googlesolution.datalayer.HospitalsViewModel
 import com.example.googlesolution.datalayer.TopHospitals
 import com.example.googlesolution.datalayer.topHospitals
 import com.example.googlesolution.ui.theme.BlueMildest
+import com.example.googlesolution.ui.theme.lightGreen
+import com.example.googlesolution.ui.theme.lightGreener
+import com.example.googlesolution.ui.theme.lightGreenest
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -176,19 +179,19 @@ fun HospitalListItem(
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(96.dp)
+            .height(106.dp)
             .clip(RoundedCornerShape(8.dp))
     ) {
         Row(
             modifier = Modifier
                 .padding()
-                .background(MaterialTheme.colors.onPrimary)
+                .background(lightGreenest)
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
                 contentDescription = "",
                 modifier = Modifier
-                    .height(96.dp)
+                    .height(106.dp)
                     .width(120.dp)
                     .padding(end = 8.dp)
                     .clip(RoundedCornerShape(8.dp)),
@@ -233,15 +236,15 @@ fun HospitalListItem(
                                 },
                                 modifier = Modifier
                                     .size(28.dp)
+                                    .background(Color.Black, CircleShape)
                                     .clip(CircleShape)
                                     .padding(),
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Share,
                                     contentDescription = "Share",
-                                    tint = MaterialTheme.colors.onPrimary,
+                                    tint = lightGreener,
                                     modifier = Modifier
-                                        .background(MaterialTheme.colors.onSecondary)
                                         .padding(5.dp)
                                 )
                             }
@@ -264,15 +267,15 @@ fun HospitalListItem(
                                 },
                                 modifier = Modifier
                                     .size(28.dp)
+                                    .background(lightGreener, CircleShape)
                                     .clip(CircleShape)
                                     .padding()
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Call,
                                     contentDescription = "Call",
-                                    tint = MaterialTheme.colors.onPrimary,
+                                    tint = Color.White,
                                     modifier = Modifier
-                                        .background(MaterialTheme.colors.onSecondary)
                                         .padding(5.dp)
                                 )
                             }
@@ -299,7 +302,7 @@ fun TopHospitalsListItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.onPrimary),
+                .background(lightGreenest),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
@@ -341,6 +344,7 @@ fun TopHospitalsListItem(
                             },
                             modifier = Modifier
                                 .size(28.dp)
+                                .background(lightGreener, CircleShape)
                                 .clip(CircleShape)
                                 .padding()
                         ) {
@@ -349,7 +353,6 @@ fun TopHospitalsListItem(
                                 contentDescription = "Call",
                                 tint = MaterialTheme.colors.onPrimary,
                                 modifier = Modifier
-                                    .background(MaterialTheme.colors.onSecondary)
                                     .padding(5.dp)
                             )
                         }

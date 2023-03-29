@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
 import com.example.googlesolution.ui.theme.White
+import com.example.googlesolution.ui.theme.lightGreen
 
 // Create a screens containing image, description text and a button to navigate to the next screen
 // Fillmaxsize is used to fill the entire screen
@@ -35,15 +36,15 @@ fun OnBoardScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.primaryVariant)
+            .background(lightGreen)
     ) {
         Image(
             bitmap = ImageBitmap.imageResource(id = R.drawable.hospital),
             contentDescription = null,
             modifier = Modifier
-                .padding(top = 20.dp, start = 40.dp)
-                .width(300.dp)
-                .height(300.dp)
+                .padding(top = 100.dp, start = 40.dp)
+                .width(200.dp)
+                .height(200.dp)
                 .clip(CircleShape),
             contentScale = ContentScale.Crop
 
@@ -61,15 +62,15 @@ fun OnBoardScreen(navController: NavHostController) {
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = 100.dp, top = 40.dp)
-                    .width(220.dp)
-                    .height(220.dp)
+                    .width(200.dp)
+                    .height(200.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
             Text(
                 text = "Find a Hospital near you",
                 style = MaterialTheme.typography.h2,
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colors.onSecondary,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth()

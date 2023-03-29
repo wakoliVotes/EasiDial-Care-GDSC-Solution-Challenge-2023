@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +26,8 @@ import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
+import com.example.googlesolution.ui.theme.lightGreen
+import com.example.googlesolution.ui.theme.lightGreener
 
 
 @Composable
@@ -72,8 +75,10 @@ fun LoginScreen(
             color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
-            Text(text = loginUiState?.logInError ?: "unknown error",
-                color = MaterialTheme.colors.error
+            Text(
+                text = loginUiState?.logInError ?: "unknown error",
+                color = MaterialTheme.colors.error,
+                modifier = Modifier.padding(16.dp)
             )
         }
         OutlinedTextField(
@@ -152,13 +157,16 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.onBackground,
-                contentColor = MaterialTheme.colors.onPrimary
-            )
+                backgroundColor = lightGreen,
+                contentColor = MaterialTheme.colors.onSecondary,
+            ),
+            shape = MaterialTheme.shapes.medium,
         ) {
             Text(
                 text = "Login",
-                modifier = Modifier.padding(5.dp)
+                modifier = Modifier.padding(5.dp),
+                style = MaterialTheme.typography.button,
+                fontWeight = FontWeight.ExtraBold,
             )
         }
         Spacer(modifier = Modifier.size(16.dp))
@@ -179,7 +187,8 @@ fun LoginScreen(
             }) {
                 Text(
                     text = "Sign Up",
-                    color = MaterialTheme.colors.primaryVariant
+                    color = lightGreener,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }
@@ -238,7 +247,8 @@ fun SignUpScreen(
         )
         if (isError) {
             Text(text = loginUiState?.signUpError ?: "unknown error",
-                color = MaterialTheme.colors.error
+                color = MaterialTheme.colors.error,
+                modifier = Modifier.padding(16.dp)
             )
         }
         OutlinedTextField(
@@ -351,12 +361,15 @@ fun SignUpScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Black,
-                contentColor = Color.White
+                backgroundColor = lightGreen,
+                contentColor = MaterialTheme.colors.onSecondary
             )
         ) {
             Text(text = "Sign Up",
-                modifier = Modifier.padding(5.dp))
+                modifier = Modifier.padding(5.dp),
+                style = MaterialTheme.typography.button,
+                color = MaterialTheme.colors.onSecondary
+            )
         }
         Spacer(modifier = Modifier.size(16.dp))
 
@@ -376,7 +389,7 @@ fun SignUpScreen(
             }) {
                 Text(
                     text = "Login",
-                    color = MaterialTheme.colors.primaryVariant
+                    color = lightGreener
                 )
             }
         }

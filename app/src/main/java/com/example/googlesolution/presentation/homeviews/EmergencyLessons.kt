@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datalayer.EmergencyLessons
 import com.example.googlesolution.datalayer.LessonsViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
+import com.example.googlesolution.ui.theme.lightGreener
 
 
 @Composable
@@ -89,6 +90,18 @@ fun EmergencyLessons(
                 }
                 item {
                     TextField(
+                        colors = TextFieldDefaults.textFieldColors(
+                            backgroundColor = Color.White,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            cursorColor = lightGreener,
+                            textColor = Color.Black,
+                            disabledLabelColor = Color.Black,
+                            focusedLabelColor = lightGreener,
+                            unfocusedLabelColor = Color.Black,
+                        )
+                        ,
                         value = searchText,
                         onValueChange = viewModel::onSearchTermChange,
                         label = {
@@ -96,7 +109,7 @@ fun EmergencyLessons(
                                 },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp)
+                            .padding(12.dp)
                             .alpha(0.8f)
                     )
                 }
