@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datalayer.EmergencyLessons
 import com.example.googlesolution.datalayer.LessonsViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
+import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
 
 
@@ -109,8 +111,10 @@ fun EmergencyLessons(
                                 },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(12.dp)
+                            .padding(8.dp)
+                            .size(50.dp)
                             .alpha(0.8f)
+                            .clip(RoundedCornerShape(16.dp))
                     )
                 }
                    items(lessons) { lesson ->
@@ -171,12 +175,13 @@ fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
                     textAlign = TextAlign.Start
                 )
                 Icon(
-                    imageVector = if (isExpanded) Icons.Filled.Add else Icons.Filled.KeyboardArrowDown,
+                    imageVector = if (isExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                     contentDescription = "Expand/Collapse",
-                    tint = Color.Gray,
+                    tint = Color.Black,
                     modifier = Modifier
-                        .size(28.dp)
-                        .padding(end = 10.dp)
+                        .size(24.dp)
+                        .padding()
+                        .background(lightGreen, CircleShape)
                 )
 
             }

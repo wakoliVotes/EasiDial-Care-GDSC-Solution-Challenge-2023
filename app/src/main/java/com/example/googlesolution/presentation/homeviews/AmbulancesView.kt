@@ -109,10 +109,12 @@ MaterialTheme() {
                 value = searchText,
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
-                    unfocusedBorderColor =  Color.LightGray,
-                    focusedLabelColor =  Color.DarkGray,
-                    unfocusedLabelColor = Color.LightGray,
-                    cursorColor = Color.DarkGray
+                    backgroundColor = Color.White,
+                    cursorColor = lightGreener,
+                    textColor = Color.Black,
+                    disabledLabelColor = Color.Black,
+                    focusedLabelColor = lightGreener,
+                    unfocusedLabelColor = Color.Black,
                 ),
                 onValueChange = { /*TODO*/
                     viewModel.onSearchTermChange(it)
@@ -127,7 +129,7 @@ MaterialTheme() {
                 ),
                 label = {
                     Text(
-                        text = "Find Ambulance",
+                        text = "Search",
                         style = TextStyle(
                             fontWeight = FontWeight.Normal,
                             fontSize = 11.sp
