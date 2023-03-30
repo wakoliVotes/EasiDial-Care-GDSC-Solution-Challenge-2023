@@ -53,12 +53,14 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
     )
     {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.3f)
                 .clip(RoundedCornerShape(0.dp, 0.dp, 200.dp, 200.dp))
-                .background(lightGreener)
+                .background(lightGreener),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
             // Logo image section and app name
             Image(
@@ -66,7 +68,6 @@ fun LoginScreen(
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
-                    .align(Alignment.Center)
                     .padding(1.dp)
                     .background(Color.Black, CircleShape)
                     .clip(CircleShape),
@@ -77,8 +78,7 @@ fun LoginScreen(
                 style = MaterialTheme.typography.h4,
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 80.dp)
+                    .padding(top = 4.dp)
             )
         }
         Spacer(modifier = Modifier.height(80.dp))
@@ -239,12 +239,14 @@ fun SignUpScreen(
         verticalArrangement = Arrangement.Center
     )
     {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.3f)
                 .clip(RoundedCornerShape(0.dp, 0.dp, 200.dp, 200.dp))
-                .background(lightGreener)
+                .background(lightGreener),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
             // Logo image section and app name
             Image(
@@ -252,7 +254,6 @@ fun SignUpScreen(
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
-                    .align(Alignment.Center)
                     .padding(1.dp)
                     .background(Color.Black, CircleShape)
                     .clip(CircleShape),
@@ -263,8 +264,7 @@ fun SignUpScreen(
                 style = MaterialTheme.typography.h4,
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 60.dp)
+                    .padding(top = 4.dp)
             )
         }
         Spacer(modifier = Modifier.height(80.dp))
@@ -399,11 +399,11 @@ fun SignUpScreen(
                 color = MaterialTheme.colors.onSecondary
             )
         }
-        Spacer(modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.size(4.dp))
 
         Row(
             modifier = Modifier
-                .padding(bottom = 32.dp)
+                .padding(bottom = 8.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
