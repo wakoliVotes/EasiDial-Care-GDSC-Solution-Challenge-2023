@@ -1,4 +1,4 @@
-package com.example.googlesolution.datalayer
+package com.example.googlesolution.datalayer.screensviewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

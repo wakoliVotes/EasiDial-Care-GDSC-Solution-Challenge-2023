@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -26,7 +27,6 @@ import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
-import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
 
 
@@ -53,25 +53,38 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
     )
     {
-        // Logo image section and app name
-        Image(
-            painter = painterResource(id = R.drawable.easidial_logo1),
-            contentDescription = null,
+        Box(
             modifier = Modifier
-                .size(100.dp)
-                .padding(1.dp)
-                .background(Color.Black, CircleShape)
-                .clip(CircleShape),
-            contentScale = ContentScale.Fit
-        )
-        Text(
-            text = "EasiDialCare",
-            style = MaterialTheme.typography.h3
-        )
+                .fillMaxWidth()
+                .weight(0.3f)
+                .clip(RoundedCornerShape(0.dp, 0.dp, 200.dp, 200.dp))
+                .background(lightGreener)
+        ) {
+            // Logo image section and app name
+            Image(
+                painter = painterResource(id = R.drawable.easidial_logo1),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.Center)
+                    .padding(1.dp)
+                    .background(Color.Black, CircleShape)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Fit
+            )
+            Text(
+                text = "EasiDialCare",
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 80.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(80.dp))
         Text(
             text = "Login",
-            style = MaterialTheme.typography.h4,
+            style = MaterialTheme.typography.h5,
             color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
@@ -157,7 +170,7 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = lightGreen,
+                backgroundColor = lightGreener,
                 contentColor = MaterialTheme.colors.onSecondary,
             ),
             shape = MaterialTheme.shapes.medium,
@@ -172,7 +185,9 @@ fun LoginScreen(
         Spacer(modifier = Modifier.size(16.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -224,25 +239,38 @@ fun SignUpScreen(
         verticalArrangement = Arrangement.Center
     )
     {
-        // Logo image section and app name
-        Image(
-            painter = painterResource(id = R.drawable.easidial_logo1),
-            contentDescription = null,
+        Box(
             modifier = Modifier
-                .size(100.dp)
-                .padding(1.dp)
-                .background(Color.Black, CircleShape)
-                .clip(CircleShape),
-            contentScale = ContentScale.Fit
-        )
-        Text(
-            text = "EasiDialCare",
-            style = MaterialTheme.typography.h3
-        )
+                .fillMaxWidth()
+                .weight(0.3f)
+                .clip(RoundedCornerShape(0.dp, 0.dp, 200.dp, 200.dp))
+                .background(lightGreener)
+        ) {
+            // Logo image section and app name
+            Image(
+                painter = painterResource(id = R.drawable.easidial_logo1),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.Center)
+                    .padding(1.dp)
+                    .background(Color.Black, CircleShape)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Fit
+            )
+            Text(
+                text = "EasiDialCare",
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 60.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(80.dp))
         Text(
             text = "Sign Up",
-            style = MaterialTheme.typography.h4,
+            style = MaterialTheme.typography.h5,
             color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
@@ -361,7 +389,7 @@ fun SignUpScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = lightGreen,
+                backgroundColor = lightGreener,
                 contentColor = MaterialTheme.colors.onSecondary
             )
         ) {
@@ -374,7 +402,9 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.size(16.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {

@@ -35,11 +35,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
-import com.example.googlesolution.datalayer.Hospital
-import com.example.googlesolution.datalayer.HospitalsViewModel
-import com.example.googlesolution.datalayer.TopHospitals
+import com.example.googlesolution.datalayer.screensviewmodels.Hospital
+import com.example.googlesolution.datalayer.screensviewmodels.HospitalsViewModel
+import com.example.googlesolution.datalayer.screensviewmodels.TopHospitals
 import com.example.googlesolution.ui.theme.BlueMildest
-import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
 import com.example.googlesolution.ui.theme.lightGreenest
 import com.google.accompanist.flowlayout.FlowRow
@@ -77,11 +76,11 @@ fun HospitalsViews(
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             fontSize =28.sp,
-                            color = MaterialTheme.colors.onSecondary
+                            color = MaterialTheme.colors.onPrimary
                         ),
                         modifier = Modifier
                             .align(Alignment.CenterStart)
-                            .padding(start = 16.dp, top = 16.dp)
+                            .padding(start = 16.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.person),
@@ -92,6 +91,16 @@ fun HospitalsViews(
                             }
                             .align(Alignment.TopEnd)
                             .padding(end = 16.dp, top = 16.dp)
+                    )
+                    Text(
+                        text = "Access Services in Emergencies",
+                        style = MaterialTheme.typography.subtitle2,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier
+                            .padding(start = 16.dp, bottom = 16.dp, top = 15.dp)
+                            .alpha(0.5f)
+                            .align(Alignment.BottomStart)
                     )
                 }
                 Column(
@@ -218,7 +227,7 @@ fun HospitalListItem(
                 )
                 Row(
                     modifier = Modifier
-                        .padding(top = 4.dp, start = 8.dp, end = 40.dp)
+                        .padding(top = 4.dp, start = 8.dp, end = 30.dp)
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically

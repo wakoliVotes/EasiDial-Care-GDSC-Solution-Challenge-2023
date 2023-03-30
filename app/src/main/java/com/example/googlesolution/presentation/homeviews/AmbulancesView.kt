@@ -35,7 +35,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
-import com.example.googlesolution.datalayer.*
+import com.example.googlesolution.datalayer.screensviewmodels.Ambulances
+import com.example.googlesolution.datalayer.screensviewmodels.AmbulancesViewModel
+import com.example.googlesolution.datalayer.screensviewmodels.TopAmbulances
+import com.example.googlesolution.datalayer.screensviewmodels.topAmbulances
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.lightGreener
 import com.example.googlesolution.ui.theme.lightGreenest
@@ -52,125 +55,134 @@ fun AmbulancesView(
     val ambulances by viewModel.ambulances.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
 
-MaterialTheme() {
-    Scaffold {
-            padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(BlueMildest)
-        ) {
-            Box(
+    MaterialTheme() {
+        Scaffold { padding ->
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding()
-                    .height(100.dp)
-                    .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
-                    .background(lightGreener)
+                    .fillMaxSize()
+                    .background(BlueMildest)
             ) {
-                Text(
-                    text = "Ambulances",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        fontSize =28.sp,
-                        color = MaterialTheme.colors.onSecondary
-                    ),
+                Box(
                     modifier = Modifier
-                        .align(Alignment.CenterStart)
-                        .padding(start = 16.dp, top = 16.dp)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.person),
-                    contentDescription = "workspaces",
-                    modifier = Modifier
-                        .clickable {
-                            navController.navigate("account")
-                        }
-                        .align(Alignment.TopEnd)
-                        .padding(end = 16.dp, top = 16.dp)
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Popular",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp),
-                color = Color.Black
-            )
-            LazyRow {
-                items(topAmbulances) { topAmbulances ->
-                    TopAmbulanceList(topAmbulances = topAmbulances)
-                }
-            }
-            Text(
-                text = "More",
-                style = MaterialTheme.typography.subtitle2,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black,
-                modifier = Modifier
-                    .padding(top = 4.dp, bottom = 2.dp, start = 16.dp)
-            )
-            TextField(
-                value = searchText,
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent,
-                    cursorColor = lightGreener,
-                    textColor = Color.Black,
-                    disabledLabelColor = Color.Black,
-                    focusedLabelColor = lightGreener,
-                    unfocusedLabelColor = Color.Black,
-                ),
-                onValueChange = { /*TODO*/
-                    viewModel.onSearchTermChange(it)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .size(50.dp)
-                    .alpha(0.8f)
-                    .clip(RoundedCornerShape(16.dp)),
-                textStyle = TextStyle(
-                    color = Color.Black
-                ),
-                label = {
+                        .fillMaxWidth()
+                        .padding()
+                        .height(100.dp)
+                        .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
+                        .background(lightGreener)
+                ) {
                     Text(
-                        text = "Search",
+                        text = "Ambulances",
                         style = TextStyle(
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 11.sp
-                        )
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 28.sp,
+                            color = MaterialTheme.colors.onPrimary
+                        ),
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .padding(start = 16.dp)
                     )
-                },
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "search",
-                        tint = Color.DarkGray
+                    Image(
+                        painter = painterResource(id = R.drawable.person),
+                        contentDescription = "workspaces",
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate("account")
+                            }
+                            .align(Alignment.TopEnd)
+                            .padding(end = 16.dp, top = 16.dp)
                     )
-                },
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Done
-                ),
-
-                )
-            FlowRow(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .weight(1f)
-                    .padding(4.dp)
-            ) {
-                ambulances.forEach {
-                    AmbulancesListItem(ambulances = it)
+                    Text(
+                        text = "Logistics for Your Health",
+                        style = MaterialTheme.typography.subtitle2,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier
+                            .padding(start = 16.dp, bottom = 16.dp, top = 15.dp)
+                            .alpha(0.5f)
+                            .align(Alignment.BottomStart)
+                    )
                 }
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Popular",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(bottom = 8.dp, top = 4.dp, start = 16.dp),
+                    color = Color.Black
+                )
+                LazyRow {
+                    items(topAmbulances) { topAmbulances ->
+                        TopAmbulanceList(topAmbulances = topAmbulances)
+                    }
+                }
+                Text(
+                    text = "More",
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(top = 4.dp, start = 16.dp)
+                )
+                TextField(
+                    value = searchText,
+                    colors = TextFieldDefaults.textFieldColors(
+                        backgroundColor = Color.White,
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        cursorColor = lightGreener,
+                        textColor = Color.Black,
+                        disabledLabelColor = Color.Black,
+                        focusedLabelColor = lightGreener,
+                        unfocusedLabelColor = Color.Black,
+                    ),
+                    onValueChange = { /*TODO*/
+                        viewModel.onSearchTermChange(it)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .size(50.dp)
+                        .alpha(0.8f)
+                        .clip(RoundedCornerShape(16.dp)),
+                    textStyle = TextStyle(
+                        color = Color.Black
+                    ),
+                    label = {
+                        Text(
+                            text = "Search",
+                            style = TextStyle(
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 11.sp
+                            )
+                        )
+                    },
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "search",
+                            tint = Color.DarkGray
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Done
+                    ),
+
+                    )
+                FlowRow(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .weight(1f)
+                        .padding(4.dp)
+                ) {
+                    ambulances.forEach {
+                        AmbulancesListItem(ambulances = it)
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
             }
-            Spacer(modifier = Modifier.height(8.dp))
         }
     }
-}
 }
 
 @Composable
@@ -190,9 +202,7 @@ fun AmbulancesListItem(
         Column(
             modifier = Modifier
                 .padding(all = 8.dp)
-                .background(lightGreenest)
-                .clip(RoundedCornerShape(16.dp))
-            ,
+                .clip(RoundedCornerShape(16.dp)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -223,19 +233,20 @@ fun AmbulancesListItem(
             Row(
                 modifier = Modifier
                     .padding(top = 4.dp, end = 4.dp, start = 4.dp, bottom = 4.dp)
-                    .fillMaxWidth()                ,
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
                     onClick = {
-                              /*TODO - Share as Plain Text */
-                              val intent = Intent(Intent.ACTION_SEND).apply {
-                                  type = "text/plain"
-                                  putExtra(Intent.EXTRA_TEXT, "Check out ${ambulances.name}, ${ambulances.contact}")
-                              }
-                                context.startActivity(intent)
-                              },
+                        /*TODO - Share as Plain Text */
+                        val intent = Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT,
+                                "Check out ${ambulances.name}, ${ambulances.contact}")
+                        }
+                        context.startActivity(intent)
+                    },
                     modifier = Modifier
                         .size(28.dp)
                         .background(Color.Black, CircleShape)
@@ -252,12 +263,12 @@ fun AmbulancesListItem(
                 }
                 IconButton(
                     onClick = {
-                              /*TODO - Open Dialer */
+                        /*TODO - Open Dialer */
                         val intent = Intent(Intent.ACTION_DIAL).apply {
                             data = "tel:${ambulances.contact}".toUri()
                         }
                         context.startActivity(intent)
-                              },
+                    },
                     modifier = Modifier
                         .size(28.dp)
                         .background(lightGreener, CircleShape)
@@ -279,7 +290,7 @@ fun AmbulancesListItem(
 
 @Composable
 fun TopAmbulanceList(
-    topAmbulances: TopAmbulances
+    topAmbulances: TopAmbulances,
 ) {
     val context = LocalContext.current
 
@@ -302,9 +313,8 @@ fun TopAmbulanceList(
                 modifier = Modifier
                     .height(120.dp)
                     .fillMaxWidth()
-                    .padding(start=8.dp,top=8.dp,end=8.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                ,
+                    .padding(start = 8.dp, top = 8.dp, end = 8.dp)
+                    .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop
             )
             Text(
@@ -319,7 +329,7 @@ fun TopAmbulanceList(
             )
             Row(
                 modifier = Modifier
-                    .padding(top=16.dp),
+                    .padding(top = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
