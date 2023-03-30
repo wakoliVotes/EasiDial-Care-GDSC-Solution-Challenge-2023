@@ -59,29 +59,34 @@ MaterialTheme() {
                 .fillMaxSize()
                 .background(BlueMildest)
         ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, top = 20.dp, end = 16.dp)
-                    .height(36.dp)
+                    .padding()
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
+                    .background(lightGreener)
             ) {
                 Text(
                     text = "Ambulances",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        color = Color.Black
-                    )
+                        fontSize =28.sp,
+                        color = MaterialTheme.colors.onSecondary
+                    ),
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 16.dp, top = 16.dp)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.person),
                     contentDescription = "workspaces",
                     modifier = Modifier
                         .clickable {
-                            // navigate to pesonssearch
                             navController.navigate("account")
                         }
+                        .align(Alignment.TopEnd)
+                        .padding(end = 16.dp, top = 16.dp)
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))

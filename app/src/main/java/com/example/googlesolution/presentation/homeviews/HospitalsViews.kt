@@ -1,19 +1,18 @@
 package com.example.googlesolution.presentation.homeviews
 
 import android.content.Intent
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +37,6 @@ import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.Hospital
 import com.example.googlesolution.datalayer.HospitalsViewModel
 import com.example.googlesolution.datalayer.TopHospitals
-import com.example.googlesolution.datalayer.topHospitals
 import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
@@ -63,21 +61,26 @@ fun HospitalsViews(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(BlueMildest)) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    .background(BlueMildest)
+            ) {
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp, top = 8.dp, end = 16.dp)
-                        .height(24.dp)
+                        .padding()
+                        .height(100.dp)
+                        .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
+                        .background(lightGreener)
                 ) {
                     Text(
                         text = "Hospitals",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp,
+                            fontSize =28.sp,
                             color = MaterialTheme.colors.onSecondary
-                        )
+                        ),
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .padding(start = 16.dp, top = 16.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.person),
@@ -86,84 +89,71 @@ fun HospitalsViews(
                             .clickable {
                                 navController.navigate("account")
                             }
+                            .align(Alignment.TopEnd)
+                            .padding(end = 16.dp, top = 16.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Popular",
-                    style = MaterialTheme.typography.subtitle2,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(bottom = 8.dp, top = 8.dp, start = 16.dp),
-                    color = MaterialTheme.colors.onSecondary
-                )
-                LazyRow {
-                    items(topHospitals) { topHospitals ->
-                        TopHospitalsListItem(topHospitals = topHospitals)
-                    }
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "More",
-                    style = MaterialTheme.typography.subtitle2,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier
-                        .padding(top = 4.dp, bottom = 4.dp, start = 16.dp),
-                    color = MaterialTheme.colors.onSecondary
-                )
-                // Search TextField
-                OutlinedTextField(
-                    value = searchText,
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = Color.Gray,
-                        unfocusedBorderColor = Color.LightGray,
-                        focusedLabelColor = Color.Gray,
-                        unfocusedLabelColor = Color.Gray,
-                        cursorColor = Color.LightGray,
-                    ),
-                    onValueChange = { /*TODO*/
-                        viewModel.onSearchTermChange(it)
-                    },
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, end = 8.dp, bottom = 4.dp)
-                        .align(Alignment.CenterHorizontally)
-                        .size(55.dp),
-                    textStyle = TextStyle(
-                        color = MaterialTheme.colors.onSecondary
-                    ),
-                    label = {
-                        Text(
-                            text = "Find Hospital",
-                            style = TextStyle(
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 11.sp
-                            )
-                        )
-                    },
-                    trailingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "search",
-                            tint = Color.Gray
-                        )
-                    },
-                    keyboardOptions = KeyboardOptions(
-                        imeAction = ImeAction.Done,
-                        keyboardType = KeyboardType.Text
-                    ),
-                )
-                // End of Search TextField
-                FlowRow(
-                    modifier = Modifier
-                        .verticalScroll(rememberScrollState())
-                        .weight(1f)
-                        .padding(4.dp)
+                        .background(BlueMildest)
+                        .padding(top = 0.dp)
                 ) {
-                    hospitals.forEach {
-                        HospitalListItem(hospitals = it)
+                    // Search TextField
+                    OutlinedTextField(
+                        value = searchText,
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = Color.Gray,
+                            unfocusedBorderColor = Color.LightGray,
+                            focusedLabelColor = Color.Gray,
+                            unfocusedLabelColor = Color.Gray,
+                            cursorColor = Color.LightGray,
+                        ),
+                        onValueChange = { /*TODO*/
+                            viewModel.onSearchTermChange(it)
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 8.dp, end = 8.dp, bottom = 4.dp)
+                            .align(Alignment.CenterHorizontally)
+                            .size(55.dp),
+                        textStyle = TextStyle(
+                            color = MaterialTheme.colors.onSecondary
+                        ),
+                        label = {
+                            Text(
+                                text = "Find Hospital",
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 11.sp
+                                )
+                            )
+                        },
+                        trailingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "search",
+                                tint = Color.Gray
+                            )
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Done,
+                            keyboardType = KeyboardType.Text
+                        ),
+                    )
+                    // End of Search TextField
+                    FlowRow(
+                        modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .weight(1f)
+                            .padding(4.dp)
+                    ) {
+                        hospitals.forEach {
+                            HospitalListItem(hospitals = it)
+                        }
                     }
+
                 }
-                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }
@@ -185,7 +175,7 @@ fun HospitalListItem(
         Row(
             modifier = Modifier
                 .padding()
-                .background(lightGreenest)
+                .background(Color.White)
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
@@ -287,29 +277,28 @@ fun HospitalListItem(
             }
             IconButton(
                 onClick = {
-                          /*TODO*/
+                    /*TODO*/
                     /*TODO*/
                     // Toast a message saying "Has ambulance" if true, else "no ambulance"
                     if (hospitals.hasAmbulance)
                         Toast.makeText(context, "Has Ambulance", Toast.LENGTH_SHORT).show()
                     else
                         Toast.makeText(context, "No Ambulance", Toast.LENGTH_SHORT).show()
-                          },
+                },
                 modifier = Modifier
                     .padding(8.dp)
-                    .size(24.dp)
-                    .background(Color.White, CircleShape)
+                    .size(20.dp)
+                    .background(Color.Black, CircleShape)
                     .clip(CircleShape)
                     .padding()
                     .weight(0.1f)
+
             ) {
-                Icon(
-                    imageVector = if (hospitals.hasAmbulance) Icons.Default.CheckCircle else Icons.Default.Info,
-                    contentDescription = "ambulance status",
-                    tint = if (hospitals.hasAmbulance) Color.Green else Color.Red,
+                Icon(painter = painterResource(id = R.drawable.car),
+                    contentDescription = "ambulance",
+                    tint = if (hospitals.hasAmbulance) Color.Green else Color.Gray,
                     modifier = Modifier
-                        .padding()
-                        .size(24.dp)
+                        .padding(1.dp)
                 )
             }
         }
