@@ -15,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -100,29 +101,34 @@ fun HospitalsViews(
                         .padding(top = 0.dp)
                 ) {
                     // Search TextField
-                    OutlinedTextField(
+                    TextField(
                         value = searchText,
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color.Gray,
-                            unfocusedBorderColor = Color.LightGray,
-                            focusedLabelColor = Color.Gray,
-                            unfocusedLabelColor = Color.Gray,
-                            cursorColor = Color.LightGray,
+                        colors = TextFieldDefaults.textFieldColors(
+                            backgroundColor = Color.White,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            cursorColor = lightGreener,
+                            textColor = Color.Black,
+                            disabledLabelColor = Color.Black,
+                            focusedLabelColor = lightGreener,
+                            unfocusedLabelColor = Color.Black,
                         ),
                         onValueChange = { /*TODO*/
                             viewModel.onSearchTermChange(it)
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 8.dp, end = 8.dp, bottom = 4.dp)
-                            .align(Alignment.CenterHorizontally)
-                            .size(55.dp),
+                            .padding(8.dp)
+                            .size(50.dp)
+                            .alpha(0.8f)
+                            .clip(RoundedCornerShape(16.dp)),
                         textStyle = TextStyle(
                             color = MaterialTheme.colors.onSecondary
                         ),
                         label = {
                             Text(
-                                text = "Find Hospital",
+                                text = "Search",
                                 style = TextStyle(
                                     fontWeight = FontWeight.Normal,
                                     fontSize = 11.sp
@@ -184,7 +190,7 @@ fun HospitalListItem(
                     .height(106.dp)
                     .width(120.dp)
                     .weight(0.3f)
-                    .padding(end = 8.dp)
+                    .padding(4.dp)
                     .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.FillBounds
             )

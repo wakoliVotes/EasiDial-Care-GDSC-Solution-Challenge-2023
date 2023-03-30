@@ -8,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
@@ -19,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.EmergencyLessons
 import com.example.googlesolution.datalayer.LessonsViewModel
 import com.example.googlesolution.ui.theme.BlueMildest
@@ -53,28 +54,53 @@ fun EmergencyLessons(
                 .verticalScroll(rememberScrollState())
         ) {
             LazyColumn(modifier = Modifier.weight(1f)) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding()
+                            .height(100.dp)
+                            .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
+                            .background(lightGreener)
+                    ) {
+                        Text(
+                            text = "Lessons",
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold,
+                                fontSize =28.sp,
+                                color = MaterialTheme.colors.onSecondary
+                            ),
+                            modifier = Modifier
+                                .align(Alignment.CenterStart)
+                                .padding(start = 16.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.workspaces),
+                            contentDescription = "workspaces",
+                            modifier = Modifier
+                                .clickable {
+                                    navController.navigate("account")
+                                }
+                                .align(Alignment.TopEnd)
+                                .padding(end = 16.dp, top = 16.dp)
+                        )
+                        Text(
+                            text = "Be Informed: Be Safe",
+                            style = MaterialTheme.typography.subtitle2,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier
+                                .padding(start = 16.dp, bottom = 16.dp, top = 15.dp)
+                                .alpha(0.5f)
+                                .align(Alignment.BottomStart)
+                        )
+                    }
+                }
                 item{
-                    Text(
-                        text = "Emergency Lessons",
-                        style = MaterialTheme.typography.h6,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black,
-                        modifier = Modifier
-                            .padding(start = 16.dp, bottom = 5.dp, top = 40.dp)
-                    )
-                    Text(
-                        text = "Be Informed: Be Safe",
-                        style = MaterialTheme.typography.subtitle2,
-                        color = Color.Black,
-                        fontWeight = FontWeight.Medium,
-                        modifier = Modifier
-                            .padding(start = 16.dp, bottom = 25.dp, top = 5.dp)
-                            .alpha(0.5f)
-                    )
                     Text(
                         text = "Emergencies can happen at any time, and it's important to be prepared to respond quickly and effectively. Whether it's a medical emergency, a natural disaster, or a personal crisis, knowing what to do in the moment can make all the difference.",
                         modifier = Modifier
-                            .padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
+                            .padding(start = 16.dp, bottom = 8.dp, end = 16.dp, top = 8.dp)
                             .alpha(0.7f),
                         textAlign = TextAlign.Justify,
                         fontSize = 12.sp,

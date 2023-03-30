@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -110,11 +111,13 @@ MaterialTheme() {
                 modifier = Modifier
                     .padding(top = 4.dp, bottom = 2.dp, start = 16.dp)
             )
-            OutlinedTextField(
+            TextField(
                 value = searchText,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.DarkGray,
+                colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
                     cursorColor = lightGreener,
                     textColor = Color.Black,
                     disabledLabelColor = Color.Black,
@@ -126,9 +129,10 @@ MaterialTheme() {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, end = 8.dp, bottom=4.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .size(55.dp),
+                    .padding(8.dp)
+                    .size(50.dp)
+                    .alpha(0.8f)
+                    .clip(RoundedCornerShape(16.dp)),
                 textStyle = TextStyle(
                     color = Color.Black
                 ),
