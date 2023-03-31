@@ -2,23 +2,48 @@ package com.example.googlesolution.presentation.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,8 +67,6 @@ fun LoginScreen(
 
     // Visibility
     var passwordVisibility by remember { mutableStateOf(false) }
-
-
 
     Column(
         modifier = Modifier
@@ -107,24 +130,22 @@ fun LoginScreen(
                 loginViewModel?.onUserNameChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person,
-                    contentDescription = null)
-            },
-            trailingIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
             },
             label = {
                 Text(text = "Email")
             },
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Email
+            ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp),
+                .padding(horizontal = 32.dp)
         )
         OutlinedTextField(
             value = loginUiState?.password ?: "",
@@ -139,8 +160,10 @@ fun LoginScreen(
                 loginViewModel?.onPasswordNameChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -156,6 +179,10 @@ fun LoginScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -175,12 +202,21 @@ fun LoginScreen(
             ),
             shape = MaterialTheme.shapes.medium,
         ) {
-            Text(
-                text = "Login",
-                modifier = Modifier.padding(5.dp),
-                style = MaterialTheme.typography.button,
-                fontWeight = FontWeight.ExtraBold,
-            )
+            if (loginUiState?.isLoading == true) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(28.dp),
+                    strokeWidth = 4.dp,
+                    color = colorResource(id = R.color.black)
+                )
+            } else {
+                Text(
+                    text = "Login",
+                    modifier = Modifier.padding(5.dp),
+                    style = MaterialTheme.typography.button,
+                    fontWeight = FontWeight.ExtraBold,
+                )
+            }
         }
         Spacer(modifier = Modifier.size(16.dp))
 
@@ -208,9 +244,7 @@ fun LoginScreen(
             }
         }
 
-        if (loginUiState?.isLoading == true) {
-            CircularProgressIndicator()
-        }
+
 
         LaunchedEffect(key1 = loginViewModel?.hasUser) {
             if (loginViewModel?.hasUser == true) {
@@ -274,7 +308,8 @@ fun SignUpScreen(
             color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
-            Text(text = loginUiState?.signUpError ?: "unknown error",
+            Text(
+                text = loginUiState?.signUpError ?: "unknown error",
                 color = MaterialTheme.colors.error,
                 modifier = Modifier.padding(16.dp)
             )
@@ -292,21 +327,19 @@ fun SignUpScreen(
                 loginViewModel?.onUserChangeSignUp(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person,
-                    contentDescription = null)
-            },
-            trailingIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
             },
             label = {
                 Text(text = "Email")
             },
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Email
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -324,8 +357,10 @@ fun SignUpScreen(
                 loginViewModel?.onPasswordChangeSignUp(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -341,6 +376,10 @@ fun SignUpScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -358,8 +397,10 @@ fun SignUpScreen(
                 loginViewModel?.onConfirmPasswordChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -375,6 +416,10 @@ fun SignUpScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -393,11 +438,21 @@ fun SignUpScreen(
                 contentColor = MaterialTheme.colors.onSecondary
             )
         ) {
-            Text(text = "Sign Up",
-                modifier = Modifier.padding(5.dp),
-                style = MaterialTheme.typography.button,
-                color = MaterialTheme.colors.onSecondary
-            )
+            if (loginUiState?.isLoading == true) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(28.dp),
+                    strokeWidth = 4.dp,
+                    color = colorResource(id = R.color.black)
+                )
+            } else {
+                Text(
+                    text = "Sign Up",
+                    modifier = Modifier.padding(5.dp),
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.onSecondary
+                )
+            }
         }
         Spacer(modifier = Modifier.size(4.dp))
 
@@ -422,10 +477,6 @@ fun SignUpScreen(
                     color = lightGreener
                 )
             }
-        }
-
-        if (loginUiState?.isLoading == true) {
-            CircularProgressIndicator()
         }
 
         LaunchedEffect(key1 = loginViewModel?.hasUser) {
