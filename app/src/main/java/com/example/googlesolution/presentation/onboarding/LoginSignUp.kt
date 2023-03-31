@@ -2,15 +2,37 @@ package com.example.googlesolution.presentation.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,6 +41,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,8 +66,6 @@ fun LoginScreen(
 
     // Visibility
     var passwordVisibility by remember { mutableStateOf(false) }
-
-
 
     Column(
         modifier = Modifier
@@ -110,21 +132,17 @@ fun LoginScreen(
                 Icon(imageVector = Icons.Default.Person,
                     contentDescription = null)
             },
-            trailingIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                    )
-                }
-            },
             label = {
                 Text(text = "Email")
             },
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Email
+            ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp),
+                .padding(horizontal = 32.dp)
         )
         OutlinedTextField(
             value = loginUiState?.password ?: "",
@@ -156,6 +174,10 @@ fun LoginScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -295,18 +317,14 @@ fun SignUpScreen(
                 Icon(imageVector = Icons.Default.Person,
                     contentDescription = null)
             },
-            trailingIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                    )
-                }
-            },
             label = {
                 Text(text = "Email")
             },
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Email
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -341,6 +359,10 @@ fun SignUpScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -375,6 +397,10 @@ fun SignUpScreen(
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
