@@ -52,28 +52,19 @@
 
 **Home**
 
-<img width="250" height="520" src="screenshots/home1.png" >
-<img width="250" height="520" src="screenshots/home3.png" >
+<img width="250" height="520" src="screenshots/home1.png" ><img width="250" height="520" src="screenshots/home3.png" >
 
 **Hospitals, Ambulances + Search Implementation**
 
-
-
-<img width="250" height="520" src="screenshots/hospitals1.png" >
-
-<img width="250" height="520" src="screenshots/hospitals2.png" >
-<img width="250" height="520" src="screenshots/ambulances1.png" >
-<img width="250" height="520" src="screenshots/ambulances2.png" >
+<img width="250" height="520" src="screenshots/hospitals1.png" ><img width="250" height="520" src="screenshots/hospitals2.png" ><img width="250" height="520" src="screenshots/ambulances1.png" ><img width="250" height="520" src="screenshots/ambulances2.png" >
 
 **Call[Opens Dial Pad] + Share[Open Share Options]**
 
-<img width="250" height="520" src="screenshots/callshare1.png" >
-<img width="250" height="520" src="screenshots/callshare3.png" >
+<img width="250" height="520" src="screenshots/callshare1.png" ><img width="250" height="520" src="screenshots/callshare3.png" >
 
 **Lessons + Search**
 
-<img width="250" height="520" src="screenshots/lessons1.png" >
-<img width="250" height="520" src="screenshots/lessons2.png" >
+<img width="250" height="520" src="screenshots/lessons1.png" ><img width="250" height="520" src="screenshots/lessons2.png" >
 
 
 **Hospitals MapView**
