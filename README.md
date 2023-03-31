@@ -56,7 +56,7 @@
 
 **Hospitals, Ambulances + Search Implementation**
 
-<img width="250" height="520" src="screenshots/hospitals1.png" ><img width="250" height="520" src="screenshots/hospitals2.png" ><img width="250" height="520" src="screenshots/ambulances1.png" ><img width="250" height="520" src="screenshots/ambulances2.png" >
+<img width="250" height="520" src="screenshots/hospitals1.png" ><img width="250" height="520" src="screenshots/ambulances1.png" ><img width="250" height="520" src="screenshots/ambulances2.png" >
 
 **Call[Opens Dial Pad] + Share[Open Share Options]**
 
@@ -64,7 +64,7 @@
 
 **Lessons + Search**
 
-<img width="250" height="520" src="screenshots/lessons1.png" ><img width="250" height="520" src="screenshots/lessons2.png" >
+<img width="250" height="520" src="screenshots/lessons1.png" ><img width="250" height="520" src="screenshots/lessons2.png" ><img width="250" height="520" src="screenshots/lessons3.png" >
 
 
 **Hospitals MapView**
