@@ -48,43 +48,37 @@
 
 **Welcome Screen, Sign Up & Login Screens**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810700-751ab531-f4ce-4cce-ad05-5a1916d16c9d.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325114-cf3a136d-4d38-4e66-a76e-82b75382d28f.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325131-2fea4a1c-8049-4636-843a-2dfa4060cda2.png" >
+<img width="250" height="520" src="screenshots/welcome.png" ><img width="250" height="520" src="screenshots/signup.png" ><img width="250" height="520" src="screenshots/login.png" >
 
 **Home**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810796-57c20395-ecba-4008-86aa-ea0be7fa9196.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810817-08df1b8d-8742-4d71-a546-a8a3106f0b26.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810848-dce10de5-705d-4a1f-8f97-357e07e24959.png" >
-
+<img width="250" height="520" src="screenshots/home1.png" >
+<img width="250" height="520" src="screenshots/home3.png" >
 
 **Hospitals, Ambulances + Search Implementation**
 
 
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810907-a6d8b249-6530-40e8-881b-72f61e523474.png" >
+<img width="250" height="520" src="screenshots/hospitals1.png" >
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810951-c962e41e-9d6e-466b-9385-131fa1ffe251.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228810995-218a5112-332c-47a2-9f76-512b153caca2.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811008-525573e8-5b4a-4b27-9a33-00e8f2d31ddd.png" >
+<img width="250" height="520" src="screenshots/hospitals2.png" >
+<img width="250" height="520" src="screenshots/ambulances1.png" >
+<img width="250" height="520" src="screenshots/ambulances2.png" >
 
 **Call[Opens Dial Pad] + Share[Open Share Options]**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811271-4d3cdcb0-9d68-4920-a024-c5564a88e269.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811312-0199c57e-f1ef-4c98-af3f-e7234ef7a406.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811352-732aaa8d-8304-43ef-aa44-ac473fb22de6.png" >
-
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811363-280b3d54-f4a3-4233-9ff4-5b9436064377.png" >
-
+<img width="250" height="520" src="screenshots/callshare1.png" >
+<img width="250" height="520" src="screenshots/callshare3.png" >
 
 **Lessons + Search**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811054-c244c47a-2144-489f-b84a-7724e97c016d.png" >
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811090-cadf76cb-202e-409d-b5cb-0172879d3a61.png" >
+<img width="250" height="520" src="screenshots/lessons1.png" >
+<img width="250" height="520" src="screenshots/lessons2.png" >
 
 
 **Hospitals MapView**
 
-<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325251-7b3f2aec-c240-4352-b68a-2e1cab51ff5a.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325280-3557fc40-6c38-4560-89c3-6081e94f3ee8.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325312-db9bdf3b-4020-405d-9499-a093a51db880.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228811155-7bbbd912-5a6a-42c7-946a-6894c15d328c.png" >
+<img width="250" height="520" src="screenshots/map.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325280-3557fc40-6c38-4560-89c3-6081e94f3ee8.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325312-db9bdf3b-4020-405d-9499-a093a51db880.png" >
 
 
 ### Instructions for using the app

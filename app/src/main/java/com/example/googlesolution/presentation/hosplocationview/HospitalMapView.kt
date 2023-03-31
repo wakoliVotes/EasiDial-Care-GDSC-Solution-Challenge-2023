@@ -1,4 +1,4 @@
-package com.example.googlesolution.presentation.locationviews
+package com.example.googlesolution.presentation.hosplocationview
 
 import android.location.Location
 import androidx.compose.runtime.Composable
@@ -35,20 +35,19 @@ fun HospitalsMapView(
                 Pair("Kenyatta University Teaching Hospital",
                     LatLng(-1.1774, 36.9160)),
                 Pair("Pumwani Maternity Hospital", LatLng(-1.2806, 36.8455)),
-                Pair("Agha Khan University Hospital", LatLng(-1.2921, 36.8219)),
                 Pair("The Nairobi Hospital", LatLng(-1.2956, 36.8040)),
                 Pair("Ruaraka Uhai Neema Hospital", LatLng(-1.2269, 36.8852)),
                 Pair("St. Francis Hospital", LatLng(-1.2254, 36.91588)),
                 Pair("St. Johns Hospital Githurai", LatLng(-1.2033, 36.9146)),
                 Pair("Guru Nanak Ramgarhia Sikh Hospital",
                     LatLng(-1.2694, 36.8330)),
-                Pair("Mama Lucy Hospital", LatLng(-1.27383, 36.8994)),
-                Pair("Ruaraka Uhai Neema Hospital", LatLng(-1.22677, 36.8855)),
+                Pair("Mama Lucy Hospital", LatLng(-1.2738, 36.8994)),
+                Pair("Ruaraka Uhai Neema Hospital", LatLng(-1.2267, 36.8855)),
                 Pair("Gertrude's Children's Hospital -TRM Clinic",
                     LatLng(-1.2196, 36.8891)),
                 Pair("Trinity Medical Clinic", LatLng(-1.2236, 36.8935)),
                 Pair("The Karen Hospital", LatLng(-1.3361, 36.7261)),
-                Pair("St. Scholastica Uzima Hospital", LatLng(-1.2537, 36.85667)),
+                Pair("St. Scholastica Uzima Hospital", LatLng(-1.2537, 36.8566)),
                 Pair("Crane Hospital", LatLng(-1.2149, 36.8865)),
                 // Add Jesse Kay Children Hospital
                 Pair("Jesse Kay Children Hospital", LatLng(-1.2161, 36.8869)),

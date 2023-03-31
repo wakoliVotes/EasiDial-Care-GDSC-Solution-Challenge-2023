@@ -9,7 +9,7 @@ import com.example.googlesolution.presentation.homeviews.HomeView
 import com.example.googlesolution.presentation.homeviews.AmbulancesView
 import com.example.googlesolution.presentation.homeviews.EmergencyLessons
 import com.example.googlesolution.presentation.homeviews.HospitalsViews
-import com.example.googlesolution.presentation.locationviews.HospitalsMapView
+import com.example.googlesolution.presentation.hosplocationview.HospitalsMapView
 import com.example.googlesolution.presentation.homeviews.AccountView
 
 

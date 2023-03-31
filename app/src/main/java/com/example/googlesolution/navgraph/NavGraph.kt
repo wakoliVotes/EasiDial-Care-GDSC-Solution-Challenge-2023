@@ -10,7 +10,7 @@ import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.presentation.onboarding.SignUpScreen
 import com.example.googlesolution.presentation.homeviews.HomeView
 import com.example.googlesolution.presentation.homeviews.*
-import com.example.googlesolution.presentation.locationviews.HospitalsMapView
+import com.example.googlesolution.presentation.hosplocationview.HospitalsMapView
 import com.example.googlesolution.presentation.onboarding.OnBoardScreen
 import com.example.googlesolution.presentation.homeviews.AccountView
 
