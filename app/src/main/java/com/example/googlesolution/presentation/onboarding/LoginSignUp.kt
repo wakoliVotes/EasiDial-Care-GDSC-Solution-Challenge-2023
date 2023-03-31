@@ -39,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -129,8 +130,10 @@ fun LoginScreen(
                 loginViewModel?.onUserNameChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
             },
             label = {
                 Text(text = "Email")
@@ -157,8 +160,10 @@ fun LoginScreen(
                 loginViewModel?.onPasswordNameChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -197,12 +202,21 @@ fun LoginScreen(
             ),
             shape = MaterialTheme.shapes.medium,
         ) {
-            Text(
-                text = "Login",
-                modifier = Modifier.padding(5.dp),
-                style = MaterialTheme.typography.button,
-                fontWeight = FontWeight.ExtraBold,
-            )
+            if (loginUiState?.isLoading == true) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(28.dp),
+                    strokeWidth = 4.dp,
+                    color = colorResource(id = R.color.black)
+                )
+            } else {
+                Text(
+                    text = "Login",
+                    modifier = Modifier.padding(5.dp),
+                    style = MaterialTheme.typography.button,
+                    fontWeight = FontWeight.ExtraBold,
+                )
+            }
         }
         Spacer(modifier = Modifier.size(16.dp))
 
@@ -230,9 +244,7 @@ fun LoginScreen(
             }
         }
 
-        if (loginUiState?.isLoading == true) {
-            CircularProgressIndicator()
-        }
+
 
         LaunchedEffect(key1 = loginViewModel?.hasUser) {
             if (loginViewModel?.hasUser == true) {
@@ -296,7 +308,8 @@ fun SignUpScreen(
             color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
-            Text(text = loginUiState?.signUpError ?: "unknown error",
+            Text(
+                text = loginUiState?.signUpError ?: "unknown error",
                 color = MaterialTheme.colors.error,
                 modifier = Modifier.padding(16.dp)
             )
@@ -314,8 +327,10 @@ fun SignUpScreen(
                 loginViewModel?.onUserChangeSignUp(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
             },
             label = {
                 Text(text = "Email")
@@ -342,8 +357,10 @@ fun SignUpScreen(
                 loginViewModel?.onPasswordChangeSignUp(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -380,8 +397,10 @@ fun SignUpScreen(
                 loginViewModel?.onConfirmPasswordChange(it)
             },
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Lock,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
@@ -419,11 +438,21 @@ fun SignUpScreen(
                 contentColor = MaterialTheme.colors.onSecondary
             )
         ) {
-            Text(text = "Sign Up",
-                modifier = Modifier.padding(5.dp),
-                style = MaterialTheme.typography.button,
-                color = MaterialTheme.colors.onSecondary
-            )
+            if (loginUiState?.isLoading == true) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(28.dp),
+                    strokeWidth = 4.dp,
+                    color = colorResource(id = R.color.black)
+                )
+            } else {
+                Text(
+                    text = "Sign Up",
+                    modifier = Modifier.padding(5.dp),
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.onSecondary
+                )
+            }
         }
         Spacer(modifier = Modifier.size(4.dp))
 
@@ -448,10 +477,6 @@ fun SignUpScreen(
                     color = lightGreener
                 )
             }
-        }
-
-        if (loginUiState?.isLoading == true) {
-            CircularProgressIndicator()
         }
 
         LaunchedEffect(key1 = loginViewModel?.hasUser) {
