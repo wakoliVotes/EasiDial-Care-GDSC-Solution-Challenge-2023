@@ -1,12 +1,12 @@
 <img width=100% height="380" src="https://user-images.githubusercontent.com/77758884/228333833-a2d4a207-1a83-4555-bf9e-14b0ea1e774b.jpeg" >
 
-## Google Solution Challenge Mobile App
+# EasiDial Care: Google Solution Challenge App
 
 ### Solution Challenge Project:
 
 - App that enables people to find the nearest hospitals around them and the mobile numbers of the hospitals ambulances which will make it easier to save lives.
 - The app gives information about nearest hospitals and ambulances.
-- There are contact information and if the hospitals have ambulance services.
+- There are contact information and if the hospitals have ambulance services or not.
 - There is a map view that allows the public to see nearest hospitals on the map
 - The map/location aspect uses Google Maps API
 
@@ -81,14 +81,14 @@
    - To clone the repository, you need to have Git installed on your computer, and you can use the following command in your terminal:
 
    ```kt
-   git clone https://github.com/wakoliVotes/GoogleSolutionChallengeApp.git
+   git clone https://github.com/wakoliVotes/EasiDial-Care-GDSC-Solution-Challenge-2023
 
    ```
 
 2. Open Android Studio and select "**Open an existing Android Studio project**".
 3. Navigate to the directory where you downloaded the repository and select the project's root folder.
 4. Wait for Android Studio to build the project and sync all the dependencies.
-5. Connect your Android device to your computer via USB or use an emulator.
+5. Connect your Android device to your computer via USB, WI-FI debugging or use an emulator.
 6. Click on the "Run" button in Android Studio and select your device from the list.
 7. Wait for the app to be installed on your device.
 8. Once the app is installed, open it and follow the on-screen instructions to use the app.
