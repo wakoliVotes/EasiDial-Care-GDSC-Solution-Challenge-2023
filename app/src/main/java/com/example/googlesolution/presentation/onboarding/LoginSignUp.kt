@@ -59,11 +59,12 @@ import com.example.googlesolution.ui.theme.lightGreener
 fun LoginScreen(
     loginViewModel: LoginViewModel? = null,
     onNavToHomePage: () -> Unit,
-    onNavToSignUpPage: () -> Unit,
+    onNavToSignUpPge: () -> Unit,
 ) {
     val loginUiState = loginViewModel?.loginUiState
     val isError = loginUiState?.logInError != null
     val context = LocalContext.current
+    val primaryColor = MaterialTheme.colors.primary
 
     // Visibility
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -71,7 +72,7 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BlueMildest),
+            .background(MaterialTheme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     )
@@ -108,7 +109,8 @@ fun LoginScreen(
         Text(
             text = "Login",
             style = MaterialTheme.typography.h5,
-            color = MaterialTheme.colors.onSecondary
+            // Commented this color property, it's not changed on dark theme
+//            color = MaterialTheme.colors.onSecondary
         )
         if (isError) {
             Text(
@@ -125,6 +127,7 @@ fun LoginScreen(
                 focusedLabelColor = Color.DarkGray,
                 unfocusedLabelColor = Color.LightGray,
                 cursorColor = Color.DarkGray,
+                textColor = primaryColor,
             ),
             onValueChange = {
                 loginViewModel?.onUserNameChange(it)
@@ -132,11 +135,12 @@ fun LoginScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = primaryColor
                 )
             },
             label = {
-                Text(text = "Email")
+                Text(text = "Email", color = primaryColor)
             },
             isError = isError,
             keyboardOptions = KeyboardOptions(
@@ -155,6 +159,7 @@ fun LoginScreen(
                 focusedLabelColor = Color.DarkGray,
                 unfocusedLabelColor = Color.LightGray,
                 cursorColor = Color.DarkGray,
+                textColor = primaryColor,
             ),
             onValueChange = {
                 loginViewModel?.onPasswordNameChange(it)
@@ -162,20 +167,22 @@ fun LoginScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = primaryColor
                 )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
                     // User painter resource to add visibility icon
-                    Image(
+                    Icon(
                         painter = painterResource(id = if (passwordVisibility) R.drawable.visibility else R.drawable.visibility_off),
                         contentDescription = null,
+                        tint = primaryColor
                     )
                 }
             },
             label = {
-                Text(text = "Password")
+                Text(text = "Password", color = primaryColor)
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
@@ -229,12 +236,12 @@ fun LoginScreen(
         ) {
             Text(
                 text = "Don't have an account?",
-                color = MaterialTheme.colors.onSecondary
+//                color = MaterialTheme.colors.onSecondary  // Dark theme*
             )
             Spacer(modifier = Modifier.size(8.dp))
             TextButton(onClick = {
                 /*TODO*/
-                onNavToSignUpPage.invoke()
+                onNavToSignUpPge.invoke()
             }) {
                 Text(
                     text = "Sign Up",
@@ -263,6 +270,7 @@ fun SignUpScreen(
     val loginUiState = loginViewModel?.loginUiState
     val isError = loginUiState?.signUpError != null
     val context = LocalContext.current
+    val primaryColor = MaterialTheme.colors.primary
 
     // visibility
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -322,6 +330,7 @@ fun SignUpScreen(
                 focusedLabelColor = Color.DarkGray,
                 unfocusedLabelColor = Color.LightGray,
                 cursorColor = Color.DarkGray,
+                textColor = primaryColor,
             ),
             onValueChange = {
                 loginViewModel?.onUserChangeSignUp(it)
@@ -329,11 +338,11 @@ fun SignUpScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
-                    contentDescription = null
+                    contentDescription = null, tint = primaryColor,
                 )
             },
             label = {
-                Text(text = "Email")
+                Text(text = "Email", color = primaryColor)
             },
             isError = isError,
             keyboardOptions = KeyboardOptions(
@@ -352,6 +361,7 @@ fun SignUpScreen(
                 focusedLabelColor = Color.DarkGray,
                 unfocusedLabelColor = Color.LightGray,
                 cursorColor = Color.DarkGray,
+                textColor = primaryColor,
             ),
             onValueChange = {
                 loginViewModel?.onPasswordChangeSignUp(it)
@@ -359,20 +369,21 @@ fun SignUpScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = null
+                    contentDescription = null, tint = primaryColor,
                 )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
                     // User painter resource to add visibility icon
-                    Image(
+                    Icon(
                         painter = painterResource(id = if (passwordVisibility) R.drawable.visibility else R.drawable.visibility_off),
                         contentDescription = null,
+                        tint = primaryColor
                     )
                 }
             },
             label = {
-                Text(text = "Password")
+                Text(text = "Password", color = primaryColor)
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
@@ -392,6 +403,7 @@ fun SignUpScreen(
                 focusedLabelColor = Color.DarkGray,
                 unfocusedLabelColor = Color.LightGray,
                 cursorColor = Color.DarkGray,
+                textColor = primaryColor,
             ),
             onValueChange = {
                 loginViewModel?.onConfirmPasswordChange(it)
@@ -399,20 +411,21 @@ fun SignUpScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = null
+                    contentDescription = null, tint = primaryColor
                 )
             },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
                     // User painter resource to add visibility icon
-                    Image(
+                    Icon(
                         painter = painterResource(id = if (passwordVisibility) R.drawable.visibility else R.drawable.visibility_off),
                         contentDescription = null,
+                        tint = primaryColor,
                     )
                 }
             },
             label = {
-                Text(text = "Confirm Password")
+                Text(text = "Confirm Password", color = primaryColor)
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             isError = isError,
@@ -465,7 +478,7 @@ fun SignUpScreen(
         ) {
             Text(
                 text = "Already have an Account?",
-                color = MaterialTheme.colors.onSecondary
+//                color = MaterialTheme.colors.onSecondary
             )
             Spacer(modifier = Modifier.size(8.dp))
             TextButton(onClick = {
