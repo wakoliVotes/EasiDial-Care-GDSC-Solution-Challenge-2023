@@ -19,9 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.navgraph.Screens
 import com.example.googlesolution.ui.theme.White
 import com.example.googlesolution.ui.theme.lightGreen
 
+//TODO:
 // Create a screens containing image, description text and a button to navigate to the next screen
 // Fillmaxsize is used to fill the entire screen
 // background color is set to blue
@@ -29,6 +31,8 @@ import com.example.googlesolution.ui.theme.lightGreen
 // Text is placed in the center of the screen
 // Button is placed at the bottom of the screen
 // text color is set to white
+
+// Remove this screen once user is signed in
 
 
 @Composable
@@ -80,7 +84,13 @@ fun OnBoardScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(10.dp))
             Button(
                 onClick = {
-                    navController.navigate("signIn")
+                    // on navigation to the SignIn screen, pop the backstack
+                    navController.navigate(Screens.SignIn.route){
+                        launchSingleTop = true
+                        popUpTo(route = Screens.OnBoarding.route) {
+                            inclusive = true
+                        }
+                    }
                 },
                 modifier = Modifier
                     .padding(16.dp)

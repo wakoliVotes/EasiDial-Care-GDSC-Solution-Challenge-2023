@@ -18,7 +18,6 @@ import com.example.googlesolution.presentation.homeviews.AccountView
 enum class LoginRoutes {
     SignIn,
     SignUp,
-    LogOut
 }
 
 @Composable
@@ -28,48 +27,52 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.OnBoarding.route) {
+        startDestination = Screens.OnBoarding.route
+    )
+    {
         composable(route = Screens.OnBoarding.route) {
             OnBoardScreen(navController = navController)
         }
         composable(route = LoginRoutes.SignIn.name) {
-            LoginScreen(onNavToHomePage = {
-                /*TODO*/
-                navController.navigate(Screens.MainScreen.route) {
-                    launchSingleTop = true
-                    popUpTo(route = Screens.SignIn.route) {
-                        inclusive = true
+            LoginScreen(
+                loginViewModel = loginViewModel,
+                onNavToHomePage = {
+                    navController.navigate(Screens.MainScreen.route) {
+                        launchSingleTop = true
+                        popUpTo(route = LoginRoutes.SignIn.name) {
+                            inclusive = true
+                        }
                     }
-
-                }
-            },
-                loginViewModel = loginViewModel
-
-            ) {
-                navController.navigate(LoginRoutes.SignUp.name) {
-                    launchSingleTop = true
-                    popUpTo(LoginRoutes.SignIn.name) {
-
-                        inclusive = true
+                },
+                onNavToSignUpPge = {
+                    navController.navigate(LoginRoutes.SignUp.name){
+                        launchSingleTop = true
+                        popUpTo(route = LoginRoutes.SignIn.name) {
+                            inclusive = true
+                        }
                     }
-                }
-
-            }
+                })
         }
         composable(route = LoginRoutes.SignUp.name) {
-            SignUpScreen(onNavToHomePage = {
-                /*TODO*/
-                navController.navigate(Screens.MainScreen.route) {
-                    launchSingleTop = true
-                    popUpTo(route = Screens.SignIn.route) {
-                        inclusive = true
+            SignUpScreen(
+                loginViewModel = loginViewModel,
+                onNavToHomePage = {
+                    navController.navigate(Screens.MainScreen.route) {
+                        launchSingleTop = true
+                        popUpTo(route = LoginRoutes.SignUp.name) {
+                            inclusive = true
+                        }
+                    }
+                },
+                onNavToLoginpPage = {
+                    navController.navigate(LoginRoutes.SignIn.name){
+                        launchSingleTop = true
+                        popUpTo(route = LoginRoutes.SignUp.name) {
+                            inclusive = true
+                        }
                     }
                 }
-            },
-                loginViewModel = loginViewModel
-            ) {
-                navController.navigate(LoginRoutes.SignIn.name)
-            }
+            )
         }
         composable(route = Screens.MainScreen.route) {
             MainScreen()
