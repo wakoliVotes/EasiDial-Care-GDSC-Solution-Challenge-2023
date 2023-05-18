@@ -32,8 +32,9 @@ import com.example.googlesolution.ui.theme.lightGreen
 // Button is placed at the bottom of the screen
 // text color is set to white
 
-// Remove this screen once user is signed in
-
+/**
+This screen is not the start route once user signs in, this is checked at the nav graph.
+*/
 
 @Composable
 fun OnBoardScreen(navController: NavHostController) {

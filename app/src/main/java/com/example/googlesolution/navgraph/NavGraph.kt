@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.googlesolution.datalayer.firebaseauth.AuthRepository
 import com.example.googlesolution.presentation.onboarding.LoginScreen
 import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
 import com.example.googlesolution.presentation.onboarding.SignUpScreen
@@ -27,7 +28,7 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.OnBoarding.route
+        startDestination = if (AuthRepository().hasUser()) Screens.MainScreen.route else Screens.OnBoarding.route
     )
     {
         composable(route = Screens.OnBoarding.route) {
