@@ -1,7 +1,6 @@
 package com.example.googlesolution.presentation.homeviews
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
@@ -21,11 +19,13 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Shapes
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,6 +45,8 @@ import com.example.googlesolution.R
 import com.example.googlesolution.navgraph.BottomBarScreen
 import com.example.googlesolution.navgraph.BottomNavGraph
 import com.example.googlesolution.navgraph.painterFromResource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 @Preview
@@ -52,7 +54,16 @@ import com.example.googlesolution.navgraph.painterFromResource
 fun MainScreen(
 ) {
     val navController = rememberNavController()
-    Scaffold(topBar = { MainScreenAppBar() },
+    val scaffoldState = rememberScaffoldState()
+    val coroutineScope = rememberCoroutineScope()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = { MainScreenAppBar(scaffoldState, coroutineScope) },
+        drawerContent = { NavDrawer(navController) },
+        drawerShape = RoundedCornerShape(topEnd = 32.dp, bottomEnd = 32.dp),
+        drawerBackgroundColor = MaterialTheme.colors.background,
+        drawerContentColor = MaterialTheme.colors.onBackground,
         bottomBar = { BottomBar(navController = navController) }) { paddingValues ->
         Row(modifier = Modifier.padding(paddingValues)) {
             BottomNavGraph(navController = navController)
@@ -62,10 +73,12 @@ fun MainScreen(
 
 // TODO: Hoist top appbar states
 @Composable
-fun MainScreenAppBar() {
+fun MainScreenAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScope) {
     TopAppBar(
         navigationIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = {
+                coroutineScope.launch { scaffoldState.drawerState.open() }
+            }) {
                 Icon(
                     painter = painterResource(id = R.drawable.round_menu_24),
                     contentDescription = "Menu",
@@ -111,21 +124,9 @@ fun MainScreenAppBar() {
 @Preview
 @Composable
 fun MainScreenAppBarPrev() {
-    MainScreenAppBar()
+    MainScreenAppBar(rememberScaffoldState(), rememberCoroutineScope())
 }
 
-@Composable
-fun MainScreenDrawer() {
-    Column {
-
-    }
-}
-
-@Preview
-@Composable
-fun MainScreenDrawerPrev() {
-    MainScreenDrawer()
-}
 
 @Composable
 fun BottomBar(navController: NavHostController) {
@@ -170,14 +171,14 @@ fun RowScope.AddItem(
             Text(
                 text = screen.title,
                 fontSize = 8.sp,
-                color = if (isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onSurface,
+                color = if (isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground,
             )
         },
         icon = {
             Icon(
                 painter = painterFromResource(screen.icon),
                 contentDescription = screen.title,
-                tint = if (isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onSurface,
+                tint = if (isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground,
                 modifier = Modifier.size(if (isSelected) 36.dp else 30.dp)
 
             )
