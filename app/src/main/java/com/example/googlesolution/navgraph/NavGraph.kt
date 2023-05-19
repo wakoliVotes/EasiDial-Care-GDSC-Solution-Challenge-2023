@@ -6,14 +6,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.datalayer.firebaseauth.AuthRepository
-import com.example.googlesolution.presentation.onboarding.LoginScreen
 import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
-import com.example.googlesolution.presentation.onboarding.SignUpScreen
-import com.example.googlesolution.presentation.homeviews.HomeView
-import com.example.googlesolution.presentation.homeviews.*
-import com.example.googlesolution.presentation.hosplocationview.HospitalsMapView
-import com.example.googlesolution.presentation.onboarding.OnBoardScreen
+import com.example.googlesolution.presentation.drawer_destinations.AboutUsPage
+import com.example.googlesolution.presentation.drawer_destinations.EmergencyButtonPage
+import com.example.googlesolution.presentation.drawer_destinations.FeedbackPage
+import com.example.googlesolution.presentation.drawer_destinations.MedicalInformationPage
+import com.example.googlesolution.presentation.drawer_destinations.ProfilePage
 import com.example.googlesolution.presentation.homeviews.AccountView
+import com.example.googlesolution.presentation.homeviews.AmbulancesView
+import com.example.googlesolution.presentation.homeviews.EmergencyLessons
+import com.example.googlesolution.presentation.homeviews.HomeView
+import com.example.googlesolution.presentation.homeviews.HospitalsViews
+import com.example.googlesolution.presentation.homeviews.MainScreen
+import com.example.googlesolution.presentation.hosplocationview.HospitalsMapView
+import com.example.googlesolution.presentation.onboarding.LoginScreen
+import com.example.googlesolution.presentation.onboarding.OnBoardScreen
+import com.example.googlesolution.presentation.onboarding.SignUpScreen
 
 
 enum class LoginRoutes {
@@ -76,7 +84,7 @@ fun NavGraph(
             )
         }
         composable(route = Screens.MainScreen.route) {
-            MainScreen()
+            MainScreen(mainNavController = navController)
         }
         composable(route = Screens.Home.route) {
             HomeView(navController = navController)
@@ -96,5 +104,24 @@ fun NavGraph(
         composable(route = Screens.Account.route) {
             AccountView(navController = navController, loginViewModel = loginViewModel)
         }
+
+        // Nav Drawer Destinations
+        ///Start
+        composable(route = Screens.ProfilePage.route) {
+            ProfilePage(navController = navController)
+        }
+        composable(route = Screens.MedicalInformationPage.route) {
+            MedicalInformationPage(navController = navController)
+        }
+        composable(route = Screens.EmergencyButtonPage.route) {
+            EmergencyButtonPage(navController = navController)
+        }
+        composable(route = Screens.FeedbackPage.route) {
+            FeedbackPage(navController = navController)
+        }
+        composable(route = Screens.AboutUsPage.route) {
+            AboutUsPage(navController = navController)
+        }
+        ///End
     }
 }

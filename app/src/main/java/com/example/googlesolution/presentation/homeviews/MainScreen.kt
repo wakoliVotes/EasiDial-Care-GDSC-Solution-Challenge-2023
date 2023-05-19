@@ -49,26 +49,34 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-@Preview
+
 @Composable
 fun MainScreen(
+    mainNavController: NavHostController,
 ) {
-    val navController = rememberNavController()
+
+    val bottomNavController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = { MainScreenAppBar(scaffoldState, coroutineScope) },
-        drawerContent = { NavDrawer(navController) },
+        drawerContent = { NavDrawer(mainNavController) },
         drawerShape = RoundedCornerShape(topEnd = 32.dp, bottomEnd = 32.dp),
         drawerBackgroundColor = MaterialTheme.colors.background,
         drawerContentColor = MaterialTheme.colors.onBackground,
-        bottomBar = { BottomBar(navController = navController) }) { paddingValues ->
+        bottomBar = { BottomBar(navController = bottomNavController) }) { paddingValues ->
         Row(modifier = Modifier.padding(paddingValues)) {
-            BottomNavGraph(navController = navController)
+            BottomNavGraph(navController = bottomNavController)
         }
     }
+}
+
+@Preview
+@Composable
+fun MainScreenPrev() {
+    MainScreen(mainNavController = rememberNavController())
 }
 
 // TODO: Hoist top appbar states

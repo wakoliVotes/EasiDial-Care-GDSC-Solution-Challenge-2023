@@ -36,11 +36,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.navgraph.Screens
 
 // TODO: Hoist states in nav drawer Composables
 
 @Composable
 fun NavDrawer(navController: NavController) {
+
+
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxSize(),
@@ -49,7 +52,7 @@ fun NavDrawer(navController: NavController) {
         Spacer(modifier = Modifier.height(40.dp))
         NavHeader()
         Spacer(modifier = Modifier.height(20.dp))
-        NavBody()
+        NavBody(navController = navController)
         Spacer(modifier = Modifier.height(20.dp))
     }
 }
@@ -89,6 +92,8 @@ fun NavHeaderPrev() {
 
 @Composable
 fun NavListItem(
+    navController: NavController,
+    route: String,
     icon: Int,
     iconSize: Dp = 32.dp,
     label: String,
@@ -99,7 +104,9 @@ fun NavListItem(
             .padding(top = 4.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
             .fillMaxWidth()
             .clickable {
-                // TODO:
+                navController.navigate(route) {
+                    launchSingleTop = true
+                }
             },
         shape = RoundedCornerShape(16.dp),
         backgroundColor = MaterialTheme.colors.secondary
@@ -125,27 +132,62 @@ fun NavListItem(
 @Preview
 @Composable
 fun NavListItemPrev() {
-    NavListItem(icon = R.drawable.outline_account_circle_24, label = "Account")
+    NavListItem(
+        navController = rememberNavController(),
+        route = Screens.ProfilePage.route,
+        icon = R.drawable.outline_account_circle_24,
+        label = "Account"
+    )
 }
 
 @Composable
-fun NavBody() {
+fun NavBody(navController: NavController) {
     LazyColumn {
-        item { NavListItem(icon = R.drawable.outline_account_circle_24, label = "Profile") }
         item {
             NavListItem(
+                navController = navController,
+                route = Screens.ProfilePage.route,
+                icon = R.drawable.outline_account_circle_24,
+                label = "Profile"
+            )
+        }
+        item {
+            NavListItem(
+                navController = navController,
+                route = Screens.MedicalInformationPage.route,
                 icon = R.drawable.outline_medical_information_24,
                 label = "Medical Information"
             )
         }
-        item { NavListItem(icon = R.drawable.outline_emergency_24, label = "Emergency Button") }
-        item { NavListItem(icon = R.drawable.outline_feedback_24, label = "Feedback") }
-        item { NavListItem(icon = R.drawable.outline_info_24, label = "About Us") }
+        item {
+            NavListItem(
+                navController = navController,
+                route = Screens.EmergencyButtonPage.route,
+                icon = R.drawable.outline_emergency_24,
+                label = "Emergency Button"
+            )
+        }
+        item {
+            NavListItem(
+                navController = navController,
+                route = Screens.FeedbackPage.route,
+                icon = R.drawable.outline_feedback_24,
+                label = "Feedback"
+            )
+        }
+        item {
+            NavListItem(
+                navController = navController,
+                route = Screens.AboutUsPage.route,
+                icon = R.drawable.outline_info_24,
+                label = "About Us"
+            )
+        }
     }
 }
 
 @Preview
 @Composable
 fun NavBodyPrev() {
-    NavBody()
+    NavBody(rememberNavController())
 }
