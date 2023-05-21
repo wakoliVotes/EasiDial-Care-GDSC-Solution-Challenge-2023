@@ -33,41 +33,22 @@ fun HomeView(
     MaterialTheme {
         Scaffold(
             modifier = Modifier
-                .background(BlueMildest)
-                .fillMaxSize()
-            ,
+                //.background(BlueMildest)
+                .fillMaxSize(),
         ) { paddingValues ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .background(BlueMildest)
+                    //.background(BlueMildest)
                     .verticalScroll(rememberScrollState())
             ) {
-                Text(
-                    text = "EasiDial Care",
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 20.dp)
-                        .alpha(0.8f),
-                    color = MaterialTheme.colors.onSecondary
-                )
-                Text(
-                    text = "Here to help you",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Normal,
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 4.dp)
-                        .alpha(0.5f),
-                    color = MaterialTheme.colors.onSecondary
-                )
+
                 // SDG reference
-                Spacer(modifier = Modifier.height(20.dp))
                 // Banner - Mission + Team + Vision
                 LazyRow(
-                    modifier = Modifier.padding(start = 8.dp),
-                ){
+                    modifier = Modifier.padding(8.dp),
+                ) {
                     item {
                         Card(
                             shape = RoundedCornerShape(24.dp),
@@ -75,11 +56,12 @@ fun HomeView(
                                 .padding(5.dp)
                                 .width(350.dp)
                                 .height(160.dp),
-                            elevation = 4.dp
+                            elevation = 4.dp,
+                            backgroundColor = MaterialTheme.colors.surface
                         ) {
                             Column(
                                 modifier = Modifier
-                                    .background(MaterialTheme.colors.primaryVariant)
+                                    // .background(MaterialTheme.colors.primaryVariant)
                                     .padding(16.dp)
                             ) {
                                 Text(
@@ -88,7 +70,6 @@ fun HomeView(
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier
                                         .padding(8.dp),
-                                    color = MaterialTheme.colors.surface
                                 )
                                 Text(
                                     text = "To improve access to critical care services for everyone, regardless of location or economic status.",
@@ -96,12 +77,11 @@ fun HomeView(
                                     modifier = Modifier
                                         .padding(start = 8.dp, end = 8.dp)
                                         .alpha(0.9f),
-                                    color = MaterialTheme.colors.surface
                                 )
                             }
                         }
                     }
-                    item{
+                    item {
                         Card(
                             modifier = Modifier
                                 .padding(5.dp)
@@ -136,11 +116,11 @@ fun HomeView(
                                 .padding(5.dp)
                                 .width(350.dp)
                                 .height(160.dp),
-                            elevation = 4.dp
+                            elevation = 4.dp,
+                            backgroundColor = MaterialTheme.colors.surface
                         ) {
                             Column(
                                 modifier = Modifier
-                                    .background(MaterialTheme.colors.onSecondary)
                                     .padding(8.dp)
                             ) {
                                 Text(
@@ -149,7 +129,6 @@ fun HomeView(
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier
                                         .padding(8.dp),
-                                    color = MaterialTheme.colors.surface
                                 )
                                 Text(
                                     text = "A world where every person has access to the healthcare services they need, when and where they need them.",
@@ -157,7 +136,6 @@ fun HomeView(
                                     modifier = Modifier
                                         .padding(start = 8.dp, end = 8.dp)
                                         .alpha(0.9f),
-                                    color = MaterialTheme.colors.surface
                                 )
                             }
                         }
@@ -196,11 +174,11 @@ fun HomeView(
                             .weight(0.5f)
                             .padding(5.dp)
                             .height(180.dp),
-                        elevation = 4.dp
+                        elevation = 4.dp,
+                        backgroundColor = MaterialTheme.colors.surface
                     ) {
                         Column(
                             modifier = Modifier
-                                .background(MaterialTheme.colors.primaryVariant)
                                 .padding(8.dp)
                         ) {
                             Text(
@@ -209,7 +187,6 @@ fun HomeView(
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
-                                color = MaterialTheme.colors.surface
                             )
                             Text(
                                 text = "In case of emergency, get help",
@@ -217,16 +194,15 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
-                                color = MaterialTheme.colors.surface
                             )
                             IconButton(
                                 onClick = {
-                                /*TODO*/
+                                    /*TODO*/
                                 },
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen , CircleShape)
+                                    .background(lightGreen, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(
@@ -244,11 +220,11 @@ fun HomeView(
                             .weight(0.5f)
                             .padding(5.dp)
                             .height(180.dp),
-                        elevation = 4.dp
+                        elevation = 4.dp,
+                        backgroundColor = MaterialTheme.colors.secondary
                     ) {
                         Column(
                             modifier = Modifier
-                                .background(MaterialTheme.colors.onSecondary)
                                 .padding(8.dp)
                         ) {
                             Text(
@@ -257,7 +233,6 @@ fun HomeView(
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
-                                color = MaterialTheme.colors.surface
                             )
                             Text(
                                 text = "Access Emergency Services",
@@ -265,7 +240,6 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
-                                color = MaterialTheme.colors.surface
                             )
                             IconButton(
                                 onClick = {
@@ -274,7 +248,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen , CircleShape)
+                                    .background(lightGreen, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(
@@ -300,11 +274,10 @@ fun HomeView(
                             .weight(0.5f)
                             .padding(5.dp)
                             .height(180.dp),
-                        elevation = 4.dp
+                        elevation = 4.dp, backgroundColor = MaterialTheme.colors.surface
                     ) {
                         Column(
                             modifier = Modifier
-                                .background(MaterialTheme.colors.primaryVariant)
                                 .padding(8.dp)
                         ) {
                             Text(
@@ -313,7 +286,6 @@ fun HomeView(
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
-                                color = MaterialTheme.colors.surface
                             )
                             Text(
                                 text = "Learn about the disease",
@@ -321,7 +293,6 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
-                                color = MaterialTheme.colors.surface
                             )
                             IconButton(
                                 onClick = {
@@ -330,7 +301,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen , CircleShape)
+                                    .background(lightGreen, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(
@@ -367,7 +338,7 @@ fun HomeView(
                         .padding(8.dp)
                         .fillMaxWidth()
                         .height(150.dp)
-                        .background(MaterialTheme.colors.onPrimary),
+                        .background(MaterialTheme.colors.background),
                     elevation = 4.dp
                 ) {
                     Row(
@@ -418,6 +389,23 @@ fun HomeView(
                         )
                     }
                 }
+
+                Text(
+                    text = "EasiDial Care",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 20.dp)
+                        .alpha(0.8f),
+                )
+                Text(
+                    text = "Here to help you",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Normal,
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 4.dp, bottom = 16.dp)
+                        .alpha(0.5f),
+                )
             }
         }
     }

@@ -81,6 +81,7 @@ class LoginViewModel(
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = true)
+
                 } else {
                     Toast.makeText(
                         context,
@@ -119,6 +120,7 @@ class LoginViewModel(
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = true)
+
                 } else {
                     Toast.makeText(
                         context,
