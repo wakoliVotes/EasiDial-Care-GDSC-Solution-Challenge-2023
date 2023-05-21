@@ -140,7 +140,7 @@
 </table>
 
 ## Milestone
-<img  src="screenshots/Top100.png" >
+<img width="250" height="250" src="screenshots/Top100.png" >
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
