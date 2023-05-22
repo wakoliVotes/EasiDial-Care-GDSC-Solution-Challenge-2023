@@ -8,4 +8,5 @@
     <string name="have_account">Have Account?</string>
     <string name="sign_in">Login</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="versionNumber">Version 1.0</string>
 </resources>
