@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -66,7 +67,14 @@ fun AboutUsPage(navController: NavController) {
                 }
             },
             title = {
-                Text(text = "About Us")
+                Text(
+                    text = "About Us",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    ),
+                )
             }
         )
     }) {
@@ -75,7 +83,9 @@ fun AboutUsPage(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(rememberScrollState())
+                .background(Color.White)
+            ,
                 ) {
             Column(
                 modifier = Modifier
@@ -98,44 +108,140 @@ fun AboutUsPage(navController: NavController) {
                     style = TextStyle(
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.Black
                     ),
                 )
                 Text(
-                    text = "Version 1.0",
+                    text = stringResource(id = R.string.versionNumber),
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.Black
                     ),
+                    modifier = Modifier
+                        .alpha(0.8f)
                 )
-                
             }
             Text(
                 text = "EasiDial Care is a mobile application that allows users to easily access medical services. The application allows users to access contact information for Hospitals and Ambulances essential in completing tasks like booking appointments with doctors, nurses, and other medical professionals.",
                 style = TextStyle(
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    textAlign = TextAlign.Justify
                 ),
+                modifier = Modifier.padding(8.dp)
             )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "EasiDial Care also offers a platform to learn about the common health issues and emergencies. This is essential in helping users to make informed decisions about their health.",
                 style = TextStyle(
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    textAlign = TextAlign.Justify
                 ),
+                modifier = Modifier.padding(8.dp)
             )
             Text(
                 text = "Utility Information",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = Color.Black
                 ),
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .alpha(0.8f)
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.call),
+                        contentDescription = "Call",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "+254115197294",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.email),
+                        contentDescription = "Email",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "getintouchdesk@gmail.com",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.map_location),
+                        contentDescription = "Call",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "KCA University, Nairobi, Kenya",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            // Terms of Use and Privacy Policy
             AboutExpandableCard(
                 title = "Terms of Use",
                 content = {
@@ -382,7 +488,6 @@ fun AboutUsPage(navController: NavController) {
                     )
                 }
             )
-
         }
     }
 }
@@ -412,6 +517,7 @@ fun AboutExpandableCard(
                 .fillMaxWidth()
                 .clickable { expanded = !expanded }
                 .padding(8.dp)
+                .background(Color.White)
         ) {
             Row(
                 modifier = Modifier.padding(4.dp),
