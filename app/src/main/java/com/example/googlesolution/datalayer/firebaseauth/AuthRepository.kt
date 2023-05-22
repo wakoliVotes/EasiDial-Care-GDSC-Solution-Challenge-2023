@@ -58,7 +58,9 @@ class AuthRepository : Application() {
             }.await()
     }
 
-    suspend fun logout() = withContext(Dispatchers.IO){
+    suspend fun logout() = withContext(Dispatchers.IO) {
         Firebase.auth.signOut()
     }
+
+    val userEmail = currentUser?.email
 }

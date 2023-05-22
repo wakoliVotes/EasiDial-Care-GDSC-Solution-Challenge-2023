@@ -1,9 +1,12 @@
 package com.example.googlesolution.presentation.homeviews
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -11,21 +14,26 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -47,7 +56,6 @@ import com.example.googlesolution.navgraph.BottomNavGraph
 import com.example.googlesolution.navgraph.painterFromResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-
 
 
 @Composable
@@ -79,9 +87,112 @@ fun MainScreenPrev() {
     MainScreen(mainNavController = rememberNavController())
 }
 
+@Composable
+fun EmergencyDialog(openEmergencyDialog: (Boolean) -> Unit) {
+    Dialog(
+        onDismissRequest = {
+            // Dismiss the dialog when the user clicks outside the dialog or on the back
+            // button. If you want to disable that functionality, simply use an empty
+            // onDismissRequest.
+            openEmergencyDialog(false)
+        },
+        content = {
+            Card(
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier.padding(10.dp),
+                elevation = 8.dp
+            ) {
+                Column(
+                    Modifier
+                        .background(color = Color.White)
+                        .padding(16.dp)
+                ) {
+                    Text(text = "Attention!", fontSize = 24.sp, color = Color.Red)
+                    Text(
+                        text = "You are about to trigger an emergency. Do you want to proceed?",
+                        fontSize = 16.sp
+                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp), horizontalArrangement = Arrangement.End
+                    ) {
+                        TextButton(onClick = { /*TODO*/ }, modifier = Modifier.width(100.dp)) {
+                            Text(text = "Yes", fontSize = 16.sp)
+                        }
+                        TextButton(
+                            onClick = { openEmergencyDialog(false) },
+                            modifier = Modifier.width(100.dp)
+                        ) {
+                            Text(text = "No", fontSize = 16.sp)
+                        }
+                    }
+                }
+            }
+        },
+    )
+}
+
 // TODO: Hoist top appbar states
 @Composable
-fun MainScreenAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScope) {
+fun MainScreenAppBar(
+    scaffoldState: ScaffoldState,
+    coroutineScope: CoroutineScope,
+) {
+
+    //NOTICE
+    // Since the Emergency button is not directly inside the 
+    // Scaffold, I moved the Emergency Dialog here so as to 
+    // avoid conflicting data types. That is MutableBoolean and mutableStateOf(false)
+    var openEmergencyDialog by remember { mutableStateOf(false) }
+    if (openEmergencyDialog)
+        Dialog(
+            onDismissRequest = {
+                // Dismiss the dialog when the user clicks outside the dialog or on the back
+                // button. If you want to disable that functionality, simply use an empty
+                // onDismissRequest.
+                openEmergencyDialog = false
+            },
+            content = {
+                Card(
+                    shape = RoundedCornerShape(24.dp),
+                    modifier = Modifier.padding(10.dp),
+                    elevation = 8.dp
+                ) {
+                    Column(
+                        Modifier
+                            .background(color = Color.White)
+                            .padding(16.dp)
+                    ) {
+                        Text(text = "Attention!", fontSize = 24.sp, color = Color.Red)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "You are about to trigger an emergency. Do you want to proceed?",
+                            fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.Black,
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp), horizontalArrangement = Arrangement.End
+                        ) {
+                            TextButton(onClick = {
+                                // TODO: Hoist this function; it is an "Emergency" function
+                            }, modifier = Modifier.width(100.dp)) {
+                                Text(text = "Yes", fontSize = 16.sp)
+                            }
+                            TextButton(
+                                onClick = { openEmergencyDialog = false },
+                                modifier = Modifier.width(100.dp)
+                            ) {
+                                Text(text = "No", fontSize = 16.sp)
+                            }
+                        }
+                    }
+                }
+            },
+        )
+
     TopAppBar(
         navigationIcon = {
             IconButton(onClick = {
@@ -100,8 +211,10 @@ fun MainScreenAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScop
             )
         },
         actions = {
-            OutlinedButton(
-                onClick = { /*TODO*/ },
+            Button(
+                onClick = {
+                    openEmergencyDialog = true
+                },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Red,
                     contentColor = Color.White
@@ -133,6 +246,7 @@ fun MainScreenAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScop
 @Composable
 fun MainScreenAppBarPrev() {
     MainScreenAppBar(rememberScaffoldState(), rememberCoroutineScope())
+
 }
 
 
