@@ -24,10 +24,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -82,6 +84,22 @@ fun NavHeader() {
             contentScale = ContentScale.Fit
         )
     }
+    Text(
+        text = "EasiDial Care",
+        fontSize = 28.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier
+            .padding(start = 16.dp)
+            .alpha(0.8f),
+    )
+    Text(
+        text = "Here to help you",
+        fontSize = 15.sp,
+        fontWeight = FontWeight.Normal,
+        modifier = Modifier
+            .padding(start = 16.dp, bottom = 16.dp)
+            .alpha(0.5f),
+    )
 }
 
 @Preview
