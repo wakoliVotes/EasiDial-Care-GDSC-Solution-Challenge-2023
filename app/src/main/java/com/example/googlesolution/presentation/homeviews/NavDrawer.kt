@@ -8,15 +8,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -48,7 +49,10 @@ fun NavDrawer(navController: NavController) {
 
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxHeight()
+            .width(400.dp)
+            .verticalScroll(rememberScrollState()),
 
         ) {
         Spacer(modifier = Modifier.height(40.dp))
@@ -84,22 +88,6 @@ fun NavHeader() {
             contentScale = ContentScale.Fit
         )
     }
-    Text(
-        text = "EasiDial Care",
-        fontSize = 28.sp,
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier
-            .padding(start = 16.dp)
-            .alpha(0.8f),
-    )
-    Text(
-        text = "Here to help you",
-        fontSize = 15.sp,
-        fontWeight = FontWeight.Normal,
-        modifier = Modifier
-            .padding(start = 16.dp, bottom = 16.dp)
-            .alpha(0.5f),
-    )
 }
 
 @Preview
@@ -160,47 +148,56 @@ fun NavListItemPrev() {
 
 @Composable
 fun NavBody(navController: NavController) {
-    LazyColumn {
-        item {
-            NavListItem(
-                navController = navController,
-                route = Screens.ProfilePage.route,
-                icon = R.drawable.outline_account_circle_24,
-                label = "Profile"
-            )
-        }
-        item {
-            NavListItem(
-                navController = navController,
-                route = Screens.MedicalInformationPage.route,
-                icon = R.drawable.outline_medical_information_24,
-                label = "Medical Information"
-            )
-        }
-        item {
-            NavListItem(
-                navController = navController,
-                route = Screens.EmergencyButtonPage.route,
-                icon = R.drawable.outline_emergency_24,
-                label = "Emergency Button"
-            )
-        }
-        item {
-            NavListItem(
-                navController = navController,
-                route = Screens.FeedbackPage.route,
-                icon = R.drawable.outline_feedback_24,
-                label = "Feedback"
-            )
-        }
-        item {
-            NavListItem(
-                navController = navController,
-                route = Screens.AboutUsPage.route,
-                icon = R.drawable.outline_info_24,
-                label = "About Us"
-            )
-        }
+    Column {
+
+        Text(
+            text = "EasiDial Care",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .alpha(0.8f),
+        )
+        Text(
+            text = "Here to help you",
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier
+                .padding(start = 16.dp, bottom = 16.dp)
+                .alpha(0.5f),
+        )
+
+        NavListItem(
+            navController = navController,
+            route = Screens.ProfilePage.route,
+            icon = R.drawable.outline_account_circle_24,
+            label = "Profile"
+        )
+        NavListItem(
+            navController = navController,
+            route = Screens.MedicalInformationPage.route,
+            icon = R.drawable.outline_medical_information_24,
+            label = "Medical Information"
+        )
+        NavListItem(
+            navController = navController,
+            route = Screens.EmergencyButtonPage.route,
+            icon = R.drawable.outline_emergency_24,
+            label = "Emergency Button"
+        )
+        NavListItem(
+            navController = navController,
+            route = Screens.FeedbackPage.route,
+            icon = R.drawable.outline_feedback_24,
+            label = "Feedback"
+        )
+        NavListItem(
+            navController = navController,
+            route = Screens.AboutUsPage.route,
+            icon = R.drawable.outline_info_24,
+            label = "About Us"
+        )
+
     }
 }
 
