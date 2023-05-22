@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -66,7 +67,14 @@ fun AboutUsPage(navController: NavController) {
                 }
             },
             title = {
-                Text(text = "About Us")
+                Text(
+                    text = "About Us",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    ),
+                )
             }
         )
     }) {
@@ -75,7 +83,9 @@ fun AboutUsPage(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(rememberScrollState())
+                .background(Color.White)
+            ,
                 ) {
             Column(
                 modifier = Modifier
@@ -98,61 +108,155 @@ fun AboutUsPage(navController: NavController) {
                     style = TextStyle(
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.Black
                     ),
                 )
                 Text(
-                    text = "Version 1.0",
+                    text = stringResource(id = R.string.versionNumber),
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.Black
                     ),
+                    modifier = Modifier
+                        .alpha(0.8f)
                 )
-                
             }
             Text(
                 text = "EasiDial Care is a mobile application that allows users to easily access medical services. The application allows users to access contact information for Hospitals and Ambulances essential in completing tasks like booking appointments with doctors, nurses, and other medical professionals.",
                 style = TextStyle(
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    textAlign = TextAlign.Justify
                 ),
+                modifier = Modifier.padding(8.dp)
             )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "EasiDial Care also offers a platform to learn about the common health issues and emergencies. This is essential in helping users to make informed decisions about their health.",
                 style = TextStyle(
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    textAlign = TextAlign.Justify
                 ),
+                modifier = Modifier.padding(8.dp)
             )
             Text(
                 text = "Utility Information",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = Color.Black
                 ),
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .alpha(0.8f)
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.call),
+                        contentDescription = "Call",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "+254115197294",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.email),
+                        contentDescription = "Email",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "getintouchdesk@gmail.com",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.map_location),
+                        contentDescription = "Call",
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(lightGreen),
+                        tint = Color.White
+                    )
+                }
+                Text(
+                    text = "KCA University, Nairobi, Kenya",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            // Terms of Use and Privacy Policy
             AboutExpandableCard(
                 title = "Terms of Use",
                 content = {
                     Text(
-                        text = "Terms of Use",
+                        text = "Overview",
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = "These Terms of Use govern your use of the EasiDial Care mobile application. By using, visiting, or browsing the EasiDial Care mobile application, you accept and agree to be bound by these Terms of Use. If you do not agree to these Terms of Use, you should not use the EasiDial Care mobile application. These Terms of Use are an ongoing contract between you and EasiDial Care and apply to your use of the EasiDial Care mobile application. These Terms of Use affect your rights and you should read them carefully.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
@@ -160,15 +264,13 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = "EasiDial Care reserves the right, from time to time, with or without notice to you, to change these Terms of Use in our sole and absolute discretion. The most current version of these Terms of Use can be reviewed by clicking on the Terms of Use located at the bottom of the pages of the EasiDial Care mobile application. The most current version of the Terms of Use will supersede all previous versions. Your use of the EasiDial Care mobile application or continued use of our service after changes are made means that you agree to be bound by such changes.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
@@ -176,15 +278,13 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = "Please review our Privacy Policy, which also governs your visit to the EasiDial Care mobile application, to understand our practices.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
@@ -192,15 +292,13 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = "When you use the EasiDial Care mobile application, or send e-mails, text messages, and other communications from your desktop or mobile device to us, you may be communicating with us electronically. You consent to receive communications from us electronically, such as e-mails, texts, mobile push notices, or notices and messages on this site or through the other EasiDial Care mobile application, such as our Message Center, and you can retain copies of these communications for your records. You agree that all agreements, notices, disclosures, and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
@@ -208,15 +306,13 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = "If you use the EasiDial Care mobile application, you are responsible for maintaining the confidentiality of your account and password and for restricting access to your mobile device, and you agree to accept responsibility for all activities that occur under your account or password. EasiDial Care does sell products for children, but it sells them to adults, who can purchase with a credit card or other permitted payment method. If you are under 18, you may use the EasiDial Care mobile application only with involvement of a parent or guardian. EasiDial Care reserves the right to refuse service, terminate accounts, terminate your rights to use the EasiDial Care mobile application, remove or edit content, or cancel orders in its sole discretion.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
@@ -230,17 +326,15 @@ fun AboutUsPage(navController: NavController) {
                     Text(
                         text = "Subject to your compliance with these Terms of Use and your payment of any applicable fees, EasiDial Care or its content providers grant you a limited, non-exclusive, non-transferable, non-sublicensable license to access and make personal and non-commercial use of the EasiDial Care mobile application. This license does not include any resale or commercial use of any EasiDial Care mobile application, or its contents; any collection and use of any product listings, descriptions, or prices; any derivative use of any EasiDial Care mobile application or its contents; any downloading, copying, or other use of account information for the benefit of any third party; or any use of data mining, robots, or similar data gathering and extraction tools. All rights not expressly granted to you in these Terms of Use or any Service Terms are reserved and retained by EasiDial Care or its licensors, suppliers, publishers, rightsholders, or other content providers.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                     Text(
                         text = "No EasiDial Care mobile application, nor any part of any EasiDial Care mobile application, may be reproduced, duplicated, copied, sold, resold, visited, or otherwise exploited for any commercial purpose without express written consent of EasiDial Care. You may not frame or utilize framing techniques to enclose any trademark, logo, or other proprietary information (including images, text, page layout, or form) of EasiDial Care without express written consent. You may not use any meta tags or any other “hidden text” utilizing EasiDial Care’s name or trademarks without the express written consent of EasiDial Care. You may not misuse the EasiDial Care mobile application. You may use the EasiDial Care mobile application only as permitted by law. The licenses granted by EasiDial Care terminate if you do not comply with these Terms of Use or any Service Terms.",
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
                         ),
                     )
                 }
@@ -249,7 +343,7 @@ fun AboutUsPage(navController: NavController) {
                 title = "Privacy Policy",
                 content = {
                     Text(
-                        text = "Privacy Policy",
+                        text = "Overview",
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
@@ -394,7 +488,6 @@ fun AboutUsPage(navController: NavController) {
                     )
                 }
             )
-
         }
     }
 }
@@ -418,16 +511,16 @@ fun AboutExpandableCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
-        elevation = 4.dp
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { expanded = !expanded }
                 .padding(8.dp)
+                .background(Color.White)
         ) {
             Row(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(4.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
