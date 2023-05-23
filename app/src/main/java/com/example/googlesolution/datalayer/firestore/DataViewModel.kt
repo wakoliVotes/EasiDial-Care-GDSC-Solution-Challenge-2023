@@ -32,8 +32,7 @@ suspend fun readFirestoreData(): UserFirestoreData {
     val mainCollection = "users"
     val userDocRef = database.collection(mainCollection).document(userID)
 
-    var userData = UserFirestoreData()
-
+    var userData: UserFirestoreData
     try {
 
         ///This comment block below: I'm trying to read live data. I'll do deep research later
@@ -55,9 +54,23 @@ suspend fun readFirestoreData(): UserFirestoreData {
 
         /// For now, I'm reading data once
         val result = userDocRef.get().await()
-            .toObject(UserFirestoreData::class.java)
         if (result != null) {
-            userData = result
+            userData = UserFirestoreData(
+                fullName = result["full name"].toString(),
+                phone = result["phone"].toString(),
+                dateOfBirth = result["date of birth"].toString(),
+                firstContactName = result["first contact name"].toString(),
+                firstContactPhone = result["first contact phone"].toString(),
+                secondContactName = result["second contact name"].toString(),
+                secondContactPhone = result["second contact phone"].toString(),
+                customMessage = result["custom message"].toString(),
+                medicalConditions = result["medical conditions"].toString(),
+                allergies = result["allergies"].toString(),
+                healthInsurance = result["health insurance"].toString(),
+            )
+
+            // return this data if user exists, then break
+            return userData
         } else {
             //if user has no data, create document with empty string values
             val data = hashMapOf<String, String>(
@@ -85,17 +98,18 @@ suspend fun readFirestoreData(): UserFirestoreData {
         }*/
     }
 
-    return userData
+    // return empty data if no data exists
+    return UserFirestoreData()
 }
 
 class DataViewModel : ViewModel() {
-    val state = mutableStateOf(UserFirestoreData())
+    var state = mutableStateOf(UserFirestoreData())
 
     init {
-        readData()
+        checkIfDataExists()
     }
 
-    fun readData() {
+    fun checkIfDataExists() {
         viewModelScope.launch {
             state.value = readFirestoreData()
         }

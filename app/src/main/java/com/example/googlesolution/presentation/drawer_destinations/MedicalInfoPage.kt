@@ -1,6 +1,7 @@
 package com.example.googlesolution.presentation.drawer_destinations
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -52,6 +53,8 @@ fun MedicalInformationPage(
 
     val userData = dataViewModel.state.value
 
+    Log.d("USER_MEDICAL_INFO", "$userData")
+
     // TODO: Check on Material Theming to avoid using of "unfocused..." in all OutlinedTextField
     // ..in this file
 
@@ -100,77 +103,77 @@ fun MedicalInformationPage(
 
 
         dataViewModel.updateDocumentField("full name", newName)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editPhone(newPhone: String) {
         editingPhone = !editingPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("phone", newPhone)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editDateOfBirth(newDate: String) {
         editingDateOfBirth = !editingDateOfBirth
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("date of birth", newDate)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editFirstContactName(newName: String) {
         editingFirstContactName = !editingFirstContactName
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("first contact name", newName)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editFirstContactPhone(newPhone: String) {
         editingFirstContactPhone = !editingFirstContactPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("first contact phone", newPhone)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editSecondContactName(newName: String) {
         editingSecondContactName = !editingSecondContactName
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("second contact name", newName)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editSecondContactPhone(newPhone: String) {
         editingSecondContactPhone = !editingSecondContactPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("second contact phone", newPhone)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editingCustomMessage(newCustomMessage: String) {
         editingCustomMessage = !editingCustomMessage
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("custom message", newCustomMessage)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editMedicalConditions(newMedicalConditions: String) {
         editingMedicalConditions = !editingMedicalConditions
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("medical conditions", newMedicalConditions)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editAllergies(newAllergies: String) {
         editingAllergies = !editingAllergies
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("allergies", newAllergies)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     fun editHealthInsurance(newHealthInsurance: String) {
         editingHealthInsurance = !editingHealthInsurance
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
         dataViewModel.updateDocumentField("health insurance", newHealthInsurance)
-        dataViewModel.readData()
+        dataViewModel.checkIfDataExists()
     }
 
     Scaffold(topBar = {
