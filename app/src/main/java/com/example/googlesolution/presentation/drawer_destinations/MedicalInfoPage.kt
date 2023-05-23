@@ -24,6 +24,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -207,8 +208,11 @@ fun MedicalInformationPage(
             }, secondaryText = {
                 Text(text = userData.fullName)
             }, trailing = {
-                if (!editingFullName) IconButton(onClick = { editingFullName = true }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                IconButton(onClick = { editingFullName = !editingFullName }) {
+                    Icon(
+                        imageVector = if (!editingFullName) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingFullName) OutlinedTextField(
@@ -254,7 +258,10 @@ fun MedicalInformationPage(
                 Text(text = userData.phone)
             }, trailing = {
                 IconButton(onClick = { editingPhone = !editingPhone }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingPhone) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingPhone) OutlinedTextField(
@@ -298,7 +305,10 @@ fun MedicalInformationPage(
                 Text(text = userData.dateOfBirth)
             }, trailing = {
                 IconButton(onClick = { editingDateOfBirth = !editingDateOfBirth }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingDateOfBirth) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingDateOfBirth) OutlinedTextField(
@@ -350,7 +360,10 @@ fun MedicalInformationPage(
                 Text(text = userData.firstContactName)
             }, trailing = {
                 IconButton(onClick = { editingFirstContactName = !editingFirstContactName }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingFirstContactName) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingFirstContactName) OutlinedTextField(
@@ -397,7 +410,10 @@ fun MedicalInformationPage(
                 Text(text = userData.firstContactPhone)
             }, trailing = {
                 IconButton(onClick = { editingFirstContactPhone = !editingFirstContactPhone }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingFirstContactPhone) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingFirstContactPhone) OutlinedTextField(
@@ -445,7 +461,10 @@ fun MedicalInformationPage(
                 Text(text = userData.secondContactName)
             }, trailing = {
                 IconButton(onClick = { editingSecondContactName = !editingSecondContactName }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingSecondContactName) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingSecondContactName) OutlinedTextField(
@@ -493,7 +512,10 @@ fun MedicalInformationPage(
                 Text(text = userData.secondContactPhone)
             }, trailing = {
                 IconButton(onClick = { editingSecondContactPhone = !editingSecondContactPhone }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                    Icon(
+                        imageVector = if (!editingSecondContactPhone) Icons.Default.Edit else Icons.Default.Close,
+                        contentDescription = "Edit"
+                    )
                 }
             })
             if (editingSecondContactPhone) OutlinedTextField(
@@ -543,7 +565,10 @@ fun MedicalInformationPage(
                 },
                 trailing = {
                     IconButton(onClick = { editingCustomMessage = !editingCustomMessage }) {
-                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                        Icon(
+                            imageVector = if (!editingCustomMessage) Icons.Default.Edit else Icons.Default.Close,
+                            contentDescription = "Edit"
+                        )
                     }
                 },
             )
@@ -595,7 +620,10 @@ fun MedicalInformationPage(
                 },
                 trailing = {
                     IconButton(onClick = { editingMedicalConditions = !editingMedicalConditions }) {
-                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                        Icon(
+                            imageVector = if (!editingMedicalConditions) Icons.Default.Edit else Icons.Default.Close,
+                            contentDescription = "Edit"
+                        )
                     }
                 },
             )
@@ -648,7 +676,10 @@ fun MedicalInformationPage(
                 },
                 trailing = {
                     IconButton(onClick = { editingAllergies = !editingAllergies }) {
-                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                        Icon(
+                            imageVector = if (!editingAllergies) Icons.Default.Edit else Icons.Default.Close,
+                            contentDescription = "Edit"
+                        )
                     }
                 },
             )
@@ -702,7 +733,10 @@ fun MedicalInformationPage(
                 },
                 trailing = {
                     IconButton(onClick = { editingHealthInsurance = !editingHealthInsurance }) {
-                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                        Icon(
+                            imageVector = if (!editingHealthInsurance) Icons.Default.Edit else Icons.Default.Close,
+                            contentDescription = "Edit"
+                        )
                     }
                 },
             )
