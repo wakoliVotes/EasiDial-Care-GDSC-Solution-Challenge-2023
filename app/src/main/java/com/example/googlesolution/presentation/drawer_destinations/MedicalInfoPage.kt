@@ -35,15 +35,22 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.datalayer.firestore.DataViewModel
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MedicalInformationPage(navController: NavController) {
+fun MedicalInformationPage(
+    navController: NavController,
+    dataViewModel: DataViewModel = viewModel(),
+) {
     val mContext = LocalContext.current
+
+    val userData = dataViewModel.state.value
 
     // TODO: Check on Material Theming to avoid using of "unfocused..." in all OutlinedTextField
     // ..in this file
@@ -90,78 +97,80 @@ fun MedicalInformationPage(navController: NavController) {
     fun editFullName(newName: String) {
         editingFullName = !editingFullName
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newName to Firestore.
-        // update UI when complete.
+
+
+        dataViewModel.updateDocumentField("full name", newName)
+        dataViewModel.readData()
     }
 
     fun editPhone(newPhone: String) {
         editingPhone = !editingPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newPhone to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("phone", newPhone)
+        dataViewModel.readData()
     }
 
     fun editDateOfBirth(newDate: String) {
         editingDateOfBirth = !editingDateOfBirth
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newDate to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("date of birth", newDate)
+        dataViewModel.readData()
     }
 
     fun editFirstContactName(newName: String) {
         editingFirstContactName = !editingFirstContactName
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newName to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("first contact name", newName)
+        dataViewModel.readData()
     }
 
     fun editFirstContactPhone(newPhone: String) {
         editingFirstContactPhone = !editingFirstContactPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newPhone to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("first contact phone", newPhone)
+        dataViewModel.readData()
     }
 
     fun editSecondContactName(newName: String) {
         editingSecondContactName = !editingSecondContactName
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newName to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("second contact name", newName)
+        dataViewModel.readData()
     }
 
     fun editSecondContactPhone(newPhone: String) {
         editingSecondContactPhone = !editingSecondContactPhone
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newPhone to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("second contact phone", newPhone)
+        dataViewModel.readData()
     }
 
     fun editingCustomMessage(newCustomMessage: String) {
         editingCustomMessage = !editingCustomMessage
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newCustomMessage to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("custom message", newCustomMessage)
+        dataViewModel.readData()
     }
 
     fun editMedicalConditions(newMedicalConditions: String) {
         editingMedicalConditions = !editingMedicalConditions
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newMedicalConditions to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("medical conditions", newMedicalConditions)
+        dataViewModel.readData()
     }
 
     fun editAllergies(newAllergies: String) {
         editingAllergies = !editingAllergies
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newAllergies to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("allergies", newAllergies)
+        dataViewModel.readData()
     }
 
     fun editHealthInsurance(newHealthInsurance: String) {
         editingHealthInsurance = !editingHealthInsurance
         Toast.makeText(mContext, "Saving...", Toast.LENGTH_SHORT).show()
-        // TODO: Add logic to save newHealthInsurance to Firestore.
-        // update UI when complete.
+        dataViewModel.updateDocumentField("health insurance", newHealthInsurance)
+        dataViewModel.readData()
     }
 
     Scaffold(topBar = {
@@ -193,9 +202,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Full Name:")
             }, secondaryText = {
-                Column {
-                    Text(text = "James Danish")
-                }
+                Text(text = userData.fullName)
             }, trailing = {
                 if (!editingFullName) IconButton(onClick = { editingFullName = true }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -241,7 +248,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Phone:")
             }, secondaryText = {
-                Text(text = "0712345678")
+                Text(text = userData.phone)
             }, trailing = {
                 IconButton(onClick = { editingPhone = !editingPhone }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -285,7 +292,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Date of Birth:")
             }, secondaryText = {
-                Text(text = "21/02/1982")
+                Text(text = userData.dateOfBirth)
             }, trailing = {
                 IconButton(onClick = { editingDateOfBirth = !editingDateOfBirth }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -337,7 +344,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Name:")
             }, secondaryText = {
-                Text(text = "Name")
+                Text(text = userData.firstContactName)
             }, trailing = {
                 IconButton(onClick = { editingFirstContactName = !editingFirstContactName }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -384,7 +391,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Phone:")
             }, secondaryText = {
-                Text(text = "0712345678")
+                Text(text = userData.firstContactPhone)
             }, trailing = {
                 IconButton(onClick = { editingFirstContactPhone = !editingFirstContactPhone }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -432,7 +439,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Name:")
             }, secondaryText = {
-                Text(text = "Name")
+                Text(text = userData.secondContactName)
             }, trailing = {
                 IconButton(onClick = { editingSecondContactName = !editingSecondContactName }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
@@ -480,7 +487,7 @@ fun MedicalInformationPage(navController: NavController) {
             ListItem(text = {
                 Text(text = "Phone:")
             }, secondaryText = {
-                Text(text = "0712345678")
+                Text(text = userData.secondContactPhone)
             }, trailing = {
                 IconButton(onClick = { editingSecondContactPhone = !editingSecondContactPhone }) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
