@@ -505,8 +505,8 @@ fun SignUpScreen(
 
 @Preview(showSystemUi = true)
 @Composable
-fun PreLoginSCreen() {
-    GoogleSolutionTheme() {
+fun PreLoginScreen() {
+    GoogleSolutionTheme {
         LoginScreen(onNavToHomePage = { /*TODO*/ }) {
         }
     }
@@ -514,8 +514,8 @@ fun PreLoginSCreen() {
 
 @Preview(showSystemUi = true)
 @Composable
-fun PreSignUpSCreen() {
-    GoogleSolutionTheme() {
+fun PreSignUpScreen() {
+    GoogleSolutionTheme {
         SignUpScreen(onNavToHomePage = { /*TODO*/ }) {
         }
     }

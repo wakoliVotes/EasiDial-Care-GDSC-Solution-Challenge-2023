@@ -38,7 +38,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -250,6 +249,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -257,6 +257,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -264,6 +265,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -271,6 +273,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -278,6 +281,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -285,6 +289,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -292,6 +297,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -299,6 +305,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -306,6 +313,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -313,6 +321,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -320,7 +329,8 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -328,6 +338,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -335,6 +346,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                 }
@@ -347,7 +359,8 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -355,6 +368,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -362,6 +376,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -369,6 +384,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -376,7 +392,8 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -384,6 +401,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -391,6 +409,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -398,6 +417,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -405,6 +425,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -412,6 +433,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -419,7 +441,8 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -427,6 +450,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -434,6 +458,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -441,6 +466,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -448,6 +474,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -455,7 +482,8 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -463,6 +491,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -470,6 +499,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -477,6 +507,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         ),
                     )
                     Text(
@@ -484,6 +515,7 @@ fun AboutUsPage(navController: NavController) {
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
+                            color = Color.Black
                         ),
                     )
                 }
@@ -510,24 +542,29 @@ fun AboutExpandableCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .background(Color.White)
+        ,
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { expanded = !expanded }
-                .padding(8.dp)
                 .background(Color.White)
         ) {
             Row(
-                modifier = Modifier.padding(4.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .background(Color.White)
             ) {
                 Text(
                     text = title,
                     style = MaterialTheme.typography.subtitle2,
                     fontWeight = FontWeight.Bold,
+                    color = Color.Black,
                     fontSize = 20.sp,
                     modifier = Modifier
                         .weight(1f)
