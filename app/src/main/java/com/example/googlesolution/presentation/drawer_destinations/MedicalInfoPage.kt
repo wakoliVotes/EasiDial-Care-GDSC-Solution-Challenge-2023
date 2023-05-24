@@ -177,18 +177,23 @@ fun MedicalInformationPage(
         dataViewModel.checkIfDataExists()
     }
 
-    Scaffold(topBar = {
-        TopAppBar(navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.round_arrow_back_ios_new_24),
-                    contentDescription = "Back"
-                )
-            }
-        }, title = {
-            Text(text = "Medical Information")
-        })
-    }) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = MaterialTheme.colors.surface,
+                contentColor = MaterialTheme.colors.onSurface,
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.round_arrow_back_ios_new_24),
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                title = {
+                    Text(text = "Medical Information")
+                })
+        }) {
         Column(
             modifier = Modifier
                 .fillMaxSize()

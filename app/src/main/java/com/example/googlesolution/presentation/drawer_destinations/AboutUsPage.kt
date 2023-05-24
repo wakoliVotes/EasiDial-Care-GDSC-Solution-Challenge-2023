@@ -38,7 +38,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -58,6 +57,8 @@ import com.example.googlesolution.ui.theme.lightGreen
 fun AboutUsPage(navController: NavController) {
     Scaffold(topBar = {
         TopAppBar(
+            backgroundColor = MaterialTheme.colors.surface,
+            contentColor = MaterialTheme.colors.onSurface,
             navigationIcon = {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(

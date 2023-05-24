@@ -39,8 +39,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.googlesolution.R
+import com.example.googlesolution.ui.theme.EarthDark
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
-import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
 
 @Composable
@@ -82,14 +82,14 @@ fun HomeView(
                             ) {
                                 Text(
                                     text = "Our Mission",
-                                    fontSize = 18.sp,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier
                                         .padding(8.dp),
                                 )
                                 Text(
                                     text = "To improve access to critical care services for everyone, regardless of location or economic status.",
-                                    fontSize = 14.sp,
+                                    fontSize = 16.sp,
                                     modifier = Modifier
                                         .padding(start = 8.dp, end = 8.dp)
                                         .alpha(0.9f),
@@ -141,14 +141,14 @@ fun HomeView(
                             ) {
                                 Text(
                                     text = "Our Vision",
-                                    fontSize = 18.sp,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier
                                         .padding(8.dp),
                                 )
                                 Text(
                                     text = "A world where every person has access to the healthcare services they need, when and where they need them.",
-                                    fontSize = 14.sp,
+                                    fontSize = 16.sp,
                                     modifier = Modifier
                                         .padding(start = 8.dp, end = 8.dp)
                                         .alpha(0.9f),
@@ -199,14 +199,14 @@ fun HomeView(
                         ) {
                             Text(
                                 text = "Hospitals",
-                                fontSize = 18.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
                             )
                             Text(
                                 text = "In case of emergency, get help",
-                                fontSize = 14.sp,
+                                fontSize = 16.sp,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
@@ -218,7 +218,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen, CircleShape)
+                                    .background(EarthDark, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(
@@ -245,14 +245,14 @@ fun HomeView(
                         ) {
                             Text(
                                 text = "Ambulances",
-                                fontSize = 18.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
                             )
                             Text(
                                 text = "Access Emergency Services",
-                                fontSize = 14.sp,
+                                fontSize = 16.sp,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
@@ -264,7 +264,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen, CircleShape)
+                                    .background(EarthDark, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(
@@ -298,14 +298,14 @@ fun HomeView(
                         ) {
                             Text(
                                 text = "Learn",
-                                fontSize = 18.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier
                                     .padding(8.dp),
                             )
                             Text(
                                 text = "Learn about the disease",
-                                fontSize = 14.sp,
+                                fontSize = 16.sp,
                                 modifier = Modifier
                                     .padding(start = 8.dp, end = 8.dp, bottom = 32.dp)
                                     .alpha(0.9f),
@@ -317,7 +317,7 @@ fun HomeView(
                                 modifier = Modifier
                                     .padding()
                                     .align(Alignment.End)
-                                    .background(lightGreen, CircleShape)
+                                    .background(EarthDark, CircleShape)
                                     .clip(CircleShape)
                             ) {
                                 Icon(

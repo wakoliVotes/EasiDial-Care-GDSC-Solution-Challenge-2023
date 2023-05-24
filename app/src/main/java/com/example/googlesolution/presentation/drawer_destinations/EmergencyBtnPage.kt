@@ -52,6 +52,8 @@ fun EmergencyButtonPage(navController: NavController) {
 
     Scaffold(topBar = {
         TopAppBar(
+            backgroundColor = MaterialTheme.colors.surface,
+            contentColor = MaterialTheme.colors.onSurface,
             navigationIcon = {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(
