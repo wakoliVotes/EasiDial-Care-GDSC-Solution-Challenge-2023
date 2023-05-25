@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -50,7 +51,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.firebaseauth.login.LoginViewModel
-import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.GoogleSolutionTheme
 import com.example.googlesolution.ui.theme.lightGreener
 
@@ -190,6 +190,7 @@ fun LoginScreen(
                 imeAction = ImeAction.Done,
                 keyboardType = KeyboardType.Password
             ),
+            keyboardActions = KeyboardActions(onDone = { loginViewModel?.loginUser(context) }),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),

@@ -3,6 +3,7 @@ package com.example.googlesolution.presentation.drawer_destinations
 import android.annotation.SuppressLint
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -19,6 +20,8 @@ fun FeedbackPage(navController: NavController) {
 
     Scaffold(topBar = {
         TopAppBar(
+            backgroundColor = MaterialTheme.colors.surface,
+            contentColor = MaterialTheme.colors.onSurface,
             navigationIcon = {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(

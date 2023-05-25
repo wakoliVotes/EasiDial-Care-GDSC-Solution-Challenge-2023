@@ -237,8 +237,8 @@ fun MainScreenAppBar(
             }
             Spacer(modifier = Modifier.width(10.dp))
         },
-        backgroundColor = MaterialTheme.colors.primary,
-        contentColor = MaterialTheme.colors.onPrimary
+        backgroundColor = MaterialTheme.colors.surface,
+        contentColor = MaterialTheme.colors.onSurface
     )
 }
 

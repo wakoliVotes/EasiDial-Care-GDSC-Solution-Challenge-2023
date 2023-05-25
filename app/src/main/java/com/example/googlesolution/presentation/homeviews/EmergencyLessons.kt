@@ -1,20 +1,48 @@
 package com.example.googlesolution.presentation.homeviews
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -27,10 +55,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.screensviewmodels.EmergencyLessons
 import com.example.googlesolution.datalayer.screensviewmodels.LessonsViewModel
-import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.lightGreen
 import com.example.googlesolution.ui.theme.lightGreener
 
@@ -45,118 +71,109 @@ fun EmergencyLessons(
     val lessons by viewModel.lessons.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
 
+    var isExpandedState by remember {
+        mutableStateOf(false)
+    }
+    val rotationState by animateFloatAsState(
+        targetValue = if (isExpandedState) 180f else 0f
+    )
+
     MaterialTheme() {
-        Scaffold { padding ->
-            Column(
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(BlueMildest)
-                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth()
+                    .padding()
+                    .clip(RoundedCornerShape(0.dp, 0.dp, 24.dp, 24.dp))
+                    .background(lightGreener)
             ) {
-                LazyColumn(modifier = Modifier.weight(1f)) {
-                    item {
-                        Box(
+                Column {
+                    Text(
+                        text = "Lessons", style = TextStyle(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 28.sp,
+                        ), modifier = Modifier.padding(start = 16.dp)
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                    ) {
+                        TextButton(onClick = { isExpandedState = !isExpandedState }) {
+                            Text(
+                                text = "Be informed, stay safe.",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                        IconButton(
+                            onClick = { isExpandedState = !isExpandedState },
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding()
-                                .height(100.dp)
-                                .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
-                                .background(lightGreener)
+                                .rotate(rotationState),
                         ) {
-                            Text(
-                                text = "Lessons",
-                                style = TextStyle(
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 28.sp,
-                                    color = MaterialTheme.colors.onPrimary
-                                ),
-                                modifier = Modifier
-                                    .align(Alignment.CenterStart)
-                                    .padding(start = 16.dp)
-                            )
-                            Image(
-                                painter = painterResource(id = R.drawable.workspaces),
-                                contentDescription = "workspaces",
-                                modifier = Modifier
-                                    .clickable {
-                                        navController.navigate("account")
-                                    }
-                                    .align(Alignment.TopEnd)
-                                    .padding(end = 16.dp, top = 16.dp)
-                            )
-                            Text(
-                                text = "Be Informed: Be Safe",
-                                style = MaterialTheme.typography.subtitle2,
-                                color = Color.Black,
-                                fontWeight = FontWeight.Medium,
-                                modifier = Modifier
-                                    .padding(start = 16.dp, bottom = 16.dp, top = 15.dp)
-                                    .alpha(0.5f)
-                                    .align(Alignment.BottomStart)
+                            Icon(
+                                imageVector = Icons.Default.ArrowDropDown,
+                                contentDescription = if (isExpandedState) "Collapse" else "Expand",
+                                modifier = Modifier.size(42.dp),
                             )
                         }
                     }
-                    item {
-                        Text(
-                            text = "Emergencies can happen at any time, and it's important to be prepared to respond quickly and effectively. Whether it's a medical emergency, a natural disaster, or a personal crisis, knowing what to do in the moment can make all the difference.",
-                            modifier = Modifier
-                                .padding(start = 16.dp, bottom = 8.dp, end = 16.dp, top = 8.dp)
-                                .alpha(0.7f),
-                            textAlign = TextAlign.Justify,
-                            fontSize = 12.sp,
-                            color = Color.Black,
-                        )
-                        Text(
-                            text = "The following lessons will help you prepare for and respond to emergencies. You can also find more information on accessing care and services in the Hospital and Ambulances pages.",
-                            modifier = Modifier
-                                .padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
-                                .alpha(0.7f),
-                            textAlign = TextAlign.Justify,
-                            fontSize = 12.sp
-                        )
-                    }
-                    item {
-                        TextField(
-                            colors = TextFieldDefaults.textFieldColors(
-                                backgroundColor = Color.White,
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent,
-                                disabledIndicatorColor = Color.Transparent,
-                                cursorColor = lightGreener,
-                                textColor = Color.Black,
-                                disabledLabelColor = Color.Black,
-                                focusedLabelColor = lightGreener,
-                                unfocusedLabelColor = Color.Black,
-                            ),
-                            value = searchText,
-                            onValueChange = viewModel::onSearchTermChange,
-                            label = {
-                                Text(text = "Search")
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(8.dp)
-                                .size(50.dp)
-                                .alpha(0.8f)
-                                .clip(RoundedCornerShape(16.dp))
-                        )
-                    }
-                    items(lessons) { lesson ->
-                        EmergencyListItem(lessons = lesson, expanded = false)
-                    }
-                    item {
-                        Text(
-                            text = "End of Lessons. Stay Safe!",
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(16.dp)
-                                .alpha(0.8f)
-                        )
-                    }
+                    if (isExpandedState) Text(
+                        text = "Emergencies can happen at any time, and it's important to be prepared to respond quickly and effectively. Whether it's a medical emergency, a natural disaster, or a personal crisis, knowing what to do in the moment can make all the difference.\nThe following lessons will help you prepare for and respond to emergencies. You can also find more information on accessing care and services in the Hospital and Ambulances pages.",
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(16.dp)
+
+                    )
                 }
-                Divider(modifier = Modifier.padding(vertical = 16.dp))
+            }
+
+
+            TextField(
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                    cursorColor = lightGreener,
+                    textColor = Color.Black,
+                    disabledLabelColor = Color.Black,
+                    focusedLabelColor = lightGreener,
+                    unfocusedLabelColor = Color.Black,
+                ),
+                value = searchText,
+                onValueChange = viewModel::onSearchTermChange,
+                label = {
+                    Text(text = "Search", fontSize = 16.sp)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .size(50.dp)
+                    .alpha(0.8f)
+                    .clip(RoundedCornerShape(16.dp))
+            )
+
+
+            LazyColumn(modifier = Modifier.weight(1f)) {
+                items(lessons) { lesson ->
+                    EmergencyListItem(lessons = lesson, expanded = false)
+                }
+                item {
+                    Text(
+                        text = "End of Lessons. Stay Safe!",
+                        color = Color.Black,
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .alpha(0.8f)
+                    )
+                }
             }
         }
+
     }
 }
 
@@ -167,14 +184,12 @@ fun EmergencyListItem(lessons: EmergencyLessons, expanded: Boolean) {
     Card(
         modifier = Modifier
             .padding(bottom = 8.dp, end = 8.dp, start = 8.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp)),
-        elevation = 5.dp
-    ) {
-        Column(
-            modifier = Modifier
-                .clickable { isExpanded = !isExpanded }
+            .fillMaxWidth(),
+        elevation = 4.dp,
+        shape = RoundedCornerShape(16.dp),
+
         ) {
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Row(
                 modifier = Modifier.padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically,

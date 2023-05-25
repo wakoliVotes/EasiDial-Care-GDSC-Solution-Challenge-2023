@@ -3,6 +3,7 @@ package com.example.googlesolution.presentation.drawer_destinations
 import android.annotation.SuppressLint
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -16,21 +17,24 @@ import com.example.googlesolution.R
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ProfilePage(navController: NavController) {
-    Scaffold(topBar = {
-        TopAppBar(
-            navigationIcon = {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.round_arrow_back_ios_new_24),
-                        contentDescription = "Back"
-                    )
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = MaterialTheme.colors.surface,
+                contentColor = MaterialTheme.colors.onSurface,
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.round_arrow_back_ios_new_24),
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                title = {
+                    Text(text = "Profile")
                 }
-            },
-            title = {
-                Text(text = "Profile")
-            }
-        )
-    }) {
+            )
+        }) {
 // TODO: Add Profile content here:
 
 

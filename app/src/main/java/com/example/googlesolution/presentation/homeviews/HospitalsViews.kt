@@ -2,14 +2,38 @@ package com.example.googlesolution.presentation.homeviews
 
 import android.content.Intent
 import android.widget.Toast
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -38,7 +62,6 @@ import com.example.googlesolution.R
 import com.example.googlesolution.datalayer.screensviewmodels.Hospital
 import com.example.googlesolution.datalayer.screensviewmodels.HospitalsViewModel
 import com.example.googlesolution.datalayer.screensviewmodels.TopHospitals
-import com.example.googlesolution.ui.theme.BlueMildest
 import com.example.googlesolution.ui.theme.lightGreener
 import com.example.googlesolution.ui.theme.lightGreenest
 import com.google.accompanist.flowlayout.FlowRow
@@ -56,57 +79,45 @@ fun HospitalsViews(
     MaterialTheme() {
         Scaffold(
             modifier = Modifier
-                .background(BlueMildest),
         ) { padding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(BlueMildest)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding()
-                        .height(100.dp)
-                        .clip(RoundedCornerShape(0.dp, 0.dp, 36.dp, 36.dp))
+                        .clip(RoundedCornerShape(0.dp, 0.dp, 24.dp, 24.dp))
                         .background(lightGreener)
                 ) {
-                    Text(
-                        text = "Hospitals",
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            fontSize =28.sp,
-                            color = MaterialTheme.colors.onPrimary
-                        ),
-                        modifier = Modifier
-                            .align(Alignment.CenterStart)
-                            .padding(start = 16.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.person),
-                        contentDescription = "workspaces",
-                        modifier = Modifier
-                            .clickable {
-                                navController.navigate("account")
-                            }
-                            .align(Alignment.TopEnd)
-                            .padding(end = 16.dp, top = 16.dp)
-                    )
-                    Text(
-                        text = "Access Services in Emergencies",
-                        style = MaterialTheme.typography.subtitle2,
-                        color = Color.Black,
-                        fontWeight = FontWeight.Medium,
-                        modifier = Modifier
-                            .padding(start = 16.dp, bottom = 16.dp, top = 15.dp)
-                            .alpha(0.5f)
-                            .align(Alignment.BottomStart)
-                    )
+                    Column(
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        Text(
+                            text = "Hospitals",
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 28.sp,
+                            ),
+                            modifier = Modifier
+                                .padding(start = 16.dp)
+                        )
+                        Text(
+                            text = "Access Services in Emergencies",
+                            style = MaterialTheme.typography.subtitle2,
+                            fontWeight = FontWeight.Medium,
+                            fontSize = 16.sp,
+                            modifier = Modifier
+                                .padding(start = 16.dp, bottom = 16.dp, top = 4.dp)
+                                .alpha(0.5f)
+                        )
+                    }
                 }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(BlueMildest)
+                        //.background(BlueMildest)
                         .padding(top = 0.dp)
                 ) {
                     // Search TextField
@@ -140,7 +151,7 @@ fun HospitalsViews(
                                 text = "Search",
                                 style = TextStyle(
                                     fontWeight = FontWeight.Normal,
-                                    fontSize = 11.sp
+                                    fontSize = 16.sp
                                 )
                             )
                         },
@@ -181,16 +192,16 @@ fun HospitalListItem(
     val context = LocalContext.current
 
     Card(
+        elevation = 4.dp,
+        backgroundColor = MaterialTheme.colors.surface,
+        shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .padding(all = 4.dp)
             .fillMaxWidth()
-            .height(106.dp)
-            .clip(RoundedCornerShape(8.dp))
     ) {
         Row(
             modifier = Modifier
-                .padding()
-                .background(Color.White)
+                .padding(6.dp)
         ) {
             Image(
                 painter = painterResource(id = hospitals.hospImage),
@@ -213,7 +224,6 @@ fun HospitalListItem(
                     text = hospitals.name,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.W400,
-                    color = MaterialTheme.colors.onSecondary,
                     modifier = Modifier
                         .padding(top = 2.dp),
                     overflow = TextOverflow.Visible,
@@ -223,7 +233,6 @@ fun HospitalListItem(
                     fontSize = 15.sp,
                     fontWeight = FontWeight.W300,
                     modifier = Modifier.padding(),
-                    color = Color.Gray
                 )
                 Row(
                     modifier = Modifier
@@ -238,21 +247,23 @@ fun HospitalListItem(
                             // allow share via text, email, whatsapp, telegram, etc
                             val intent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
-                                putExtra(Intent.EXTRA_TEXT,
-                                    "Check out: ${hospitals.name}, ${hospitals.contact}")
+                                putExtra(
+                                    Intent.EXTRA_TEXT,
+                                    "Check out: ${hospitals.name}, ${hospitals.contact}"
+                                )
                             }
                             context.startActivity(intent)
                         },
                         modifier = Modifier
                             .size(28.dp)
-                            .background(Color.Black, CircleShape)
+                            .background(MaterialTheme.colors.onSecondary, CircleShape)
                             .clip(CircleShape)
                             .padding(),
                     ) {
                         Icon(
                             imageVector = Icons.Default.Share,
                             contentDescription = "Share",
-                            tint = lightGreener,
+                            tint = MaterialTheme.colors.secondary,
                             modifier = Modifier
                                 .padding(5.dp)
                         )
@@ -262,7 +273,6 @@ fun HospitalListItem(
                         fontSize = 15.sp,
                         fontWeight = FontWeight.W500,
                         modifier = Modifier.padding(),
-                        color = Color.Gray
                     )
                     IconButton(
                         onClick = {
@@ -276,14 +286,14 @@ fun HospitalListItem(
                         },
                         modifier = Modifier
                             .size(28.dp)
-                            .background(lightGreener, CircleShape)
+                            .background(MaterialTheme.colors.secondary, CircleShape)
                             .clip(CircleShape)
                             .padding()
                     ) {
                         Icon(
                             imageVector = Icons.Default.Call,
                             contentDescription = "Call",
-                            tint = Color.White,
+                            tint = MaterialTheme.colors.onSecondary,
                             modifier = Modifier
                                 .padding(5.dp)
                         )
@@ -292,7 +302,6 @@ fun HospitalListItem(
             }
             IconButton(
                 onClick = {
-                    /*TODO*/
                     /*TODO*/
                     // Toast a message saying "Has ambulance" if true, else "no ambulance"
                     if (hospitals.hasAmbulance)
@@ -309,7 +318,8 @@ fun HospitalListItem(
                     .weight(0.1f)
 
             ) {
-                Icon(painter = painterResource(id = R.drawable.car),
+                Icon(
+                    painter = painterResource(id = R.drawable.car),
                     contentDescription = "ambulance",
                     tint = if (hospitals.hasAmbulance) Color.Green else Color.Gray,
                     modifier = Modifier
