@@ -30,16 +30,7 @@ android {
         }
     }
 
-    // Uncomment this, to compile with your installed JVM 1.8 / JVM 8
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
-
-    // Since I'm using JVM 17 && it has been an issue with Gradle 8.0.0:
+    // AGP 8.0.0+ require JDK 17:
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17

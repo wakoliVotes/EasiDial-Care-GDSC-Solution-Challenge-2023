@@ -101,7 +101,7 @@ fun NavListItem(
     navController: NavController,
     route: String,
     icon: Int,
-    iconSize: Dp = 32.dp,
+    iconSize: Dp = 28.dp,
     label: String,
     labelSize: TextUnit = 18.sp,
 ) {
@@ -114,7 +114,7 @@ fun NavListItem(
                     launchSingleTop = true
                 }
             },
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(8.dp),
         backgroundColor = MaterialTheme.colors.secondary
     ) {
         Row(
@@ -125,7 +125,9 @@ fun NavListItem(
             Icon(
                 painter = painterResource(id = icon),
                 contentDescription = null,
-                Modifier.size(iconSize)
+                Modifier
+                    .padding(start = 8.dp)
+                    .size(iconSize)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = buildString {

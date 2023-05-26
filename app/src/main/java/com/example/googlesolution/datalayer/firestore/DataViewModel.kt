@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 data class UserFirestoreData(
+    var id: String = "",
     var fullName: String = "",
     var phone: String = "",
     var dateOfBirth: String = "",
@@ -56,6 +57,7 @@ suspend fun readFirestoreData(): UserFirestoreData {
         val result = userDocRef.get().await()
         if (result != null) {
             userData = UserFirestoreData(
+                id = result["id"].toString(),
                 fullName = result["full name"].toString(),
                 phone = result["phone"].toString(),
                 dateOfBirth = result["date of birth"].toString(),
@@ -74,6 +76,7 @@ suspend fun readFirestoreData(): UserFirestoreData {
         } else {
             //if user has no data, create document with empty string values
             val data = hashMapOf<String, String>(
+                "id" to userID,
                 "full name" to "",
                 "phone" to "",
                 "date of birth" to "",
