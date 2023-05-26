@@ -11,20 +11,19 @@ import com.example.googlesolution.datalayer.firebaseauth.AuthRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val repository: AuthRepository = AuthRepository()
-):ViewModel() {
+    private val repository: AuthRepository = AuthRepository(),
+) : ViewModel() {
     val currentUser = repository.currentUser
 
-    val hasUser:Boolean
-    get() = repository.hasUser()
+    val hasUser: Boolean
+        get() = repository.hasUser()
 
 
     var loginUiState by mutableStateOf(LoginUiState())
+        private set
 
-    private set
 
-
-    fun onUserNameChange(userName:String) {
+    fun onUserNameChange(userName: String) {
         loginUiState = loginUiState.copy(userName = userName)
     }
 
@@ -32,16 +31,16 @@ class LoginViewModel(
         loginUiState = loginUiState.copy(password = password)
     }
 
-    fun onUserChangeSignUp(userName:String) {
+    fun onUserChangeSignUp(userName: String) {
         loginUiState = loginUiState.copy(userNameSignUp = userName)
     }
 
-    fun onPasswordChangeSignUp(password:String) {
+    fun onPasswordChangeSignUp(password: String) {
         loginUiState = loginUiState.copy(passwordSignUp = password)
     }
 
     fun onConfirmPasswordChange(password: String) {
-        loginUiState = loginUiState.copy( confirmPasswordSignUp = password)
+        loginUiState = loginUiState.copy(confirmPasswordSignUp = password)
     }
 
 
@@ -55,16 +54,15 @@ class LoginViewModel(
                 loginUiState.confirmPasswordSignUp.isNotBlank()
 
 
-
     fun createUser(context: Context) = viewModelScope.launch {
         try {
-            if (!validateSignUpForm()){
+            if (!validateSignUpForm()) {
                 throw IllegalAccessException("email and password cannot be empty")
             }
             loginUiState = loginUiState.copy(isLoading = true)
             if (loginUiState.passwordSignUp !=
-                        loginUiState.confirmPasswordSignUp
-                    ){
+                loginUiState.confirmPasswordSignUp
+            ) {
                 throw java.lang.IllegalArgumentException(
                     "passwords do not match"
                 )
@@ -73,11 +71,11 @@ class LoginViewModel(
             repository.createUser(
                 loginUiState.userNameSignUp,
                 loginUiState.passwordSignUp
-            ){ isSuccessful ->
-                if (isSuccessful){
+            ) { isSuccessful ->
+                if (isSuccessful) {
                     Toast.makeText(
                         context,
-                        "Success Login",
+                        "Signed In",
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = true)
@@ -85,7 +83,7 @@ class LoginViewModel(
                 } else {
                     Toast.makeText(
                         context,
-                        "Failed Login",
+                        "Failed Signing In",
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = false)
@@ -94,17 +92,17 @@ class LoginViewModel(
 
             }
 
-            } catch (e:Exception) {
-                loginUiState = loginUiState.copy(signUpError = e.localizedMessage)
+        } catch (e: Exception) {
+            loginUiState = loginUiState.copy(signUpError = e.localizedMessage)
             e.printStackTrace()
-            } finally {
-                loginUiState = loginUiState.copy(isLoading = false)
-            }
+        } finally {
+            loginUiState = loginUiState.copy(isLoading = false)
+        }
     }
 
     fun loginUser(context: Context) = viewModelScope.launch {
         try {
-            if (!validateLoginForm()){
+            if (!validateLoginForm()) {
                 throw IllegalAccessException("email and password cannot be empty")
             }
             loginUiState = loginUiState.copy(isLoading = true)
@@ -112,11 +110,11 @@ class LoginViewModel(
             repository.login(
                 loginUiState.userName,
                 loginUiState.password
-            ){ isSuccessful ->
-                if (isSuccessful){
+            ) { isSuccessful ->
+                if (isSuccessful) {
                     Toast.makeText(
                         context,
-                        "Success Login",
+                        "Signed In",
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = true)
@@ -124,7 +122,7 @@ class LoginViewModel(
                 } else {
                     Toast.makeText(
                         context,
-                        "Failed Login",
+                        "Failed Signing In",
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = false)
@@ -133,7 +131,7 @@ class LoginViewModel(
 
             }
 
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             loginUiState = loginUiState.copy(logInError = e.localizedMessage)
             e.printStackTrace()
         } finally {
@@ -142,22 +140,23 @@ class LoginViewModel(
 
 
     }
+
     // implementing logout user
     fun logoutUser() = viewModelScope.launch {
-            repository.logout()
-        }
+        repository.logout()
+    }
 }
 
 
 data class LoginUiState(
-    val userName:String = "",
-    val password:String = "",
-    val userNameSignUp:String = "",
-    val passwordSignUp:String = "",
-    val confirmPasswordSignUp:String = "",
-    val isLoading:Boolean = false,
+    val userName: String = "",
+    val password: String = "",
+    val userNameSignUp: String = "",
+    val passwordSignUp: String = "",
+    val confirmPasswordSignUp: String = "",
+    val isLoading: Boolean = false,
     val isSuccessLogin: Boolean = false,
-    val signUpError:String? = null,
-    val logInError:String? = null
+    val signUpError: String? = null,
+    val logInError: String? = null,
 
-)
+    )
