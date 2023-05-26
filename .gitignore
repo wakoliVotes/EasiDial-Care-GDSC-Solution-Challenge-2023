@@ -13,4 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
-google_maps_key.xml
+/android/app/src/main/res/values/google_maps_key.xml
+

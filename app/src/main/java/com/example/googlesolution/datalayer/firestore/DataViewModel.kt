@@ -11,6 +11,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.time.LocalTime
 
 data class UserFirestoreData(
     var id: String = "",
@@ -131,5 +132,18 @@ class DataViewModel : ViewModel() {
         var newData = hashMapOf<String, Any>(fieldName to value)
 
         userDocRef.update(newData)
+    }
+
+    fun sendFeedBack(text: String) {
+        var data = hashMapOf<String, Any>(
+            "name" to state.value.fullName,
+            "phone" to state.value.phone,
+            "email" to state.value.id,
+            "feedback" to text
+        )
+
+        //using time as the document ID
+        val time = LocalTime.now().toString()
+        database.collection("feedback").document(time).set(data)
     }
 }
