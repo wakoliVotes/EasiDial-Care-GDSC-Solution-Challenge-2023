@@ -69,7 +69,9 @@
 
 **Hospitals MapView**
 
-<img width="250" height="520" src="screenshots/map.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325280-3557fc40-6c38-4560-89c3-6081e94f3ee8.png" ><img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325312-db9bdf3b-4020-405d-9499-a093a51db880.png" >
+<img width="250" height="520" src="screenshots/map.png" >
+<!-- <img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325280-3557fc40-6c38-4560-89c3-6081e94f3ee8.png" >
+<img width="250" height="520" src="https://user-images.githubusercontent.com/77758884/228325312-db9bdf3b-4020-405d-9499-a093a51db880.png" > -->
 
 
 ### Instructions for using the app
